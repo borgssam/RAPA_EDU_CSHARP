@@ -4,6 +4,7 @@ class Program
 {
   static void Main(string[] args)
   {
+    //주석임당
     int count = 1;
     int totalClap = 0;
     while (true) {
