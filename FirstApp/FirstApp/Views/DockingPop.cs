@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace StartForm
+namespace FirstApp.Views
 {
-  public partial class Form1 : Form
+  public partial class DockingPop : Form
   {
-    public Form1()
+    public DockingPop()
     {
       InitializeComponent();
     }
