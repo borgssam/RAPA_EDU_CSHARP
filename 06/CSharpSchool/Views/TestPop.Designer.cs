@@ -35,17 +35,19 @@
       this.label1 = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
       this.label3 = new System.Windows.Forms.Label();
+      this.label_display = new System.Windows.Forms.Label();
       this.SuspendLayout();
       // 
       // button1
       // 
       this.button1.Location = new System.Drawing.Point(256, 77);
       this.button1.Name = "button1";
-      this.button1.Size = new System.Drawing.Size(89, 38);
+      this.button1.Size = new System.Drawing.Size(299, 154);
       this.button1.TabIndex = 0;
       this.button1.Text = "button1";
       this.button1.UseVisualStyleBackColor = true;
       this.button1.Click += new System.EventHandler(this.button1_Click);
+      this.button1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button1_MouseMove);
       // 
       // tbox_1
       // 
@@ -98,11 +100,22 @@
       this.label3.TabIndex = 7;
       this.label3.Text = "성별";
       // 
+      // label_display
+      // 
+      this.label_display.AutoSize = true;
+      this.label_display.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+      this.label_display.Location = new System.Drawing.Point(75, 293);
+      this.label_display.Name = "label_display";
+      this.label_display.Size = new System.Drawing.Size(104, 43);
+      this.label_display.TabIndex = 8;
+      this.label_display.Text = "좌표";
+      // 
       // TestPop
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(800, 450);
+      this.Controls.Add(this.label_display);
       this.Controls.Add(this.label3);
       this.Controls.Add(this.label2);
       this.Controls.Add(this.label1);
@@ -126,5 +139,6 @@
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.Label label3;
+    private System.Windows.Forms.Label label_display;
   }
 }

@@ -303,5 +303,106 @@ namespace CSharpSchool
       pop.ShowDialog();
 
     }
+    class Product17 {
+      public Product17() {
+        Debug.WriteLine("Product17생성");
+      }
+      ~Product17()
+      {
+        Debug.WriteLine("Product17소멸");
+      }
+    
+    }
+    private void button17_Click(object sender, EventArgs e)
+    {
+      Product17 product = new Product17();
+    }
+    class Box {
+      private int width;
+      private int height;
+
+      public Box() { }
+      public Box(int width, int height )
+      {
+        this.width = width;
+        this.height = height;
+      }
+      public int Area()
+      {
+        return height*width;
+      }
+      public int getWidth() {  return width; }
+      public void setWidth(int value) { width = value; }
+
+      public int getHeight() { return height; }
+      public void setHeight(int value) { height = value; }
+    }
+    private void button18_Click(object sender, EventArgs e)
+    {
+      Box box = new Box(20,30);
+      WriteLine(box.Area());
+      // box.width = 30;
+      box.setWidth(30);
+      WriteLine("가로:"+box.getWidth()+",세로:"+box.getWidth()+",면적:"+box.Area());
+    }
+    class BoxEx
+    {
+      private int width;
+      public int Width
+      {
+        get { return width; }
+        set
+        {
+          if (value > 0)
+          {
+            width = value;
+          }  else {
+            width = 0;
+          }
+        }
+      }
+      private int height;
+      
+      public int Height
+      {
+        get { return height; }
+        set { 
+          if(value > 0) {
+            height = value; 
+          } else {
+            height = 0;
+          }       
+        }
+      }
+
+      public BoxEx() { }
+      public BoxEx(int width, int height)
+      {
+        this.width = width;
+        this.height = height;
+      }
+      public int Area()
+      {
+        return height * width;
+      }
+    }
+    private void button19_Click(object sender, EventArgs e)
+    {
+      BoxEx box = new BoxEx(20, 30);
+      WriteLine(box.Area());
+
+      box.Width = 30;
+      WriteLine("가로:" + box.Width + ",세로:" + box.Height + ",면적:" + box.Area());
+    }
+
+    private void button20_Click(object sender, EventArgs e)
+    {
+      BoxEx box = new BoxEx(20, 30);
+      WriteLine(box.Area());
+
+      box.Width = -30;
+      WriteLine("가로:" + box.Width + ",세로:" + box.Height + ",면적:" + box.Area());
+
+    }
   }
 }
