@@ -125,6 +125,7 @@
       this.Controls.Add(this.button1);
       this.Name = "TestPop";
       this.Text = "TestPop";
+      this.Load += new System.EventHandler(this.TestPop_Load);
       this.ResumeLayout(false);
       this.PerformLayout();
 

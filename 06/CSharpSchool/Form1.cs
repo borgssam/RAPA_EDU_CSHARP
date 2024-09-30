@@ -1,4 +1,5 @@
-﻿using CSharpSchool.Utils;
+﻿using CSharpSchool.Pop;
+using CSharpSchool.Utils;
 using CSharpSchool.Views;
 using System;
 using System.Collections.Generic;
@@ -635,6 +636,8 @@ namespace CSharpSchool
 
     private void button28_Click(object sender, EventArgs e)
     {
+      ViewTestPop pop = new ViewTestPop();
+      pop.ShowDialog();
 
     }
   }

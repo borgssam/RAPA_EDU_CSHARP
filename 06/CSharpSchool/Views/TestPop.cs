@@ -41,5 +41,10 @@ namespace CSharpSchool.Views
       }
       prevPoint = e.Location;
     }
+
+    private void TestPop_Load(object sender, EventArgs e)
+    {
+
+    }
   }
 }
