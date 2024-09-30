@@ -1425,6 +1425,7 @@
       this.button14.TabIndex = 16;
       this.button14.Text = "button14";
       this.button14.UseVisualStyleBackColor = true;
+      this.button14.Click += new System.EventHandler(this.button14_Click);
       // 
       // button15
       // 
@@ -1435,6 +1436,7 @@
       this.button15.TabIndex = 15;
       this.button15.Text = "button15";
       this.button15.UseVisualStyleBackColor = true;
+      this.button15.Click += new System.EventHandler(this.button15_Click);
       // 
       // button16
       // 
@@ -1445,6 +1447,7 @@
       this.button16.TabIndex = 14;
       this.button16.Text = "button16";
       this.button16.UseVisualStyleBackColor = true;
+      this.button16.Click += new System.EventHandler(this.button16_Click);
       // 
       // button17
       // 

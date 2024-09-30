@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CSharpSchool.Utils;
+using CSharpSchool.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -254,6 +256,51 @@ namespace CSharpSchool
       WriteLine(productA.name + "(" + productA.id + "):" + productA.price);
       WriteLine(productB.name + "(" + productB.id + "):" + productB.price);
       WriteLine(Product.counter + "개의 제품인스턴스가 만들어졌습니다.");
+
+    }
+
+    class Test14 {
+
+      public string name = "홍길동";
+      private static Test14 instance = null;
+      private Test14() { }
+
+      public static Test14 Instance()
+      {
+        if ( instance == null)
+        {
+          instance = new Test14(); 
+        }
+        return instance;
+      }
+    }
+    private void button14_Click(object sender, EventArgs e)
+    {
+      //Test14 test = new Test14();
+      Test14 test = Test14.Instance();
+      WriteLine(test.name);
+      Test14 test2 = Test14.Instance();
+      test.name = "강감찬";
+      WriteLine(test.name +", "+test2.name);
+
+      //홍길동
+      //강감찬, 홍길동
+      //홍길동
+      //강감찬, 강감찬
+
+    }
+
+    private void button15_Click(object sender, EventArgs e)
+    {
+      App app = App.Instance();
+      WriteLine(app.name +"("+app.age+") : " + app.gender);
+
+    }
+
+    private void button16_Click(object sender, EventArgs e)
+    {
+      TestPop  pop = new TestPop();
+      pop.ShowDialog();
 
     }
   }
