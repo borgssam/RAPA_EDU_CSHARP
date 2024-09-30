@@ -1292,6 +1292,7 @@
       this.button21.TabIndex = 29;
       this.button21.Text = "button21";
       this.button21.UseVisualStyleBackColor = true;
+      this.button21.Click += new System.EventHandler(this.button21_Click);
       // 
       // button22
       // 
@@ -1302,6 +1303,7 @@
       this.button22.TabIndex = 28;
       this.button22.Text = "button22";
       this.button22.UseVisualStyleBackColor = true;
+      this.button22.Click += new System.EventHandler(this.button22_Click);
       // 
       // button23
       // 
@@ -1312,6 +1314,7 @@
       this.button23.TabIndex = 27;
       this.button23.Text = "button23";
       this.button23.UseVisualStyleBackColor = true;
+      this.button23.Click += new System.EventHandler(this.button23_Click);
       // 
       // button24
       // 
@@ -1644,6 +1647,7 @@
       this.tbox_result.Margin = new System.Windows.Forms.Padding(2);
       this.tbox_result.Multiline = true;
       this.tbox_result.Name = "tbox_result";
+      this.tbox_result.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.tbox_result.Size = new System.Drawing.Size(1329, 254);
       this.tbox_result.TabIndex = 0;
       // 

@@ -46,7 +46,9 @@ namespace CSharpSchool
 
     public Form1()
     {
-        InitializeComponent();
+      InitializeComponent();
+      App app = App.Instance();
+      app.MainForm = this;
     }
 
 
@@ -402,6 +404,119 @@ namespace CSharpSchool
 
       box.Width = -30;
       WriteLine("가로:" + box.Width + ",세로:" + box.Height + ",면적:" + box.Area());
+
+    }
+    class Animal
+    {
+      private void func1() { }
+      protected void func2() { }
+      public void func3() { }
+
+      public Animal() {
+        func1();func2(); func3();
+      }
+
+      public void Eat()
+      {
+        App.Instance().MainForm.WriteLine("냠냠");
+      }
+      public virtual void Sleep()
+      {
+        App.Instance().MainForm.WriteLine("쿨쿨");
+      }
+    }
+
+    class Dog : Animal
+    {
+      public Dog() { }
+
+      public override void Sleep() {
+
+        App.Instance().MainForm.WriteLine("강아지가 쿨쿨잔다.");
+      }
+      public void Bark()
+      {
+        App.Instance().MainForm.WriteLine("멍멍멍");
+      }
+
+      public void Test()
+      {
+        this.func2();
+        this.func3();
+      }
+    }
+
+    class Cat : Animal
+    {
+      public Cat() { }
+      public override void Sleep()
+      {
+        App.Instance().MainForm.WriteLine("야옹이가 새근새근 잔다.");
+      }
+      public void Meow()
+      {
+        App.Instance().MainForm.WriteLine("야옹야옹");
+      }
+    }
+    private void button21_Click(object sender, EventArgs e)
+    {
+      Dog dog = new Dog();
+      dog.func3();
+    }
+
+    private void button22_Click(object sender, EventArgs e)
+    {
+      List<Animal> animals = new List<Animal>();
+      animals.Add(new Dog());
+      animals.Add(new Cat());
+      animals.Add(new Dog());
+      animals.Add(new Cat());
+      animals.Add(new Dog());
+
+      foreach (Animal animal in animals)
+      {
+        animal.Eat();
+        animal.Sleep();
+        if (animal is Dog)
+        {
+          //((Dog)animal).Bark();
+          (animal as Dog).Bark();
+        }
+        if (animal is Cat)
+        {
+          ((Cat)animal).Meow();
+        }
+
+      }
+
+
+    }
+
+    private void button23_Click(object sender, EventArgs e)
+    {
+      List<Animal> animals = new List<Animal>();
+      animals.Add(new Dog());
+      animals.Add(new Cat());
+      animals.Add(new Dog());
+      animals.Add(new Cat());
+      animals.Add(new Dog());
+
+      foreach (Animal animal in animals)
+      {
+        animal.Eat();
+        animal.Sleep();
+
+        var d = animal as Dog;
+        if (d != null)
+        {
+          d.Bark();
+        }
+
+        var a = animal as Cat;
+        if (a != null) {
+          a.Meow();
+        }
+      }
 
     }
   }

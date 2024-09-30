@@ -11,6 +11,7 @@ namespace CSharpSchool.Utils
     public string name = "홍길동";
     public int age = 0;
     public string gender = "남자";
+    public Form1 MainForm { get; set; }
 
     private static App instance = null;
     private App() { }
