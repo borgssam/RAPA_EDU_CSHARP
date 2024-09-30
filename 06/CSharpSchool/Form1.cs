@@ -519,5 +519,123 @@ namespace CSharpSchool
       }
 
     }
+    class Parents {
+      private String name = "일반부모";
+      public Parents()
+      {
+        App.Instance().MainForm.WriteLine($"부모({this.name}) 생성됨");
+      }
+      public Parents(String name)
+      {
+        this.name = name;
+        App.Instance().MainForm.WriteLine($"부모({this.name}) 생성됨");
+      }
+    }
+
+    class Child :Parents
+    {
+      public Child() : base("좋은부모")
+      {
+        App.Instance().MainForm.WriteLine($"자식 생성됨");
+      }
+    }
+    private void button24_Click(object sender, EventArgs e)
+    {
+      Child child = new Child(); 
+
+    }
+
+    class Animal2 {
+      public void Eat() {
+        App.Instance().MainForm.WriteLine("냠냠먹는다.");
+      }
+    }
+
+    class Dog2: Animal2
+    {
+      public new void Eat()
+      {
+        App.Instance().MainForm.WriteLine("강아지가 먹는다.");
+      }
+    }
+    class Cat2 : Animal2
+    {
+      public new void Eat()
+      {
+        App.Instance().MainForm.WriteLine("고양이가 먹는다.");
+      }
+    }
+
+    private void button25_Click(object sender, EventArgs e)
+    {
+      List<Animal2> list = new List<Animal2>() { 
+      new Dog2(), new Cat2(), new Dog2()
+      };
+      foreach(Animal2 ani in list)
+      {
+        ani.Eat();
+      }
+
+    }
+
+    class Animal3
+    {
+      public virtual void Eat()
+      {
+        App.Instance().MainForm.WriteLine("냠냠먹는다.");
+      }
+    }
+
+    class Dog3 : Animal3
+    {
+      public override void Eat()
+      {
+        App.Instance().MainForm.WriteLine("강아지가 먹는다.");
+      }
+    }
+    class Cat3 : Animal3
+    {
+      public override void Eat()
+      {
+        App.Instance().MainForm.WriteLine("고양이가 먹는다.");
+      }
+    }
+    private void button26_Click(object sender, EventArgs e)
+    {
+      List<Animal3> list = new List<Animal3>() {
+      new Dog3(), new Cat3(), new Dog3()
+      };
+      foreach (Animal3 ani in list)
+      {
+        ani.Eat();
+      }
+
+    }
+    abstract class Parent27 {
+      public virtual void Eat() { }
+      public abstract void Sleep();
+    }
+    class Child27: Parent27 {
+      public override void Eat() { }
+      public override void Sleep() { }
+    }
+
+    class GrdnChild27: Child27 {
+      public override void Eat()
+      {
+        base.Eat();
+      }
+    }
+    private void button27_Click(object sender, EventArgs e)
+    {
+      //Parent27 parent = new Parent27();
+      Child27 child = new Child27(); 
+
+    }
+
+    private void button28_Click(object sender, EventArgs e)
+    {
+
+    }
   }
 }
