@@ -640,5 +640,87 @@ namespace CSharpSchool
       pop.ShowDialog();
 
     }
+    public class Box<T>
+    {
+      public T content;
+      public void SetContent(T value)
+      {
+        content = value;
+      }
+      public T GetContent()
+      {
+        return content;
+      }
+    }
+    private void button29_Click(object sender, EventArgs e)
+    {
+      Box<int> box1 = new Box<int>();
+      box1.SetContent(1);
+      WriteLine(box1.GetContent() + 2);
+
+      Box<string> box2 = new Box<string>();
+      box2.SetContent("1");
+      WriteLine(box2.GetContent() + 2);
+
+
+    }
+    public class Utility
+    {
+      public T identity<T>(T value)
+      {
+        return value;
+      }
+    }
+    private void button30_Click(object sender, EventArgs e)
+    {
+      Utility utility = new Utility();
+      WriteLine(utility.identity(1) + 2);    //정수
+      WriteLine(utility.identity(1.2) + 2);  //실수
+      WriteLine(utility.identity("1") + 2);   // 문자열
+
+    }
+    public class MyCollection
+    {
+      private string[] strArray = new string[10];
+      public MyCollection()
+      {
+      }
+      public string this[int i]
+      {
+        get { return strArray[i]; }
+        set { strArray[i] = value; }
+      }
+    }
+    private void button31_Click(object sender, EventArgs e)
+    {
+      MyCollection myCollection = new MyCollection();
+      myCollection[0] = "홍길동";
+      myCollection[1] = "강강찬";
+      WriteLine(myCollection[0]);
+    }
+
+    private void button32_Click(object sender, EventArgs e)
+    {
+      string input = tbox_1.Text;
+      int output = int.Parse(input);
+      WriteLine("입력값:" + output);
+    }
+
+    private void button33_Click(object sender, EventArgs e)
+    {
+
+      string input = tbox_1.Text;
+      int output;
+      bool result = int.TryParse(input, out output);
+      if (result)
+      {
+        WriteLine("입력값:" + output);
+      }
+      else
+      {
+
+        WriteLine("문자열 -> 숫자 실패");
+      }
+    }
   }
 }
