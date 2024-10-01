@@ -722,5 +722,124 @@ namespace CSharpSchool
         WriteLine("문자열 -> 숫자 실패");
       }
     }
+
+    private void button34_Click(object sender, EventArgs e)
+    {
+
+    }
+    class PointX
+    {
+      public int x;
+      public int y;
+    }
+    struct Point
+    {
+      public int x;
+      public int y;
+    }
+
+    private void button35_Click(object sender, EventArgs e)
+    {
+
+      Point point;  //구조체는 스택할당
+      point.x = 10;
+      point.y = 20;
+
+      WriteLine($"{point.x},{point.y}");
+
+      //PointX point2; //클래스 힙에 할당해야함
+      //point2.x = 10;
+      //point2.y = 20;
+      //WriteLine($"{point2.x},{point2.y}");
+
+
+    }
+    struct Point3
+    {
+      public int x;
+      public int y;
+      public Point3(int x, int y)
+      {
+        this.x = x;
+        this.y = y;
+      }
+    }
+    private void button36_Click(object sender, EventArgs e)
+    {
+      Point3 point = new Point3();
+      //point.x = 10;
+      //point.y = 20;
+      WriteLine($"{point.x},{point.y}");
+
+      Point3 point2 = new Point3(10,20);
+      WriteLine($"{point2.x},{point2.y}");
+    }
+
+    struct Point4
+    {
+      public int x;
+      public int y;
+      public string name;
+      public PointX pos;
+      //public int age = 30;
+
+      public Point4(int x, int y)
+      {
+        this.x = x;
+        this.y = y;
+        this.name = string.Empty;
+        pos = null;
+      }
+      public Point4(int x, int y, string name)
+      {
+        this.x = x;
+        this.y = y;
+        this.name = name;
+        pos = null;
+      }
+    }
+    private void button37_Click(object sender, EventArgs e)
+    {
+
+    }
+    //깊은복사 얕은복사 ( 값복사 , 참조복사)
+    class PointClass
+    {
+      public int x;
+      public int y;
+      public PointClass(int x, int y)
+      {
+        this.x = x;
+        this.y = y;
+      }
+    }
+
+    struct PointStuct
+    {
+      public int x;
+      public int y;
+      public PointStuct(int x, int y)
+      {
+        this.x = x;
+        this.y = y;
+      }
+
+    }
+
+    private void button38_Click(object sender, EventArgs e)
+    {
+      PointClass pcA = new PointClass(10,20);
+      PointClass pcB = pcA;  // 얕은복사, 참조복사
+      pcB.x = 100;
+      pcB.y = 200;
+
+      WriteLine($"{pcA.x},{pcA.y}");
+
+      PointStuct psA = new PointStuct(10, 20); 
+      PointStuct psB = psA;  // 값복사 깊은복사
+      psB.x = 100;
+      psB.y = 200;
+      WriteLine($"{psA.x},{psA.y}");
+    }
   }
 }
