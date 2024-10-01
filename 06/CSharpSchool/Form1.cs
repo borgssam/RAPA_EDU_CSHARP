@@ -1032,5 +1032,104 @@ namespace CSharpSchool
 
       }
     }
+
+    private void button49_Click(object sender, EventArgs e)
+    {
+      string str_1 = tbox_1.Text;
+      int int_1 = int.Parse(str_1);
+      WriteLine("입력값:"+(int_1+1 ) );
+    }
+
+    private void button50_Click(object sender, EventArgs e)
+    {
+      string str_1 = tbox_1.Text;
+      string str_2 = tbox_2.Text;
+      try {
+        int int_2 = int.Parse(str_2);
+        int k = 100 / int_2;
+        int int_1 = int.Parse(str_1);
+        WriteLine("입력값:" + (int_1 + 1));
+      }
+      catch (FormatException ex)
+      {
+        WriteLine("예외발생(FormatException)");
+        WriteLine(ex.Message);
+      }
+      catch (DivideByZeroException ex)
+      {
+        WriteLine("예외발생(DivideByZeroException)");
+        WriteLine(ex.Message);
+      } catch (Exception ex) {
+        WriteLine("예외발생(Exception)");
+        WriteLine(ex.Message);
+        WriteLine(ex.StackTrace);
+        WriteLine(ex.ToString());
+      } finally {
+        WriteLine("무조건 실행");
+      
+      }
+
+      
+
+    }
+    class RedBox
+    {
+      private int width;
+      public int Width { get{ return width; }
+        
+        set {
+          if (value > 0) { width = value; 
+          } else {
+            width = 0;
+            throw new Exception("가로는 0보다 커야합니다.");
+          }
+        }
+      }
+
+      private int height;
+      public int Height
+      {
+        get
+        { return height; }
+        set
+        {
+          if (value > 0)
+          {
+            height = value;
+          }
+          else
+          {
+            height = 0;
+            throw new Exception("높이는 0보다 커야합니다.");
+          }
+        }
+      }
+      public RedBox(int width, int height) { 
+        Width = width; Height = height;
+      }
+      public int Area() { return Width * Height; }
+    }
+    private void button51_Click(object sender, EventArgs e)
+    {
+      string str_1 = tbox_1.Text; 
+      string str_2 = tbox_2.Text;
+      int int_1 = int.Parse (str_1);
+      int int_2 = int.Parse(str_2);
+
+      try {       
+        RedBox box = new RedBox(int_1, int_2);
+        WriteLine("면적: "+ box.Area() );
+      } catch (Exception ex) {
+        WriteLine(ex.Message);
+      }
+
+
+
+    }
+
+    private void button52_Click(object sender, EventArgs e)
+    {
+
+    }
   }
 }
