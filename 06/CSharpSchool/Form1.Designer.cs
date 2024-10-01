@@ -1102,6 +1102,7 @@
       this.button41.TabIndex = 49;
       this.button41.Text = "button41";
       this.button41.UseVisualStyleBackColor = true;
+      this.button41.Click += new System.EventHandler(this.button41_Click);
       // 
       // button42
       // 
@@ -1112,6 +1113,7 @@
       this.button42.TabIndex = 48;
       this.button42.Text = "button42";
       this.button42.UseVisualStyleBackColor = true;
+      this.button42.Click += new System.EventHandler(this.button42_Click);
       // 
       // button43
       // 
@@ -1122,6 +1124,7 @@
       this.button43.TabIndex = 47;
       this.button43.Text = "button43";
       this.button43.UseVisualStyleBackColor = true;
+      this.button43.Click += new System.EventHandler(this.button43_Click);
       // 
       // button44
       // 
@@ -1132,6 +1135,7 @@
       this.button44.TabIndex = 46;
       this.button44.Text = "button44";
       this.button44.UseVisualStyleBackColor = true;
+      this.button44.Click += new System.EventHandler(this.button44_Click);
       // 
       // button45
       // 
@@ -1142,6 +1146,7 @@
       this.button45.TabIndex = 45;
       this.button45.Text = "button45";
       this.button45.UseVisualStyleBackColor = true;
+      this.button45.Click += new System.EventHandler(this.button45_Click);
       // 
       // button46
       // 
@@ -1152,6 +1157,7 @@
       this.button46.TabIndex = 44;
       this.button46.Text = "button46";
       this.button46.UseVisualStyleBackColor = true;
+      this.button46.Click += new System.EventHandler(this.button46_Click);
       // 
       // button47
       // 
@@ -1162,6 +1168,7 @@
       this.button47.TabIndex = 43;
       this.button47.Text = "button47";
       this.button47.UseVisualStyleBackColor = true;
+      this.button47.Click += new System.EventHandler(this.button47_Click);
       // 
       // button48
       // 
@@ -1172,6 +1179,7 @@
       this.button48.TabIndex = 42;
       this.button48.Text = "button48";
       this.button48.UseVisualStyleBackColor = true;
+      this.button48.Click += new System.EventHandler(this.button48_Click);
       // 
       // button49
       // 

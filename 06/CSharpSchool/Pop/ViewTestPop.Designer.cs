@@ -128,7 +128,7 @@
             this.도우ToolStripMenuItem});
       this.main_menu.Location = new System.Drawing.Point(0, 0);
       this.main_menu.Name = "main_menu";
-      this.main_menu.Size = new System.Drawing.Size(801, 28);
+      this.main_menu.Size = new System.Drawing.Size(801, 30);
       this.main_menu.TabIndex = 4;
       this.main_menu.Text = "menuStrip1";
       // 
@@ -290,9 +290,9 @@
             this.tbtn_member,
             this.tbtn_book,
             this.tbtn_rent});
-      this.main_toolbar.Location = new System.Drawing.Point(0, 28);
+      this.main_toolbar.Location = new System.Drawing.Point(0, 30);
       this.main_toolbar.Name = "main_toolbar";
-      this.main_toolbar.Size = new System.Drawing.Size(801, 27);
+      this.main_toolbar.Size = new System.Drawing.Size(801, 31);
       this.main_toolbar.TabIndex = 5;
       this.main_toolbar.Text = "toolStrip1";
       // 
@@ -334,9 +334,9 @@
       this.panel3.Controls.Add(this.panel2);
       this.panel3.Controls.Add(this.panel1);
       this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel3.Location = new System.Drawing.Point(0, 55);
+      this.panel3.Location = new System.Drawing.Point(0, 61);
       this.panel3.Name = "panel3";
-      this.panel3.Size = new System.Drawing.Size(801, 359);
+      this.panel3.Size = new System.Drawing.Size(801, 353);
       this.panel3.TabIndex = 6;
       // 
       // panel2
@@ -346,7 +346,7 @@
       this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
       this.panel2.Location = new System.Drawing.Point(0, 51);
       this.panel2.Name = "panel2";
-      this.panel2.Size = new System.Drawing.Size(801, 308);
+      this.panel2.Size = new System.Drawing.Size(801, 302);
       this.panel2.TabIndex = 4;
       // 
       // view_space
@@ -355,7 +355,7 @@
       this.view_space.Dock = System.Windows.Forms.DockStyle.Fill;
       this.view_space.Location = new System.Drawing.Point(0, 0);
       this.view_space.Name = "view_space";
-      this.view_space.Size = new System.Drawing.Size(799, 306);
+      this.view_space.Size = new System.Drawing.Size(799, 300);
       this.view_space.TabIndex = 2;
       // 
       // main_status

@@ -52,6 +52,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IBasic.cs" />
+    <Compile Include="IDrivable.cs" />
+    <Compile Include="IFlyable.cs" />
     <Compile Include="Pop\DeletePop.cs">
       <SubType>Form</SubType>
     </Compile>

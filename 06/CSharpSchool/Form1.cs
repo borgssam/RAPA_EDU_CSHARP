@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -902,6 +903,134 @@ namespace CSharpSchool
         WriteLine(p);
       }
 
+    }
+
+    class TestClass : IBasic
+    {
+      public int TestProperty {
+        get { throw new NotImplementedException(); }
+        set { throw new NotImplementedException(); }
+      }
+
+      public int TestInstanceMethod()
+      {
+        //throw new NotImplementedException();
+        App.Instance().MainForm.WriteLine("Test");  
+        return 0;
+      }
+    }
+
+    private void button41_Click(object sender, EventArgs e)
+    {
+      IBasic basic = new TestClass();
+      basic.TestInstanceMethod();
+    }
+
+    class Car : IDrivable
+    {
+      public string Name { get; set; }
+      public Car(string name)
+      {
+        Name = name;
+      } 
+      public void Drive()
+      {
+        App.Instance().MainForm.WriteLine($"{this.Name}가 도로를 달린다.");
+      }
+    }
+    class Plane : IFlyable
+    {
+      public string Name { get; set; }
+      public Plane(string name)
+      {
+        Name = name;
+      }
+
+      public void Fly()
+      {
+        App.Instance().MainForm.WriteLine($"{this.Name}이 하늘을 난다.");
+      }
+    }
+
+    class FlyingCar : IDrivable, IFlyable
+    {
+      public void Drive()
+      {
+        App.Instance().MainForm.WriteLine("도로를 달린다.");
+      }
+
+      public void Fly()
+      {
+        App.Instance().MainForm.WriteLine("하늘을 난다.");
+      }
+    }
+    private void button42_Click(object sender, EventArgs e)
+    {
+      Car car = new Car("붕붕이");
+      car.Drive();
+      IDrivable drive = car;
+      drive.Drive();
+    }
+
+    private void button43_Click(object sender, EventArgs e)
+    {
+      Plane plane = new Plane("쌕쌕기");
+      plane.Fly();
+      IFlyable flyable = plane;
+      flyable.Fly();
+    }
+
+    private void button44_Click(object sender, EventArgs e)
+    {
+      FlyingCar flyingcar = new FlyingCar();
+      IDrivable drivable = flyingcar;
+      drivable.Drive();
+      IFlyable flyable2 = flyingcar;
+      flyable2.Fly();
+    }
+
+    private void button45_Click(object sender, EventArgs e)
+    {
+      List<IFlyable> list = new List<IFlyable>();
+      list.Add(new FlyingCar());
+      list.Add(new Plane("붕붕이"));
+      list.Add(new Plane("날다람쥐"));
+      list.Add(new Plane("대한항공"));
+
+      foreach (IFlyable flyable in list)
+      {
+        flyable.Fly(); 
+      }
+
+    }
+
+    private void button46_Click(object sender, EventArgs e)
+    {
+      //C:\EDU\edu_csharp\sample
+      File.WriteAllText(@"C:\EDU\edu_csharp\sample\sample.txt", "문자열을 파일에 씁니다.");
+
+    }
+
+    private void button47_Click(object sender, EventArgs e)
+    {
+      string data = File.ReadAllText(@"C:\EDU\edu_csharp\sample\sample.txt");
+      WriteLine(data);
+    }
+
+    private void button48_Click(object sender, EventArgs e)
+    {
+      using (StreamWriter writer = new StreamWriter(@"C:\EDU\edu_csharp\sample\sample.txt"))
+      {
+        writer.WriteLine("안녕하세요");
+        writer.WriteLine("123456789");
+        writer.WriteLine("Hello");
+        for(int i = 0; i < 10; i++)
+        {
+          writer.WriteLine("반복문" + i);
+        }
+
+
+      }
     }
   }
 }
