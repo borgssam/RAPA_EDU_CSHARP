@@ -1123,13 +1123,122 @@ namespace CSharpSchool
         WriteLine(ex.Message);
       }
 
-
-
     }
 
     private void button52_Click(object sender, EventArgs e)
     {
+      WriteLine("안녕하세요 버튼52입니다.");
+    }
+    private void click2(object sender, EventArgs e)
+    {
+      WriteLine("click2입니다.");
+    }
+    private void click3(object sender, EventArgs e)
+    {
+      WriteLine("click3입니다.");
+    }
+    private void button53_Click(object sender, EventArgs e)
+    {
+      //this.button52.Click -= this.button52_Click;
+      //this.button52.Click -= null;
+      this.button52.Click += new EventHandler(click3);
+    }
 
+    private void button54_Click(object sender, EventArgs e)
+    {
+      this.button55.Click += delegate (object sender2, EventArgs e2) {
+        MessageBox.Show("버튼55이 무명메서드로 실행되었습니다.");
+      };
+    }
+
+    public delegate void TestDelegate();
+    private void button56_Click(object sender, EventArgs e)
+    {
+      TestDelegate dA = this.TestMethod;
+      TestDelegate dB = delegate () { Debug.WriteLine("델리게이트방식으로 호출"); };
+      TestDelegate dC = () => { Debug.WriteLine("람다식으로 호출"); };
+
+      dA();
+      dB();
+      dC();
+    }
+
+    private void TestMethod() {
+      Debug.WriteLine("일반함수방식으로 호출");
+    }
+
+    class Student
+    {
+      public string Name { get; set; }
+      public double Score { get; set; }
+      public Student() { }
+      public Student(string name, double score)
+      {
+        Name = name;
+        Score = score;
+      }
+      public override string ToString()
+      {
+        return Name + " : " + Score;
+      }
+    }
+
+    class Students
+    {
+      private List<Student> studentList = new List<Student>();
+      public delegate void PrintProcess(Student student);
+      public delegate void WL(object obj);
+      public void Add(Student student)
+      {
+        studentList.Add(student);
+      }
+      public void Print()
+      {
+
+      }
+      public void Print(PrintProcess printProcess)
+      {
+        foreach (Student student in studentList) {
+          printProcess(student);
+        }
+      }
+
+      public void WriteLine(WL printLine) {
+        printLine("안녕하세요");
+      }
+    }
+
+
+    private Students students = new Students();
+    private void button57_Click(object sender, EventArgs e)
+    {
+      students.Add(new Student("김지영", 4.3));
+      students.Add(new Student("홍길동", 2.4));
+      students.Add(new Student("뉴턴", 4.5));
+
+      //students.Print((student) =>
+      //{
+      //  WriteLine($"이름: {student.Name}, 성적:{student.Score}");
+      //});
+    }
+    private void process1(Student student)
+    {
+      WriteLine($"이름: {student.Name}, 성적:{student.Score}");
+    }
+    private void process2(Student student)
+    {
+      WriteLine($"name: {student.Name}, score:{student.Score}");
+    }
+
+    private void button58_Click(object sender, EventArgs e)
+    {
+      students.Print(this.process1);
+    }
+
+    private void button59_Click(object sender, EventArgs e)
+    {
+      students.Print(this.process2);
+      students.WriteLine(this.WriteLine);
     }
   }
 }
