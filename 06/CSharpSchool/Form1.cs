@@ -841,5 +841,67 @@ namespace CSharpSchool
       psB.y = 200;
       WriteLine($"{psA.x},{psA.y}");
     }
+    class Product39 { 
+      public string Name {  get; set; }
+      public int   Price { get; set; }
+
+      public override string ToString()
+      {
+        return Name + ":" +Price+"원";
+      }
+    }
+    private void button39_Click(object sender, EventArgs e)
+    {
+      List<Product39> list = new List<Product39>() {
+        new Product39() { Name="고구마", Price=1500},
+        new Product39() { Name="사과", Price=2400},
+        new Product39() { Name="바나나", Price=1000},
+        new Product39() { Name="배", Price=3000}
+      };
+      list.Sort();
+      foreach (Product39 p in list) {
+        WriteLine(p);
+      }
+
+
+    }
+    class Product40 : IComparable
+    {
+      public string Name { get; set; }
+      public int Price { get; set; }
+
+      public override string ToString()
+      {
+        return Name + ":" + Price + "원";
+      }
+     
+      public int CompareTo(object obj)
+      {
+        if (this.Name.Length > ((Product40)obj).Name.Length) {
+          return -1;
+        } else if (this.Name.Length == ((Product40)obj).Name.Length) {
+          return 0;
+        } else {
+          return 1;
+        }
+      }
+
+    }
+
+    private void button40_Click(object sender, EventArgs e)
+    {
+      List<Product40> list = new List<Product40>() {
+        new Product40() { Name="고구마", Price=1500},
+        new Product40() { Name="사과", Price=2400},
+        new Product40() { Name="바나나", Price=1000},
+        new Product40() { Name="배", Price=3000}
+      };
+      list.Sort();
+      foreach (Product40 p in list)
+      {
+        WriteLine(p);
+      }
+
+    }
   }
 }

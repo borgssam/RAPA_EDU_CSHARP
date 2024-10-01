@@ -199,9 +199,9 @@
 </value>
   </data>
   <metadata name="main_status.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>537, 14</value>
+    <value>467, 15</value>
   </metadata>
   <metadata name="main_timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>515, 18</value>
+    <value>318, 21</value>
   </metadata>
 </root>

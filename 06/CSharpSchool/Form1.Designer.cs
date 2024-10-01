@@ -1080,6 +1080,7 @@
       this.button39.TabIndex = 51;
       this.button39.Text = "button39";
       this.button39.UseVisualStyleBackColor = true;
+      this.button39.Click += new System.EventHandler(this.button39_Click);
       // 
       // button40
       // 
@@ -1090,6 +1091,7 @@
       this.button40.TabIndex = 50;
       this.button40.Text = "button40";
       this.button40.UseVisualStyleBackColor = true;
+      this.button40.Click += new System.EventHandler(this.button40_Click);
       // 
       // button41
       // 
