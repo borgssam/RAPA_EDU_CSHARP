@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BookPro.Lib.Manager;
+using BookPro.Lib.Utils;
+using BookPro.Windows.Pops;
 
 namespace BookPro.Windows.Views
 {
@@ -20,6 +23,16 @@ namespace BookPro.Windows.Views
     private void BookView_Load(object sender, EventArgs e)
     {
 
+    }
+
+    private void btn_add_book_Click(object sender, EventArgs e)
+    {
+      App.Instance().PopManager.ShowPop(typeof(BookPop), WorkMode.add, null);
+    }
+
+    private void btn_delete_book_Click(object sender, EventArgs e)
+    {
+      App.Instance().PopManager.ShowPop(typeof(BookPop), WorkMode.edit, 3);
     }
   }
 }

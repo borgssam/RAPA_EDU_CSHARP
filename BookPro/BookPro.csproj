@@ -47,7 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Lib\Manager\App.cs" />
+    <Compile Include="Lib\Manager\PopManager.cs" />
     <Compile Include="Lib\Manager\ViewManager.cs" />
+    <Compile Include="Lib\Utils\AppConfig.cs" />
+    <Compile Include="Lib\Utils\Types.cs" />
     <Compile Include="Windows\MainFrame\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,8 +183,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Lib\Utils\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

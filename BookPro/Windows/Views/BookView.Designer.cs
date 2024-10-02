@@ -141,6 +141,7 @@
       this.btn_delete_book.TabIndex = 2;
       this.btn_delete_book.Text = "도서삭제";
       this.btn_delete_book.UseVisualStyleBackColor = true;
+      this.btn_delete_book.Click += new System.EventHandler(this.btn_delete_book_Click);
       // 
       // btn_add_book
       // 
@@ -150,6 +151,7 @@
       this.btn_add_book.TabIndex = 1;
       this.btn_add_book.Text = "도서추가";
       this.btn_add_book.UseVisualStyleBackColor = true;
+      this.btn_add_book.Click += new System.EventHandler(this.btn_add_book_Click);
       // 
       // panel3
       // 
@@ -185,10 +187,10 @@
       // 
       this.groupBox1.Controls.Add(this.grid_book);
       this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.groupBox1.Location = new System.Drawing.Point(6, 6);
+      this.groupBox1.Location = new System.Drawing.Point(5, 5);
       this.groupBox1.Name = "groupBox1";
       this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
-      this.groupBox1.Size = new System.Drawing.Size(1238, 456);
+      this.groupBox1.Size = new System.Drawing.Size(990, 365);
       this.groupBox1.TabIndex = 0;
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "도서목록";
@@ -197,11 +199,11 @@
       // 
       this.grid_book.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.grid_book.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.grid_book.Location = new System.Drawing.Point(6, 29);
+      this.grid_book.Location = new System.Drawing.Point(5, 23);
       this.grid_book.Name = "grid_book";
       this.grid_book.RowHeadersWidth = 51;
       this.grid_book.RowTemplate.Height = 27;
-      this.grid_book.Size = new System.Drawing.Size(1535, 535);
+      this.grid_book.Size = new System.Drawing.Size(980, 337);
       this.grid_book.TabIndex = 0;
       // 
       // BookView

@@ -15,6 +15,7 @@ namespace BookPro
   public partial class MainForm : Form
   {
     private ViewManager viewManager;
+    private PopManager popManager;  
     public MainForm()
     {
       InitializeComponent();
@@ -35,6 +36,8 @@ namespace BookPro
     private void InitializeObject()
     {
       viewManager = new ViewManager();
+      popManager = new PopManager();
+      App.Instance().PopManager = popManager;
     }
 
     private void MainForm_Load(object sender, EventArgs e)

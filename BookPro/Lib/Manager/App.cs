@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace BookPro.Lib.Manager
 {
-  internal class App
+  public class App
   {
+    private static App instance = null;
+    private App() { }
+
+    public static App Instance()
+    {
+      if (instance == null)
+      {
+        instance = new App();
+      }
+      return instance;
+    }
+
+    public PopManager PopManager {  get; set; }
   }
 }

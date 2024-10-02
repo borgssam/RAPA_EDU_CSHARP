@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookPro.Lib.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,16 @@ namespace BookPro.Windows.Pops
     public MasterPop()
     {
       InitializeComponent();
+    }
+
+    private void MasterPop_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    public virtual void ShowPop(WorkMode aWorkMode, Object options)
+    {
+      this.ShowDialog();
     }
   }
 }

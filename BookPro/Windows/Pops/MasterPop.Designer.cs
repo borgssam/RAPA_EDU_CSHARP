@@ -38,7 +38,9 @@
       this.MaximizeBox = false;
       this.MinimizeBox = false;
       this.Name = "MasterPop";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "MasterPop";
+      this.Load += new System.EventHandler(this.MasterPop_Load);
       this.ResumeLayout(false);
 
     }
