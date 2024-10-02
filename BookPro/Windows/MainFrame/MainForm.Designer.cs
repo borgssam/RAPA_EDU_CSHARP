@@ -152,8 +152,9 @@
       // mbtn_setting
       // 
       this.mbtn_setting.Name = "mbtn_setting";
-      this.mbtn_setting.Size = new System.Drawing.Size(152, 26);
+      this.mbtn_setting.Size = new System.Drawing.Size(224, 26);
       this.mbtn_setting.Text = "환경설정";
+      this.mbtn_setting.Click += new System.EventHandler(this.mbtn_setting_Click);
       // 
       // MainToolbar
       // 

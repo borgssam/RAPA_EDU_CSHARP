@@ -23,9 +23,9 @@ namespace BookPro.Windows.Pops
 
     }
 
-    public virtual void ShowPop(WorkMode aWorkMode, Object options)
+    public virtual DialogResult ShowPop(WorkMode aWorkMode, Object options)
     {
-      this.ShowDialog();
+      return this.ShowDialog();
     }
   }
 }

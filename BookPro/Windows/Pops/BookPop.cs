@@ -18,7 +18,7 @@ namespace BookPro.Windows.Pops
     {
       InitializeComponent();
     }
-    public override void ShowPop(WorkMode aWorkMode, object options)
+    public override DialogResult ShowPop(WorkMode aWorkMode, object options)
     {
       if(aWorkMode == WorkMode.add)
       {
@@ -28,7 +28,7 @@ namespace BookPro.Windows.Pops
       {
         DisplayEditMode(options);
       }
-      base.ShowPop(aWorkMode, options);
+      return base.ShowPop(aWorkMode, options);
     }
 
     private void DisplayAddMode() {

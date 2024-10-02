@@ -27,7 +27,12 @@ namespace BookPro.Windows.Views
 
     private void btn_add_book_Click(object sender, EventArgs e)
     {
-      App.Instance().PopManager.ShowPop(typeof(BookPop), WorkMode.add, null);
+       DialogResult _result = App.Instance().PopManager.ShowPop(typeof(BookPop), WorkMode.add, null);
+      if (_result == DialogResult.OK) {
+        MessageBox.Show("ok");
+      } else if (_result == DialogResult.Cancel) {
+        MessageBox.Show("cancel");
+      }
     }
 
     private void btn_delete_book_Click(object sender, EventArgs e)

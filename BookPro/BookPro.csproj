@@ -50,6 +50,7 @@
     <Compile Include="Lib\Manager\PopManager.cs" />
     <Compile Include="Lib\Manager\ViewManager.cs" />
     <Compile Include="Lib\Utils\AppConfig.cs" />
+    <Compile Include="Lib\Utils\IniAssist.cs" />
     <Compile Include="Lib\Utils\Types.cs" />
     <Compile Include="Windows\MainFrame\MainForm.cs">
       <SubType>Form</SubType>

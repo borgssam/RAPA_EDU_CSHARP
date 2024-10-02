@@ -1,4 +1,5 @@
 ﻿using BookPro.Lib.Manager;
+using BookPro.Windows.Pops;
 using BookPro.Windows.Views;
 using System;
 using System.Collections.Generic;
@@ -110,6 +111,9 @@ namespace BookPro
 
     }
 
-    
+    private void mbtn_setting_Click(object sender, EventArgs e)
+    {
+      DialogResult _popResult = App.Instance().PopManager.ShowPop(typeof(DBSettingPop), Lib.Utils.WorkMode.none, null);
+    }
   }
 }

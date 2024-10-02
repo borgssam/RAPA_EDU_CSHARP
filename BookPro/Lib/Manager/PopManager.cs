@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BookPro.Lib.Manager
 {
@@ -22,7 +23,7 @@ namespace BookPro.Lib.Manager
       ShowPop(aPopType, WorkMode.none, null);
     }
 
-    public void ShowPop(Type aPopType, WorkMode aWorkMode, Object aOption)
+    public DialogResult ShowPop(Type aPopType, WorkMode aWorkMode, Object aOption)
     {
       MasterPop targetPop = null;
       //기존에 Pop찾고
@@ -41,7 +42,7 @@ namespace BookPro.Lib.Manager
 
       //Show
 
-      targetPop.ShowPop(aWorkMode, aOption);
+      return targetPop.ShowPop(aWorkMode, aOption);
 
     }
   }

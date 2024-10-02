@@ -34,40 +34,40 @@
       this.btn_save = new System.Windows.Forms.Button();
       this.panel2 = new System.Windows.Forms.Panel();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-      this.panel4 = new System.Windows.Forms.Panel();
-      this.label1 = new System.Windows.Forms.Label();
-      this.panel5 = new System.Windows.Forms.Panel();
-      this.panel6 = new System.Windows.Forms.Panel();
-      this.label3 = new System.Windows.Forms.Label();
-      this.panel7 = new System.Windows.Forms.Panel();
-      this.panel8 = new System.Windows.Forms.Panel();
-      this.label5 = new System.Windows.Forms.Label();
-      this.panel9 = new System.Windows.Forms.Panel();
-      this.panel10 = new System.Windows.Forms.Panel();
-      this.label7 = new System.Windows.Forms.Label();
-      this.panel11 = new System.Windows.Forms.Panel();
+      this.panel13 = new System.Windows.Forms.Panel();
+      this.tbox_database = new System.Windows.Forms.TextBox();
       this.panel12 = new System.Windows.Forms.Panel();
       this.label9 = new System.Windows.Forms.Label();
-      this.panel13 = new System.Windows.Forms.Panel();
-      this.tbox_addr = new System.Windows.Forms.TextBox();
-      this.tbox_port = new System.Windows.Forms.TextBox();
+      this.panel11 = new System.Windows.Forms.Panel();
       this.tbox_pwd = new System.Windows.Forms.TextBox();
+      this.panel10 = new System.Windows.Forms.Panel();
+      this.label7 = new System.Windows.Forms.Label();
+      this.panel9 = new System.Windows.Forms.Panel();
       this.tbox_id = new System.Windows.Forms.TextBox();
-      this.tbox_database = new System.Windows.Forms.TextBox();
+      this.panel8 = new System.Windows.Forms.Panel();
+      this.label5 = new System.Windows.Forms.Label();
+      this.panel7 = new System.Windows.Forms.Panel();
+      this.tbox_port = new System.Windows.Forms.TextBox();
+      this.panel6 = new System.Windows.Forms.Panel();
+      this.label3 = new System.Windows.Forms.Label();
+      this.panel5 = new System.Windows.Forms.Panel();
+      this.tbox_addr = new System.Windows.Forms.TextBox();
+      this.panel4 = new System.Windows.Forms.Panel();
+      this.label1 = new System.Windows.Forms.Label();
       this.panel1.SuspendLayout();
       this.panel3.SuspendLayout();
       this.panel2.SuspendLayout();
       this.tableLayoutPanel1.SuspendLayout();
-      this.panel4.SuspendLayout();
-      this.panel5.SuspendLayout();
-      this.panel6.SuspendLayout();
-      this.panel7.SuspendLayout();
-      this.panel8.SuspendLayout();
-      this.panel9.SuspendLayout();
-      this.panel10.SuspendLayout();
-      this.panel11.SuspendLayout();
-      this.panel12.SuspendLayout();
       this.panel13.SuspendLayout();
+      this.panel12.SuspendLayout();
+      this.panel11.SuspendLayout();
+      this.panel10.SuspendLayout();
+      this.panel9.SuspendLayout();
+      this.panel8.SuspendLayout();
+      this.panel7.SuspendLayout();
+      this.panel6.SuspendLayout();
+      this.panel5.SuspendLayout();
+      this.panel4.SuspendLayout();
       this.SuspendLayout();
       // 
       // panel1
@@ -97,6 +97,7 @@
       this.btn_close.TabIndex = 1;
       this.btn_close.Text = "닫기";
       this.btn_close.UseVisualStyleBackColor = true;
+      this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
       // 
       // btn_save
       // 
@@ -106,6 +107,7 @@
       this.btn_save.TabIndex = 0;
       this.btn_save.Text = "저장";
       this.btn_save.UseVisualStyleBackColor = true;
+      this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
       // 
       // panel2
       // 
@@ -144,117 +146,22 @@
       this.tableLayoutPanel1.Size = new System.Drawing.Size(430, 151);
       this.tableLayoutPanel1.TabIndex = 0;
       // 
-      // panel4
+      // panel13
       // 
-      this.panel4.Controls.Add(this.label1);
-      this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel4.Location = new System.Drawing.Point(3, 3);
-      this.panel4.Name = "panel4";
-      this.panel4.Size = new System.Drawing.Size(114, 24);
-      this.panel4.TabIndex = 2;
+      this.panel13.Controls.Add(this.tbox_database);
+      this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.panel13.Location = new System.Drawing.Point(123, 123);
+      this.panel13.Name = "panel13";
+      this.panel13.Size = new System.Drawing.Size(304, 25);
+      this.panel13.TabIndex = 11;
       // 
-      // label1
+      // tbox_database
       // 
-      this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label1.Location = new System.Drawing.Point(0, 0);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(114, 24);
-      this.label1.TabIndex = 0;
-      this.label1.Text = "서버주소";
-      this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // panel5
-      // 
-      this.panel5.Controls.Add(this.tbox_addr);
-      this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel5.Location = new System.Drawing.Point(123, 3);
-      this.panel5.Name = "panel5";
-      this.panel5.Size = new System.Drawing.Size(304, 24);
-      this.panel5.TabIndex = 3;
-      // 
-      // panel6
-      // 
-      this.panel6.Controls.Add(this.label3);
-      this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel6.Location = new System.Drawing.Point(3, 33);
-      this.panel6.Name = "panel6";
-      this.panel6.Size = new System.Drawing.Size(114, 24);
-      this.panel6.TabIndex = 4;
-      // 
-      // label3
-      // 
-      this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label3.Location = new System.Drawing.Point(0, 0);
-      this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(114, 24);
-      this.label3.TabIndex = 0;
-      this.label3.Text = "포트";
-      this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // panel7
-      // 
-      this.panel7.Controls.Add(this.tbox_port);
-      this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel7.Location = new System.Drawing.Point(123, 33);
-      this.panel7.Name = "panel7";
-      this.panel7.Size = new System.Drawing.Size(304, 24);
-      this.panel7.TabIndex = 5;
-      // 
-      // panel8
-      // 
-      this.panel8.Controls.Add(this.label5);
-      this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel8.Location = new System.Drawing.Point(3, 63);
-      this.panel8.Name = "panel8";
-      this.panel8.Size = new System.Drawing.Size(114, 24);
-      this.panel8.TabIndex = 6;
-      // 
-      // label5
-      // 
-      this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label5.Location = new System.Drawing.Point(0, 0);
-      this.label5.Name = "label5";
-      this.label5.Size = new System.Drawing.Size(114, 24);
-      this.label5.TabIndex = 0;
-      this.label5.Text = "아이디";
-      this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // panel9
-      // 
-      this.panel9.Controls.Add(this.tbox_id);
-      this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel9.Location = new System.Drawing.Point(123, 63);
-      this.panel9.Name = "panel9";
-      this.panel9.Size = new System.Drawing.Size(304, 24);
-      this.panel9.TabIndex = 7;
-      // 
-      // panel10
-      // 
-      this.panel10.Controls.Add(this.label7);
-      this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel10.Location = new System.Drawing.Point(3, 93);
-      this.panel10.Name = "panel10";
-      this.panel10.Size = new System.Drawing.Size(114, 24);
-      this.panel10.TabIndex = 8;
-      // 
-      // label7
-      // 
-      this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label7.Location = new System.Drawing.Point(0, 0);
-      this.label7.Name = "label7";
-      this.label7.Size = new System.Drawing.Size(114, 24);
-      this.label7.TabIndex = 0;
-      this.label7.Text = "비밀번호";
-      this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // panel11
-      // 
-      this.panel11.Controls.Add(this.tbox_pwd);
-      this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel11.Location = new System.Drawing.Point(123, 93);
-      this.panel11.Name = "panel11";
-      this.panel11.Size = new System.Drawing.Size(304, 24);
-      this.panel11.TabIndex = 9;
+      this.tbox_database.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tbox_database.Location = new System.Drawing.Point(0, 0);
+      this.tbox_database.Name = "tbox_database";
+      this.tbox_database.Size = new System.Drawing.Size(304, 25);
+      this.tbox_database.TabIndex = 1;
       // 
       // panel12
       // 
@@ -275,30 +182,14 @@
       this.label9.Text = "데이터베이스";
       this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // panel13
+      // panel11
       // 
-      this.panel13.Controls.Add(this.tbox_database);
-      this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel13.Location = new System.Drawing.Point(123, 123);
-      this.panel13.Name = "panel13";
-      this.panel13.Size = new System.Drawing.Size(304, 25);
-      this.panel13.TabIndex = 11;
-      // 
-      // tbox_addr
-      // 
-      this.tbox_addr.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tbox_addr.Location = new System.Drawing.Point(0, 0);
-      this.tbox_addr.Name = "tbox_addr";
-      this.tbox_addr.Size = new System.Drawing.Size(304, 25);
-      this.tbox_addr.TabIndex = 0;
-      // 
-      // tbox_port
-      // 
-      this.tbox_port.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tbox_port.Location = new System.Drawing.Point(0, 0);
-      this.tbox_port.Name = "tbox_port";
-      this.tbox_port.Size = new System.Drawing.Size(304, 25);
-      this.tbox_port.TabIndex = 1;
+      this.panel11.Controls.Add(this.tbox_pwd);
+      this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.panel11.Location = new System.Drawing.Point(123, 93);
+      this.panel11.Name = "panel11";
+      this.panel11.Size = new System.Drawing.Size(304, 24);
+      this.panel11.TabIndex = 9;
       // 
       // tbox_pwd
       // 
@@ -308,6 +199,34 @@
       this.tbox_pwd.Size = new System.Drawing.Size(304, 25);
       this.tbox_pwd.TabIndex = 1;
       // 
+      // panel10
+      // 
+      this.panel10.Controls.Add(this.label7);
+      this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.panel10.Location = new System.Drawing.Point(3, 93);
+      this.panel10.Name = "panel10";
+      this.panel10.Size = new System.Drawing.Size(114, 24);
+      this.panel10.TabIndex = 8;
+      // 
+      // label7
+      // 
+      this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label7.Location = new System.Drawing.Point(0, 0);
+      this.label7.Name = "label7";
+      this.label7.Size = new System.Drawing.Size(114, 24);
+      this.label7.TabIndex = 0;
+      this.label7.Text = "비밀번호";
+      this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // panel9
+      // 
+      this.panel9.Controls.Add(this.tbox_id);
+      this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.panel9.Location = new System.Drawing.Point(123, 63);
+      this.panel9.Name = "panel9";
+      this.panel9.Size = new System.Drawing.Size(304, 24);
+      this.panel9.TabIndex = 7;
+      // 
       // tbox_id
       // 
       this.tbox_id.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -316,13 +235,96 @@
       this.tbox_id.Size = new System.Drawing.Size(304, 25);
       this.tbox_id.TabIndex = 1;
       // 
-      // tbox_database
+      // panel8
       // 
-      this.tbox_database.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tbox_database.Location = new System.Drawing.Point(0, 0);
-      this.tbox_database.Name = "tbox_database";
-      this.tbox_database.Size = new System.Drawing.Size(304, 25);
-      this.tbox_database.TabIndex = 1;
+      this.panel8.Controls.Add(this.label5);
+      this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.panel8.Location = new System.Drawing.Point(3, 63);
+      this.panel8.Name = "panel8";
+      this.panel8.Size = new System.Drawing.Size(114, 24);
+      this.panel8.TabIndex = 6;
+      // 
+      // label5
+      // 
+      this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label5.Location = new System.Drawing.Point(0, 0);
+      this.label5.Name = "label5";
+      this.label5.Size = new System.Drawing.Size(114, 24);
+      this.label5.TabIndex = 0;
+      this.label5.Text = "아이디";
+      this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // panel7
+      // 
+      this.panel7.Controls.Add(this.tbox_port);
+      this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.panel7.Location = new System.Drawing.Point(123, 33);
+      this.panel7.Name = "panel7";
+      this.panel7.Size = new System.Drawing.Size(304, 24);
+      this.panel7.TabIndex = 5;
+      // 
+      // tbox_port
+      // 
+      this.tbox_port.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tbox_port.Location = new System.Drawing.Point(0, 0);
+      this.tbox_port.Name = "tbox_port";
+      this.tbox_port.Size = new System.Drawing.Size(304, 25);
+      this.tbox_port.TabIndex = 1;
+      // 
+      // panel6
+      // 
+      this.panel6.Controls.Add(this.label3);
+      this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.panel6.Location = new System.Drawing.Point(3, 33);
+      this.panel6.Name = "panel6";
+      this.panel6.Size = new System.Drawing.Size(114, 24);
+      this.panel6.TabIndex = 4;
+      // 
+      // label3
+      // 
+      this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label3.Location = new System.Drawing.Point(0, 0);
+      this.label3.Name = "label3";
+      this.label3.Size = new System.Drawing.Size(114, 24);
+      this.label3.TabIndex = 0;
+      this.label3.Text = "포트";
+      this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // panel5
+      // 
+      this.panel5.Controls.Add(this.tbox_addr);
+      this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.panel5.Location = new System.Drawing.Point(123, 3);
+      this.panel5.Name = "panel5";
+      this.panel5.Size = new System.Drawing.Size(304, 24);
+      this.panel5.TabIndex = 3;
+      // 
+      // tbox_addr
+      // 
+      this.tbox_addr.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tbox_addr.Location = new System.Drawing.Point(0, 0);
+      this.tbox_addr.Name = "tbox_addr";
+      this.tbox_addr.Size = new System.Drawing.Size(304, 25);
+      this.tbox_addr.TabIndex = 0;
+      // 
+      // panel4
+      // 
+      this.panel4.Controls.Add(this.label1);
+      this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.panel4.Location = new System.Drawing.Point(3, 3);
+      this.panel4.Name = "panel4";
+      this.panel4.Size = new System.Drawing.Size(114, 24);
+      this.panel4.TabIndex = 2;
+      // 
+      // label1
+      // 
+      this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label1.Location = new System.Drawing.Point(0, 0);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(114, 24);
+      this.label1.TabIndex = 0;
+      this.label1.Text = "서버주소";
+      this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // DBSettingPop
       // 
@@ -338,21 +340,21 @@
       this.panel3.ResumeLayout(false);
       this.panel2.ResumeLayout(false);
       this.tableLayoutPanel1.ResumeLayout(false);
-      this.panel4.ResumeLayout(false);
-      this.panel5.ResumeLayout(false);
-      this.panel5.PerformLayout();
-      this.panel6.ResumeLayout(false);
-      this.panel7.ResumeLayout(false);
-      this.panel7.PerformLayout();
-      this.panel8.ResumeLayout(false);
-      this.panel9.ResumeLayout(false);
-      this.panel9.PerformLayout();
-      this.panel10.ResumeLayout(false);
-      this.panel11.ResumeLayout(false);
-      this.panel11.PerformLayout();
-      this.panel12.ResumeLayout(false);
       this.panel13.ResumeLayout(false);
       this.panel13.PerformLayout();
+      this.panel12.ResumeLayout(false);
+      this.panel11.ResumeLayout(false);
+      this.panel11.PerformLayout();
+      this.panel10.ResumeLayout(false);
+      this.panel9.ResumeLayout(false);
+      this.panel9.PerformLayout();
+      this.panel8.ResumeLayout(false);
+      this.panel7.ResumeLayout(false);
+      this.panel7.PerformLayout();
+      this.panel6.ResumeLayout(false);
+      this.panel5.ResumeLayout(false);
+      this.panel5.PerformLayout();
+      this.panel4.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
