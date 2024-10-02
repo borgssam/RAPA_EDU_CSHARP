@@ -46,10 +46,10 @@
       this.mbtn_rent = new System.Windows.Forms.ToolStripMenuItem();
       this.mbtn_tool = new System.Windows.Forms.ToolStripMenuItem();
       this.mbtn_setting = new System.Windows.Forms.ToolStripMenuItem();
-      this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-      this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-      this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-      this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+      this.tbtn_exit = new System.Windows.Forms.ToolStripButton();
+      this.tbtn_rent = new System.Windows.Forms.ToolStripButton();
+      this.tbtn_book = new System.Windows.Forms.ToolStripButton();
+      this.tbtn_member = new System.Windows.Forms.ToolStripButton();
       this.MainMenubar.SuspendLayout();
       this.MainToolbar.SuspendLayout();
       this.panel1.SuspendLayout();
@@ -72,10 +72,10 @@
       // 
       this.MainToolbar.ImageScalingSize = new System.Drawing.Size(20, 20);
       this.MainToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton3,
-            this.toolStripButton4});
+            this.tbtn_exit,
+            this.tbtn_rent,
+            this.tbtn_book,
+            this.tbtn_member});
       this.MainToolbar.Location = new System.Drawing.Point(0, 48);
       this.MainToolbar.Name = "MainToolbar";
       this.MainToolbar.Size = new System.Drawing.Size(800, 39);
@@ -193,41 +193,41 @@
       this.mbtn_setting.Size = new System.Drawing.Size(224, 26);
       this.mbtn_setting.Text = "환경설정";
       // 
-      // toolStripButton1
+      // tbtn_exit
       // 
-      this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-      this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.toolStripButton1.Name = "toolStripButton1";
-      this.toolStripButton1.Size = new System.Drawing.Size(29, 36);
-      this.toolStripButton1.Text = "종료";
+      this.tbtn_exit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this.tbtn_exit.Image = ((System.Drawing.Image)(resources.GetObject("tbtn_exit.Image")));
+      this.tbtn_exit.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tbtn_exit.Name = "tbtn_exit";
+      this.tbtn_exit.Size = new System.Drawing.Size(29, 36);
+      this.tbtn_exit.Text = "종료";
       // 
-      // toolStripButton2
+      // tbtn_rent
       // 
-      this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-      this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.toolStripButton2.Name = "toolStripButton2";
-      this.toolStripButton2.Size = new System.Drawing.Size(29, 36);
-      this.toolStripButton2.Text = "toolStripButton2";
+      this.tbtn_rent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this.tbtn_rent.Image = ((System.Drawing.Image)(resources.GetObject("tbtn_rent.Image")));
+      this.tbtn_rent.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tbtn_rent.Name = "tbtn_rent";
+      this.tbtn_rent.Size = new System.Drawing.Size(29, 36);
+      this.tbtn_rent.Text = "대여관리";
       // 
-      // toolStripButton3
+      // tbtn_book
       // 
-      this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-      this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.toolStripButton3.Name = "toolStripButton3";
-      this.toolStripButton3.Size = new System.Drawing.Size(29, 36);
-      this.toolStripButton3.Text = "toolStripButton3";
+      this.tbtn_book.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this.tbtn_book.Image = ((System.Drawing.Image)(resources.GetObject("tbtn_book.Image")));
+      this.tbtn_book.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tbtn_book.Name = "tbtn_book";
+      this.tbtn_book.Size = new System.Drawing.Size(29, 36);
+      this.tbtn_book.Text = "도서관리";
       // 
-      // toolStripButton4
+      // tbtn_member
       // 
-      this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-      this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.toolStripButton4.Name = "toolStripButton4";
-      this.toolStripButton4.Size = new System.Drawing.Size(29, 36);
-      this.toolStripButton4.Text = "toolStripButton4";
+      this.tbtn_member.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this.tbtn_member.Image = ((System.Drawing.Image)(resources.GetObject("tbtn_member.Image")));
+      this.tbtn_member.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tbtn_member.Name = "tbtn_member";
+      this.tbtn_member.Size = new System.Drawing.Size(29, 36);
+      this.tbtn_member.Text = "회원관리";
       // 
       // MainForm
       // 
@@ -271,10 +271,10 @@
     private System.Windows.Forms.ToolStripMenuItem mbtn_rent;
     private System.Windows.Forms.ToolStripMenuItem mbtn_tool;
     private System.Windows.Forms.ToolStripMenuItem mbtn_setting;
-    private System.Windows.Forms.ToolStripButton toolStripButton1;
-    private System.Windows.Forms.ToolStripButton toolStripButton2;
-    private System.Windows.Forms.ToolStripButton toolStripButton3;
-    private System.Windows.Forms.ToolStripButton toolStripButton4;
+    private System.Windows.Forms.ToolStripButton tbtn_exit;
+    private System.Windows.Forms.ToolStripButton tbtn_rent;
+    private System.Windows.Forms.ToolStripButton tbtn_book;
+    private System.Windows.Forms.ToolStripButton tbtn_member;
   }
 }
 
