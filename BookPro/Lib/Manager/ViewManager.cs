@@ -16,6 +16,22 @@ namespace BookPro.Lib.Manager
     {
       masterViews = new List<MasterView>();
     }
+
+    public bool IsVisibleView(Type aViewType)
+    {
+      bool result = false;
+      foreach (MasterView view in masterViews)
+      {
+        if (view.GetType() == aViewType)
+        {
+          result = view.Visible;
+          break;
+        }
+
+      }
+      return result;
+
+    }
     //show함수
     public void ShowView(Control aViewSpace, Type aViewType)
     {

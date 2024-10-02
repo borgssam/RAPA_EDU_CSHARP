@@ -82,24 +82,24 @@
       // mbtn_login
       // 
       this.mbtn_login.Name = "mbtn_login";
-      this.mbtn_login.Size = new System.Drawing.Size(224, 26);
+      this.mbtn_login.Size = new System.Drawing.Size(152, 26);
       this.mbtn_login.Text = "로그인";
       // 
       // mbtn_logout
       // 
       this.mbtn_logout.Name = "mbtn_logout";
-      this.mbtn_logout.Size = new System.Drawing.Size(224, 26);
+      this.mbtn_logout.Size = new System.Drawing.Size(152, 26);
       this.mbtn_logout.Text = "로그아웃";
       // 
       // toolStripMenuItem1
       // 
       this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-      this.toolStripMenuItem1.Size = new System.Drawing.Size(221, 6);
+      this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
       // 
       // mbtn_exit
       // 
       this.mbtn_exit.Name = "mbtn_exit";
-      this.mbtn_exit.Size = new System.Drawing.Size(224, 26);
+      this.mbtn_exit.Size = new System.Drawing.Size(152, 26);
       this.mbtn_exit.Text = "종료";
       this.mbtn_exit.Click += new System.EventHandler(this.mbtn_exit_Click);
       // 
@@ -117,27 +117,27 @@
       // mbtn_staff
       // 
       this.mbtn_staff.Name = "mbtn_staff";
-      this.mbtn_staff.Size = new System.Drawing.Size(224, 26);
+      this.mbtn_staff.Size = new System.Drawing.Size(152, 26);
       this.mbtn_staff.Text = "사원관리";
       // 
       // mbtn_member
       // 
       this.mbtn_member.Name = "mbtn_member";
-      this.mbtn_member.Size = new System.Drawing.Size(224, 26);
+      this.mbtn_member.Size = new System.Drawing.Size(152, 26);
       this.mbtn_member.Text = "회원관리";
       this.mbtn_member.Click += new System.EventHandler(this.mbtn_member_Click);
       // 
       // mbtn_book
       // 
       this.mbtn_book.Name = "mbtn_book";
-      this.mbtn_book.Size = new System.Drawing.Size(224, 26);
+      this.mbtn_book.Size = new System.Drawing.Size(152, 26);
       this.mbtn_book.Text = "도서관리";
       this.mbtn_book.Click += new System.EventHandler(this.mbtn_book_Click);
       // 
       // mbtn_rent
       // 
       this.mbtn_rent.Name = "mbtn_rent";
-      this.mbtn_rent.Size = new System.Drawing.Size(224, 26);
+      this.mbtn_rent.Size = new System.Drawing.Size(152, 26);
       this.mbtn_rent.Text = "대여관리";
       this.mbtn_rent.Click += new System.EventHandler(this.mbtn_rent_Click);
       // 
@@ -166,7 +166,7 @@
             this.tbtn_rent});
       this.MainToolbar.Location = new System.Drawing.Point(0, 28);
       this.MainToolbar.Name = "MainToolbar";
-      this.MainToolbar.Size = new System.Drawing.Size(640, 45);
+      this.MainToolbar.Size = new System.Drawing.Size(640, 51);
       this.MainToolbar.TabIndex = 1;
       this.MainToolbar.Text = "toolStrip1";
       // 
@@ -228,9 +228,9 @@
       this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.panel1.Controls.Add(this.work_space);
       this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel1.Location = new System.Drawing.Point(0, 73);
+      this.panel1.Location = new System.Drawing.Point(0, 79);
       this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(640, 302);
+      this.panel1.Size = new System.Drawing.Size(640, 296);
       this.panel1.TabIndex = 3;
       // 
       // work_space
@@ -239,7 +239,7 @@
       this.work_space.Dock = System.Windows.Forms.DockStyle.Fill;
       this.work_space.Location = new System.Drawing.Point(0, 0);
       this.work_space.Name = "work_space";
-      this.work_space.Size = new System.Drawing.Size(638, 300);
+      this.work_space.Size = new System.Drawing.Size(638, 294);
       this.work_space.TabIndex = 0;
       // 
       // MainForm

@@ -20,8 +20,18 @@ namespace BookPro
       InitializeComponent();
 
       InitializeObject();
-    }
 
+      Application.Idle += ApplicationIdle;
+    }
+    private void ApplicationIdle(object sender, EventArgs e)
+    {
+      //회원관리가 보여지면
+      tbtn_member.Checked = mbtn_member.Checked = viewManager.IsVisibleView(typeof(MemberView));
+      //도서관리가 보여지면
+      tbtn_book.Checked = mbtn_book.Checked = viewManager.IsVisibleView(typeof(BookView));
+      //대여관리가 보여지면
+      tbtn_rent.Checked = mbtn_rent.Checked = viewManager.IsVisibleView(typeof(RentView));
+    }
     private void InitializeObject()
     {
       viewManager = new ViewManager();
