@@ -142,7 +142,7 @@
             this.toolStripMenuItem1,
             this.종료ToolStripMenuItem});
       this.파일ToolStripMenuItem.Name = "파일ToolStripMenuItem";
-      this.파일ToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+      this.파일ToolStripMenuItem.Size = new System.Drawing.Size(53, 26);
       this.파일ToolStripMenuItem.Text = "파일";
       // 
       // 새파일ToolStripMenuItem
@@ -196,7 +196,7 @@
             this.붙여넣기ToolStripMenuItem,
             this.삭제ToolStripMenuItem});
       this.편집ToolStripMenuItem.Name = "편집ToolStripMenuItem";
-      this.편집ToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+      this.편집ToolStripMenuItem.Size = new System.Drawing.Size(53, 26);
       this.편집ToolStripMenuItem.Text = "편집";
       // 
       // 되돌리기ToolStripMenuItem
@@ -247,7 +247,7 @@
             this.mbtn_rent,
             this.mbtn_book});
       this.보기ToolStripMenuItem.Name = "보기ToolStripMenuItem";
-      this.보기ToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+      this.보기ToolStripMenuItem.Size = new System.Drawing.Size(53, 26);
       this.보기ToolStripMenuItem.Text = "보기";
       // 
       // mbtn_member
@@ -274,13 +274,13 @@
       // 도구ToolStripMenuItem
       // 
       this.도구ToolStripMenuItem.Name = "도구ToolStripMenuItem";
-      this.도구ToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+      this.도구ToolStripMenuItem.Size = new System.Drawing.Size(53, 26);
       this.도구ToolStripMenuItem.Text = "도구";
       // 
       // 도우ToolStripMenuItem
       // 
       this.도우ToolStripMenuItem.Name = "도우ToolStripMenuItem";
-      this.도우ToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
+      this.도우ToolStripMenuItem.Size = new System.Drawing.Size(68, 26);
       this.도우ToolStripMenuItem.Text = "도움말";
       // 
       // main_toolbar
@@ -302,7 +302,7 @@
       this.tbtn_member.Image = ((System.Drawing.Image)(resources.GetObject("tbtn_member.Image")));
       this.tbtn_member.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tbtn_member.Name = "tbtn_member";
-      this.tbtn_member.Size = new System.Drawing.Size(29, 24);
+      this.tbtn_member.Size = new System.Drawing.Size(29, 28);
       this.tbtn_member.Text = "toolStripButton1";
       this.tbtn_member.ToolTipText = "회원창";
       this.tbtn_member.Click += new System.EventHandler(this.tbtn_member_Click);
@@ -313,7 +313,7 @@
       this.tbtn_book.Image = ((System.Drawing.Image)(resources.GetObject("tbtn_book.Image")));
       this.tbtn_book.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tbtn_book.Name = "tbtn_book";
-      this.tbtn_book.Size = new System.Drawing.Size(29, 24);
+      this.tbtn_book.Size = new System.Drawing.Size(29, 28);
       this.tbtn_book.Text = "toolStripButton2";
       this.tbtn_book.ToolTipText = "도서창";
       this.tbtn_book.Click += new System.EventHandler(this.tbtn_book_Click);
@@ -324,7 +324,7 @@
       this.tbtn_rent.Image = ((System.Drawing.Image)(resources.GetObject("tbtn_rent.Image")));
       this.tbtn_rent.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tbtn_rent.Name = "tbtn_rent";
-      this.tbtn_rent.Size = new System.Drawing.Size(29, 24);
+      this.tbtn_rent.Size = new System.Drawing.Size(29, 28);
       this.tbtn_rent.Text = "toolStripButton3";
       this.tbtn_rent.ToolTipText = "대여창";
       this.tbtn_rent.Click += new System.EventHandler(this.tbtn_rent_Click);

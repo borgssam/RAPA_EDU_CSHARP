@@ -56,6 +56,48 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windows\Pops\BookPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Pops\BookPop.Designer.cs">
+      <DependentUpon>BookPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Pops\ConnectPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Pops\ConnectPop.Designer.cs">
+      <DependentUpon>ConnectPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Pops\DBSettingPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Pops\DBSettingPop.Designer.cs">
+      <DependentUpon>DBSettingPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Pops\MasterPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Pops\MasterPop.Designer.cs">
+      <DependentUpon>MasterPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Pops\MemberPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Pops\MemberPop.Designer.cs">
+      <DependentUpon>MemberPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Pops\RentPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Pops\RentPop.Designer.cs">
+      <DependentUpon>RentPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Pops\StaffPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Pops\StaffPop.Designer.cs">
+      <DependentUpon>StaffPop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Views\BookView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +134,27 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Windows\Pops\BookPop.resx">
+      <DependentUpon>BookPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Pops\ConnectPop.resx">
+      <DependentUpon>ConnectPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Pops\DBSettingPop.resx">
+      <DependentUpon>DBSettingPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Pops\MasterPop.resx">
+      <DependentUpon>MasterPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Pops\MemberPop.resx">
+      <DependentUpon>MemberPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Pops\RentPop.resx">
+      <DependentUpon>RentPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Pops\StaffPop.resx">
+      <DependentUpon>StaffPop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\BookView.resx">
       <DependentUpon>BookView.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,7 +182,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Lib\Utils\" />
-    <Folder Include="Windows\Pops\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
