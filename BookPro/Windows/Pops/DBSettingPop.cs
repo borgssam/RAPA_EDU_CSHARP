@@ -14,69 +14,43 @@ namespace BookPro.Windows.Pops
 {
   public partial class DBSettingPop : MasterPop
   {
-    IniAssist iniAssist = new IniAssist();
-
+    private IniAssist iniAssist = new IniAssist();
     public String Addr
-    {
-      get { return tbox_addr.Text; }
-      set
-      {
-        this.tbox_addr.Text = value;
-      }
-    }
-    public int Port
-    {
-      get { return Convert.ToInt32(tbox_port.Text); }
-      set
-      {
-        this.tbox_port.Text = value.ToString();
-      }
-    }
-    public String Id
-    {
-      get { return tbox_id.Text; }
-      set
-      {
-        this.tbox_id.Text = value;
-      }
-    }
-    public String Pwd
-    {
-      get { return tbox_pwd.Text; }
-      set
-      {
-        this.tbox_pwd.Text = value;
-      }
-    }
-    public String Database
-    {
-      get { return tbox_database.Text; }
-      set
-      {
-        this.tbox_database.Text = value;
-      }
-    }
+    { get { return tbox_addr.Text; } set { tbox_addr.Text = value; } }
 
+    public int Port
+    { get { return Convert.ToInt32(tbox_port.Text); } set { tbox_port.Text = value.ToString(); } }
+
+    public String Id
+    { get { return tbox_id.Text; } set { tbox_id.Text = value; } }
+
+    public String Pwd
+    { get { return tbox_pwd.Text; } set { tbox_pwd.Text = value; } }
+
+    public String Database
+    { get { return tbox_database.Text; } set { tbox_database.Text = value; } }
+    
     public DBSettingPop()
     {
       InitializeComponent();
     }
 
-    public override DialogResult ShowPop(WorkMode aWorkMode, object options)
+    public override DialogResult ShowPop(WorkMode aWorkMode, ref object options)
     {
+      //ini파일 데이터접속정보 읽어서 컨트롤에 넣기
+
       ReadIniFile();
 
-      return base.ShowPop(aWorkMode, options);
+      return base.ShowPop(aWorkMode,ref options);
     }
 
     private void ReadIniFile()
     {
-      //주소, 포트, 아이디, 비번, 데이터베이스(계정)
-      Addr = iniAssist.ReadString("mysql", "addr", "localhost");
-      Port = iniAssist.ReadInteger("mysql", "port", 3306);
-      Id = iniAssist.ReadString("mysql", "id", "root");
-      Pwd = iniAssist.ReadString("mysql", "pwd", "1234");
-      Database = iniAssist.ReadString("mysql", "database", "mydb");
+      Addr     = iniAssist.ReadString("mysql", "addr", "localhost");
+      Port     = iniAssist.ReadInteger("mysql", "port", 3306);
+      Id       = iniAssist.ReadString("mysql", "id", "root");
+      Pwd      = iniAssist.ReadString("mysql", "pwd", "1234");
+      Database = iniAssist.ReadString("mysql", "database", "book");
     }
 
     private void DBSettingPop_Load(object sender, EventArgs e)
@@ -89,7 +63,7 @@ namespace BookPro.Windows.Pops
       iniAssist.WriteString("mysql", "addr", Addr);
       iniAssist.WriteInteger("mysql", "port", Port);
       iniAssist.WriteString("mysql", "id", Id);
-      iniAssist.WriteString("mysql", "pwd", Pwd);
+      iniAssist.WriteString("mysql", "pwd",Pwd );
       iniAssist.WriteString("mysql", "database", Database);
       DialogResult = DialogResult.OK;
     }

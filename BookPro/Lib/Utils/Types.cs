@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace BookPro.Lib.Utils
 {
-  public enum  WorkMode { none, add, edit, delete}
+  public enum  WorkMode { none, read, add, edit, delete}
 }

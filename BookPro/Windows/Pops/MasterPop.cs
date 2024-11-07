@@ -13,6 +13,12 @@ namespace BookPro.Windows.Pops
 {
   public partial class MasterPop : Form
   {
+    protected WorkMode workMode;
+    protected Object Options;
+    public WorkMode WorkMode{
+      get{return workMode;}
+      set{workMode = value; }
+    }
     public MasterPop()
     {
       InitializeComponent();
@@ -23,9 +29,13 @@ namespace BookPro.Windows.Pops
 
     }
 
-    public virtual DialogResult ShowPop(WorkMode aWorkMode, Object options)
+    public virtual DialogResult ShowPop(WorkMode aWorkMode,ref Object options)
     {
-      return this.ShowDialog();
+      WorkMode = aWorkMode;      
+      this.Options = options;
+      DialogResult result = this.ShowDialog();
+      options = this.Options;
+      return result;
     }
   }
 }

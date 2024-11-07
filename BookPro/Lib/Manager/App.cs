@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookPro.Lib.Manager
 {
+  //123
   public class App
   {
     private static App instance = null;
@@ -21,5 +22,6 @@ namespace BookPro.Lib.Manager
     }
 
     public PopManager PopManager {  get; set; }
+    public DBManager DBManager { get; set; }
   }
 }

@@ -1,4 +1,5 @@
-﻿using BookPro.Lib.Utils;
+﻿using BookPro.Lib.Manager;
+using BookPro.Lib.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,36 +15,48 @@ namespace BookPro.Windows.Pops
 {
   public partial class BookPop : MasterPop
   {
+    private int m_ucode;
+    public int Ucode{get{return m_ucode;}}
+    private DataRow m_row=null;
+
     public BookPop()
     {
       InitializeComponent();
+      
+      InitializeObject();
+      Application.Idle += ApplicationIdle;
     }
-    public override DialogResult ShowPop(WorkMode aWorkMode, object options)
+    private void InitializeObject(){
+
+
+    }
+    private void ApplicationIdle(object sender, EventArgs e)
     {
-      if(aWorkMode == WorkMode.add)
-      {
-        DisplayAddMode();
-        
-      } else if(aWorkMode == WorkMode.edit)
-      {
-        DisplayEditMode(options);
-      }
-      return base.ShowPop(aWorkMode, options);
+
+   
+    }
+
+    public override DialogResult ShowPop(WorkMode aWorkMode,ref object options)
+    {
+
+
+      return base.ShowPop(aWorkMode,ref options);
+    }
+
+    private void ReadBook(){
+
+
     }
 
     private void DisplayAddMode() {
-      this.Text = "도서관리 - 등록";
-      //모든컨트롤을 초기화
-      tbox_title.Text = "";
+
     }
-    private void DisplayEditMode(object option) {
-      this.Text = "도서관리 - 수정";
-      if (option != null) { 
-        int code = (int)option;
-        //DB 해당 도서정보 얻어오고
-        //각컨트롤에 값을 대입
-        tbox_title.Text = "홍길동전";
-      }
+
+
+    private void DisplayBook() {
+
+
+      
     }
 
     private void BookPop_Load(object sender, EventArgs e)
@@ -53,12 +66,19 @@ namespace BookPro.Windows.Pops
 
     private void btn_save_Click(object sender, EventArgs e)
     {
-      this.DialogResult = DialogResult.OK;
+
+
     }
 
     private void btn_close_Click(object sender, EventArgs e)
     {
-      this.DialogResult= DialogResult.Cancel;
+
     }
-  }
+
+		private void btn_file_Click(object sender, EventArgs e)
+		{          
+
+
+		}
+	}
 }

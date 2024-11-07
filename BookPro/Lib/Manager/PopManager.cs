@@ -1,11 +1,13 @@
 ﻿using BookPro.Lib.Utils;
 using BookPro.Windows.Pops;
+using BookPro.Windows.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace BookPro.Lib.Manager
 {
@@ -16,33 +18,47 @@ namespace BookPro.Lib.Manager
       masterPopList = new List<MasterPop>();
     }
 
-
-
     public void ShowPop(Type aPopType)
     {
-      ShowPop(aPopType, WorkMode.none, null);
+      ShowPop(aPopType, WorkMode.none);
     }
 
-    public DialogResult ShowPop(Type aPopType, WorkMode aWorkMode, Object aOption)
+    public MasterPop FindPop(Type aPopType)
     {
-      MasterPop targetPop = null;
-      //기존에 Pop찾고
-      foreach (MasterPop pop in masterPopList)
-      {
-        if(pop.GetType() == aPopType)
+        MasterPop targetPop = null;
+        //기존에 Pop찾고
+        foreach (MasterPop pop in masterPopList)
         {
-          targetPop = pop;
+            if (pop.GetType() == aPopType)
+            {
+                targetPop = pop;
+            }
         }
-      }
+        return targetPop;
+    }
 
-      //없으면 생성하고
-      if (targetPop == null) {
-        targetPop = (MasterPop)Activator.CreateInstance(aPopType);
-      }
+    public MasterPop GetPop(Type aPopType)
+    {
+			MasterPop targetPop = FindPop(aPopType);
 
-      //Show
+			//없으면 생성하고
+			if (targetPop == null)
+			{
+				targetPop = (MasterPop)Activator.CreateInstance(aPopType);
+			}
+      return targetPop;
+		}
+    
+    public DialogResult ShowPop(Type aPopType, WorkMode aWorkMode)
+    {
+      Object _obj = null;
+      return ShowPop( aPopType,  aWorkMode, ref _obj);
+    }
 
-      return targetPop.ShowPop(aWorkMode, aOption);
+    public DialogResult ShowPop(Type aPopType, WorkMode aWorkMode, ref Object aOption)
+    {
+      MasterPop targetPop = GetPop(aPopType);
+      return targetPop.ShowPop(aWorkMode,ref aOption);
 
     }
   }
