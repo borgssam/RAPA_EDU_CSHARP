@@ -93,48 +93,52 @@ namespace BookPro.Windows.Pops
       foreach(DataRow row in _dt.Rows)
       {
         DataRow _dspRow = _dsp_dt.NewRow();
-        _dspRow["stf_name"] = row["stf_name"];
-        _dspRow["stf_ucode"] = row["stf_ucode"];
-        _dspRow["stf_id"] = row["stf_id"];
-        _dspRow["stf_name"] = row["stf_name"];
-        _dspRow["stf_pwd"] = row["stf_pwd"];
-        _dspRow["stf_regdate"] = row["stf_regdate"];
-
-        _dspRow["stf_retiredate"] = row["stf_retiredate"];
-
-        string _work_state = row["stf_work_state"].ToString();        
-        _dspRow["stf_work_state"] = Constants.work_states[_work_state];
-
-        string _gender = row["stf_gender"].ToString();
-        _dspRow["stf_gender"] = Constants.gender[_gender];
-
-        //   stf_ucode, stf_id, stf_name, stf_pwd, stf_regdate, stf_retiredate, stf_work_state, stf_gender
-
+        fetch(row,ref _dspRow);  
         _dsp_dt.Rows.Add(_dspRow);
       }
 
 		}
 
+    private void fetch(DataRow src, ref DataRow dst)
+    {
+      dst["stf_name"] = src["stf_name"];
+      dst["stf_ucode"] = src["stf_ucode"];
+      dst["stf_id"] = src["stf_id"];
+      dst["stf_name"] = src["stf_name"];
+      dst["stf_pwd"] = src["stf_pwd"];
+      dst["stf_regdate"] = src["stf_regdate"];
+
+      dst["stf_retiredate"] = src["stf_retiredate"];
+
+      string _work_state = src["stf_work_state"].ToString();
+      dst["stf_work_state"] = Constants.work_states[_work_state];
+
+      string _gender = src["stf_gender"].ToString();
+      dst["stf_gender"] = Constants.gender[_gender];
+
+
+    }
+
     private void grid_staff_CellClick(object sender, DataGridViewCellEventArgs e)
     {
-      int _idx = e.RowIndex;
-      if (_idx > 0) { 
-        DataRow _row = DispalySet.Tables["staff"].Rows[_idx];
+    //  int _idx = e.RowIndex;
+    //  if (_idx > 0) { 
+    //    DataRow _row = DispalySet.Tables["staff"].Rows[_idx];
 
-        string _name = _row["stf_name"].ToString();
-        int _ucode = Convert.ToInt32(_row["stf_ucode"]);
-        //MessageBox.Show(_idx.ToString() +"=>" + _name + "," + _ucode.ToString());
-        DataTable _dt = App.Instance().DBManager.ReadStaff(_ucode);
-        if (_dt != null && _dt.Rows.Count == 1)
-        {
-          workMode = WorkMode.read;
-          ShowStaffDetail(_dt);
-        }
-        else
-        {
-          MessageBox.Show("자료 찾을 수 없습니다.");
-        }
-    }
+    //    string _name = _row["stf_name"].ToString();
+    //    int _ucode = Convert.ToInt32(_row["stf_ucode"]);
+    //    //MessageBox.Show(_idx.ToString() +"=>" + _name + "," + _ucode.ToString());
+    //    DataTable _dt = App.Instance().DBManager.ReadStaff(_ucode);
+    //    if (_dt != null && _dt.Rows.Count == 1)
+    //    {
+    //      workMode = WorkMode.read;
+    //      ShowStaffDetail(_dt);
+    //    }
+    //    else
+    //    {
+    //      MessageBox.Show("자료 찾을 수 없습니다.");
+    //    }
+    //}
     }
     private void ShowStaffDetail(DataTable _dt)
     {
@@ -198,12 +202,24 @@ namespace BookPro.Windows.Pops
 		private void grid_staff_SelectionChanged(object sender, EventArgs e)
 		{
 
+      DataRow _row = GridAssist.SelectedRow(grid_staff);
+      if (_row != null)
+      {
+        int _ucode = Convert.ToInt32(_row["stf_ucode"]);
+        DataTable _dt = App.Instance().DBManager.ReadStaff(_ucode);
+        if (_dt != null && _dt.Rows.Count == 1)
+        {
+          workMode = WorkMode.read;
+          ShowStaffDetail(_dt);
+        }
+        else
+        {
+          MessageBox.Show("자료 찾을 수 없습니다.");
+        }
+      }
+    }
 
-		}
-
-
-
-		private void cbox_work_state_SelectedIndexChanged(object sender, EventArgs e)
+    private void cbox_work_state_SelectedIndexChanged(object sender, EventArgs e)
 		{
       SetEditMode();
 		}
@@ -239,6 +255,20 @@ namespace BookPro.Windows.Pops
       }
 		}
 
+    private void ResetGridStaff(int _ucode)
+    {
+      DataTable _dt = App.Instance().DBManager.ReadStaff(_ucode);
+      if (_dt != null && _dt.Rows.Count == 1)
+      {
+        DataRow row = _dt.Rows[0];
+        DataRow _dspRow = GridAssist.SelectedRow(grid_staff);
+
+
+        fetch(row, ref _dspRow);
+      }
+
+    }
+
     private void DoModifyStaff()
     {
       string stf_id = tbox_id.Text;
@@ -259,7 +289,9 @@ namespace BookPro.Windows.Pops
       string stf_picture = "";
 
       int _success = App.Instance().DBManager.ModifyStaff(m_stf_ucode, stf_id, stf_name, stf_pwd, stf_regdate, stf_retiredate, stf_work_state, stf_gender, stf_picture);
-
+      if (_success > 0) {
+        ResetGridStaff(_success);
+      }
     }
 
     private void DoRetireStaff()
@@ -267,6 +299,9 @@ namespace BookPro.Windows.Pops
       if (m_stf_ucode > 0 && workMode == WorkMode.read) { 
         int _success = App.Instance().DBManager.RetireStaff(m_stf_ucode);
         if (_success > 0) {
+
+          ResetGridStaff(_success);
+
           MessageBox.Show("말소성공");
         } else
         {
