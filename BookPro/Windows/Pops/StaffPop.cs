@@ -79,7 +79,7 @@ namespace BookPro.Windows.Pops
 		}
     private void ReadStaff(){
       NameObject<string> selectedItem = (NameObject<string>)cbox_kind.SelectedItem;
-      MessageBox.Show( selectedItem.Name + ", "+ selectedItem.Object.ToString());
+      //MessageBox.Show( selectedItem.Name + ", "+ selectedItem.Object.ToString());
       String _keyword = this.tbox_keyword.Text;
       DataTable _dt = App.Instance().DBManager.ReadStaffs(selectedItem.Object.ToString(), tbox_keyword.Text);
 
@@ -110,11 +110,82 @@ namespace BookPro.Windows.Pops
 
 		}
 
-		private void grid_stafff_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    private void grid_staff_CellClick(object sender, DataGridViewCellEventArgs e)
+    {
+      int _idx = e.RowIndex;
+      DataRow _row = DispalySet.Tables["staff"].Rows[_idx];
+
+      string _name = _row["stf_name"].ToString();
+      int _ucode = Convert.ToInt32(_row["stf_ucode"]);
+      //MessageBox.Show(_idx.ToString() +"=>" + _name + "," + _ucode.ToString());
+      DataTable _dt = App.Instance().DBManager.ReadStaff(_ucode);
+      if (_dt != null && _dt.Rows.Count == 1)
+      {
+        workMode = WorkMode.read;
+        ShowStaffDetail(_dt);
+      }
+      else { 
+        MessageBox.Show("자료 찾을 수 없습니다.");
+      }
+    }
+    private void ShowStaffDetail(DataTable _dt)
+    {
+      if (_dt != null && _dt.Rows.Count == 1)
+      {
+        DataRow row = _dt.Rows[0];
+
+        tbox_name.Text = Convert.ToString(row["stf_name"]);
+        tbox_id.Text = Convert.ToString(row["stf_id"]);
+        tbox_pwd.Text = Convert.ToString(row["stf_pwd"]);
+        String gender = Convert.ToString(row["stf_gender"]);
+        if(gender == "m") {
+          rbtn_man.Checked = true;
+        } else  {
+          rbtn_woman.Checked = true;
+        }
+
+        date_regdate.Value = Convert.ToDateTime(row["stf_regdate"]);
+        string _work_state = Convert.ToString(row["stf_work_state"]);
+        int _idx = Constants.work_states.Keys.ToList().IndexOf(_work_state);
+        cbox_work_state.SelectedIndex = _idx;
+        if (_work_state == "r") {
+          if (row["stf_retiredate"] != DBNull.Value)
+          {
+            date_retired.Value = Convert.ToDateTime(row["stf_retiredate"]);
+            date_retired.Visible = true;
+          } else
+          {
+            date_retired.Value = DateTime.Now;
+            date_retired.Visible = true;
+          }        
+        } else {
+          date_retired.Visible = false;
+        }
+
+        //stf_ucode, , , , , , stf_work_state, stf_gender, stf_picture
+        string _stf_picture = "";
+        if (row["stf_picture"] != DBNull.Value)
+        {
+          _stf_picture = Convert.ToString(row["stf_picture"]);
+        }
+        if (_stf_picture.Length>0)
+        {
+          pbox_picture.Image = Bitmap.FromFile("./images/채플린.png");
+        } else if (rbtn_man.Checked) {
+          pbox_picture.Image = Bitmap.FromFile("./images/boy.png");
+
+        } else
+        {
+          pbox_picture.Image = Bitmap.FromFile("./images/girl.jpg");
+        }
+
+      }
+    }
+    private void grid_stafff_CellContentClick(object sender, DataGridViewCellEventArgs e)
 		{
 
 
-		}
+    }
 
 		private void grid_staff_SelectionChanged(object sender, EventArgs e)
 		{
@@ -173,5 +244,6 @@ namespace BookPro.Windows.Pops
 		{
 
 		}
-	}
+
+  }
 }

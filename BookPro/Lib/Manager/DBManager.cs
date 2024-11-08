@@ -41,6 +41,21 @@ namespace BookPro.Lib.Manager
       return _dt;
     }
 
+    public DataTable ReadStaff(int _ucode)
+    {
+      DataTable _dt = null;
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+      if (_Connection != null)
+      {
+        String _strQuery = "SELECT stf_ucode, stf_id, stf_name, stf_pwd, stf_regdate, stf_retiredate, stf_work_state, stf_gender, stf_picture ";
+        _strQuery += "FROM staff ";
+        _strQuery += $"WHERE stf_ucode = {_ucode}; ";
+        _dt = m_MySqlAssist.SelectQuery(_Connection, _strQuery, "staff");
+      }
+      return _dt;
+    }
+
+
     public DataTable ReadStaffs(String aKindField, string aKeyword)
     {
       DataTable _dt = null;
