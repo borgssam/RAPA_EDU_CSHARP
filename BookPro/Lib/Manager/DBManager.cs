@@ -175,6 +175,8 @@ namespace BookPro.Lib.Manager
         _strQuery += $"stf_gender = '{stf_gender}', ";        
         _strQuery += $"stf_regdate = '{stf_regdate.ToString("yyyy-MM-dd")}', ";
         _strQuery += $"stf_retiredate = '{stf_retiredate.ToString("yyyy-MM-dd")}', ";
+        _strQuery += $"stf_modify_ucode = {StaffInfo.ucode}, ";
+        _strQuery += $"stf_modify_date = now(), ";
         _strQuery += $"stf_picture = '{stf_picture}' ";
         _strQuery += $"WHERE stf_ucode = {stf_ucode} ";
         _result = m_MySqlAssist.ExcuteQuery(_Connection, _strQuery);

@@ -183,7 +183,7 @@ namespace BookPro.Windows.Pops
         }
         if (_stf_picture.Length>0)
         {
-          pbox_picture.Image = Bitmap.FromFile("./images/채플린.png");
+          pbox_picture.Image = BitAssist.HexStringToImage(_stf_picture);
         } else if (rbtn_man.Checked) {
           pbox_picture.Image = Bitmap.FromFile("./images/boy.png");
 
@@ -274,7 +274,7 @@ namespace BookPro.Windows.Pops
 
       string stf_gender = (rbtn_man.Checked) ? "m" : "w";
 
-      string stf_picture = "";
+      string stf_picture = BitAssist.ImageToHexString(pbox_picture.Image);
 
       int _success = App.Instance().DBManager.AddStaff( stf_id, stf_name, stf_pwd, stf_regdate, stf_retiredate, stf_work_state, stf_gender, stf_picture);
       if (_success > 0)
@@ -329,7 +329,7 @@ namespace BookPro.Windows.Pops
 
       string stf_gender = (rbtn_man.Checked) ? "m" : "w";
 
-      string stf_picture = "";
+      string stf_picture = BitAssist.ImageToHexString(pbox_picture.Image);
 
       int _success = App.Instance().DBManager.ModifyStaff(m_stf_ucode, stf_id, stf_name, stf_pwd, stf_regdate, stf_retiredate, stf_work_state, stf_gender, stf_picture);
       if (_success > 0) {
@@ -367,15 +367,26 @@ namespace BookPro.Windows.Pops
 
 		private void rbtn_man_CheckedChanged(object sender, EventArgs e)
 		{
-      SetEditMode();
-		}
+      SetEditMode(); setPicture();
+
+    }
 
 		private void rbtn_woman_CheckedChanged(object sender, EventArgs e)
 		{
-      SetEditMode();
-		}
+      SetEditMode(); setPicture();
+
+    }
 
     private void setPicture(){
+      if (rbtn_man.Checked)
+      {
+        pbox_picture.Image = Bitmap.FromFile("./images/boy.png");
+      }
+      else
+      {
+
+        pbox_picture.Image = Bitmap.FromFile("./images/girl.jpg");
+      }
 
 
     }
