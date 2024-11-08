@@ -89,7 +89,7 @@
       this.stfworkstateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.stfregdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.stf_retiredate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.DispalySet = new System.Data.DataSet();
+      this.DisplaySet = new System.Data.DataSet();
       this.dataTable1 = new System.Data.DataTable();
       this.dataColumn1 = new System.Data.DataColumn();
       this.dataColumn2 = new System.Data.DataColumn();
@@ -139,7 +139,7 @@
       this.panel5.SuspendLayout();
       this.panel26.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.grid_staff)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.DispalySet)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.DisplaySet)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).BeginInit();
       this.panel25.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
@@ -720,7 +720,7 @@
             this.stfregdateDataGridViewTextBoxColumn,
             this.stf_retiredate});
       this.grid_staff.DataMember = "staff";
-      this.grid_staff.DataSource = this.DispalySet;
+      this.grid_staff.DataSource = this.DisplaySet;
       dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
       dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
       dataGridViewCellStyle4.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -799,10 +799,10 @@
       this.stf_retiredate.Name = "stf_retiredate";
       this.stf_retiredate.ReadOnly = true;
       // 
-      // DispalySet
+      // DisplaySet
       // 
-      this.DispalySet.DataSetName = "NewDataSet";
-      this.DispalySet.Tables.AddRange(new System.Data.DataTable[] {
+      this.DisplaySet.DataSetName = "NewDataSet";
+      this.DisplaySet.Tables.AddRange(new System.Data.DataTable[] {
             this.dataTable1});
       // 
       // dataTable1
@@ -1014,7 +1014,7 @@
       this.panel5.ResumeLayout(false);
       this.panel26.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.grid_staff)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.DispalySet)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.DisplaySet)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).EndInit();
       this.panel25.ResumeLayout(false);
       this.tableLayoutPanel2.ResumeLayout(false);
@@ -1085,7 +1085,7 @@
     private System.Windows.Forms.TextBox tbox_keyword;
     private System.Windows.Forms.Panel panel27;
     private System.Windows.Forms.ComboBox cbox_kind;
-		private System.Data.DataSet DispalySet;
+		private System.Data.DataSet DisplaySet;
 		private System.Data.DataTable dataTable1;
 		private System.Data.DataColumn dataColumn1;
 		private System.Data.DataColumn dataColumn2;

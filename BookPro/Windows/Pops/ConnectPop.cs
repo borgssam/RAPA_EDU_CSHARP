@@ -34,6 +34,7 @@ namespace BookPro.Windows.Pops
         {
           StaffInfo.name = _dt.Rows[0]["stf_name"].ToString();
           StaffInfo.id = _dt.Rows[0]["stf_id"].ToString();
+          StaffInfo.ucode = Convert.ToInt32(_dt.Rows[0]["stf_ucode"]);
           //MessageBox.Show("접속성공");
           DialogResult = DialogResult.OK;
         } else

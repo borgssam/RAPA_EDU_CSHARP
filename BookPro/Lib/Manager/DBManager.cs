@@ -1,4 +1,5 @@
 ﻿using BookPro.Lib.DB;
+using BookPro.Lib.Utils;
 using MySql.Data.MySqlClient;
 using Mysqlx.Crud;
 using System;
@@ -29,6 +30,20 @@ namespace BookPro.Lib.Manager
     }
 
     public DBManager() { }
+
+    public int GetSequence(String aSeqName)
+    {
+      int _iResult = -1;
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+      if (_Connection != null)
+      {
+        string _query = $"UPDATE sequence SET current_value = current_value + 1 WHERE name = '{aSeqName}';";
+        _query += $"SELECT current_value FROM sequence WHERE name = '{aSeqName}';";
+        object _result = m_MySqlAssist.ExcuteScalar(_Connection, _query);
+        if (_result != null) { _iResult = Convert.ToInt32(_result); }
+      }
+      return _iResult;
+    }
 
     public DataTable ReadStaff(String id, String pwd)
     {
@@ -93,6 +108,44 @@ namespace BookPro.Lib.Manager
         _result = m_MySqlAssist.ExcuteQuery(_Connection, _strQuery);
 
         if (_result > 0) {
+          _result = _ucode;
+        }
+      }
+      return _result;
+    }
+
+    public int AddStaff(string stf_id, string stf_name, string stf_pwd,
+      DateTime stf_regdate, DateTime stf_retiredate,
+      string stf_work_state, string stf_gender, string stf_picture)
+    {
+
+      int _result = 0;
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+      if (_Connection == null)
+      {
+        _result = -999;
+      }
+      else
+      {
+        int _ucode = this.GetSequence("seq_staff");
+        string _strQuery = "INSERT INTO staff(stf_ucode, stf_id, stf_name, stf_pwd, stf_regdate,  stf_work_state, stf_gender, stf_create_ucode, stf_create_date, stf_picture) ";
+        _strQuery += "VALUES( ";
+        _strQuery += $"{_ucode}, ";
+        _strQuery += $"'{stf_id}', ";
+        _strQuery += $"'{stf_name}', ";
+        _strQuery += $"'{stf_pwd}', ";
+        _strQuery += $"now(), ";
+        _strQuery += $"'{stf_work_state}', ";
+        _strQuery += $"'{stf_gender}', ";
+        _strQuery += $"{StaffInfo.ucode}, ";
+        _strQuery += $"now(), ";
+        _strQuery += $"'' ";
+        _strQuery += "); ";
+
+        _result = m_MySqlAssist.ExcuteQuery(_Connection, _strQuery);
+
+        if (_result > 0)
+        {
           _result = _ucode;
         }
       }

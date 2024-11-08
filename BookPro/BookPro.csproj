@@ -105,6 +105,7 @@
     <Compile Include="Lib\Manager\PopManager.cs" />
     <Compile Include="Lib\Manager\ViewManager.cs" />
     <Compile Include="Lib\Utils\AppConfig.cs" />
+    <Compile Include="Lib\Utils\BitAssist.cs" />
     <Compile Include="Lib\Utils\GridAssist.cs" />
     <Compile Include="Lib\Utils\IniAssist.cs" />
     <Compile Include="Lib\Utils\NameObject.cs" />

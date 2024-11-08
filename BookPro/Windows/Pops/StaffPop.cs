@@ -9,6 +9,7 @@ using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -88,7 +89,7 @@ namespace BookPro.Windows.Pops
       String _keyword = this.tbox_keyword.Text;
       DataTable _dt = App.Instance().DBManager.ReadStaffs(selectedItem.Object.ToString(), tbox_keyword.Text);
 
-      DataTable _dsp_dt = this.DispalySet.Tables["staff"];
+      DataTable _dsp_dt = this.DisplaySet.Tables["staff"];
       _dsp_dt.Rows.Clear();
       foreach(DataRow row in _dt.Rows)
       {
@@ -244,6 +245,7 @@ namespace BookPro.Windows.Pops
 		{
       if (workMode == WorkMode.add) {
         MessageBox.Show("추가저장합니다.");
+        DoAddStaff();
       } else if(workMode == WorkMode.edit)
       {
         MessageBox.Show("수정저장합니다.");
@@ -254,6 +256,47 @@ namespace BookPro.Windows.Pops
         DoRetireStaff();
       }
 		}
+    private void DoAddStaff()
+    {
+
+      string stf_id = tbox_id.Text;
+      string stf_name = tbox_name.Text;
+      string stf_pwd = tbox_pwd.Text;
+      DateTime stf_regdate = date_regdate.Value;
+      DateTime stf_retiredate = date_regdate.Value;
+      NameObject<string> _selectItem = (NameObject<string>)cbox_work_state.SelectedItem;
+
+      String stf_work_state = "w";
+      if (_selectItem != null)
+      {
+        stf_work_state = _selectItem.Object.ToString();
+      }
+
+      string stf_gender = (rbtn_man.Checked) ? "m" : "w";
+
+      string stf_picture = "";
+
+      int _success = App.Instance().DBManager.AddStaff( stf_id, stf_name, stf_pwd, stf_regdate, stf_retiredate, stf_work_state, stf_gender, stf_picture);
+      if (_success > 0)
+      {
+        AddGridStaff(_success);
+      }
+
+    }
+    private void AddGridStaff(int _ucode)
+    {
+      DataTable _dt = App.Instance().DBManager.ReadStaff(_ucode);
+      if (_dt != null && _dt.Rows.Count == 1)
+      {
+        DataRow row = _dt.Rows[0];
+        DataRow _dspRow = this.DisplaySet.Tables["staff"].NewRow();
+        fetch(row, ref _dspRow);
+        this.DisplaySet.Tables["staff"].Rows.Add(_dspRow);
+        workMode = WorkMode.read;
+        this.DisplaySet.Tables["staff"].AcceptChanges();
+      }
+
+    }
 
     private void ResetGridStaff(int _ucode)
     {
@@ -339,7 +382,12 @@ namespace BookPro.Windows.Pops
 
 		private void btn_add_Click(object sender, EventArgs e)
 		{
-
+      tbox_id.Text = string.Empty;
+      tbox_name.Text = string.Empty;
+      tbox_pwd.Text = string.Empty;
+      rbtn_man.Checked = true;
+      cbox_work_state.SelectedIndex = 0;
+      this.workMode = WorkMode.add;
 		}
 
     private void tbox_TextChanged(object sender, EventArgs e)

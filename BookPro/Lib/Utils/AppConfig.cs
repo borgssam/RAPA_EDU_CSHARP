@@ -17,6 +17,7 @@ namespace BookPro.Lib.Utils
   public static class StaffInfo{
     public static string id = "";
     public static string name = "";
+    public static int ucode = 0;
   }
   
   
