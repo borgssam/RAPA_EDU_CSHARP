@@ -314,6 +314,7 @@
       this.date_retired.Name = "date_retired";
       this.date_retired.Size = new System.Drawing.Size(212, 25);
       this.date_retired.TabIndex = 1;
+      this.date_retired.ValueChanged += new System.EventHandler(this.tbox_TextChanged);
       // 
       // panel19
       // 
@@ -395,6 +396,7 @@
       this.date_regdate.Name = "date_regdate";
       this.date_regdate.Size = new System.Drawing.Size(212, 25);
       this.date_regdate.TabIndex = 0;
+      this.date_regdate.ValueChanged += new System.EventHandler(this.tbox_TextChanged);
       // 
       // panel15
       // 
@@ -492,6 +494,7 @@
       this.tbox_pwd.PasswordChar = '*';
       this.tbox_pwd.Size = new System.Drawing.Size(212, 25);
       this.tbox_pwd.TabIndex = 1;
+      this.tbox_pwd.TextChanged += new System.EventHandler(this.tbox_TextChanged);
       // 
       // panel11
       // 
@@ -531,6 +534,7 @@
       this.tbox_id.Name = "tbox_id";
       this.tbox_id.Size = new System.Drawing.Size(212, 25);
       this.tbox_id.TabIndex = 1;
+      this.tbox_id.TextChanged += new System.EventHandler(this.tbox_TextChanged);
       // 
       // panel9
       // 
@@ -570,7 +574,7 @@
       this.tbox_name.Name = "tbox_name";
       this.tbox_name.Size = new System.Drawing.Size(212, 25);
       this.tbox_name.TabIndex = 0;
-      this.tbox_name.TextChanged += new System.EventHandler(this.tbox_name_TextChanged);
+      this.tbox_name.TextChanged += new System.EventHandler(this.tbox_TextChanged);
       // 
       // panel7
       // 

@@ -1,5 +1,6 @@
 ﻿using BookPro.Lib.DB;
 using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -75,7 +76,27 @@ namespace BookPro.Lib.Manager
       return _dt;
     }
     
+    public int RetireStaff(int _ucode)
+    {
+      int _result = 0;
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+      if (_Connection == null) {
+        _result = -999;
+      } else
+      {
+        string _strQuery = "UPDATE staff ";
+        _strQuery += "SET ";
+        _strQuery += "stf_work_state = 'r', ";
+        _strQuery += "stf_retiredate = NOW() ";
+        _strQuery += $"WHERE stf_ucode = {_ucode} ";
+        _result = m_MySqlAssist.ExcuteQuery(_Connection, _strQuery);
 
+        if (_result > 0) {
+          _result = _ucode;
+        }
+      }
+      return _result;
+    }
 
-	}
+  }
 }

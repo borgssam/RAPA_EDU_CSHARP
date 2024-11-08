@@ -17,6 +17,8 @@ namespace BookPro.Windows.Pops
 {
   public partial class StaffPop : MasterPop
   {
+    private int m_stf_ucode = -1;
+
     public StaffPop()
     {
       InitializeComponent();
@@ -28,14 +30,17 @@ namespace BookPro.Windows.Pops
 			if (this.workMode == WorkMode.add)
       {
 				this.Text = "사원관리 - 추가";
+        this.btn_save.Text = "저장";
       }
       else if (this.workMode == WorkMode.edit)
       {
         this.Text = "사원관리 - 수정";
+        this.btn_save.Text = "저장";
       }
       else if (this.workMode == WorkMode.read)
       {
         this.Text = "사원관리 - 조회";
+        this.btn_save.Text = "퇴사";
       }
       else if (this.workMode == WorkMode.delete)
       {
@@ -133,7 +138,7 @@ namespace BookPro.Windows.Pops
       if (_dt != null && _dt.Rows.Count == 1)
       {
         DataRow row = _dt.Rows[0];
-
+        m_stf_ucode = Convert.ToInt32(row["stf_ucode"]);
         tbox_name.Text = Convert.ToString(row["stf_name"]);
         tbox_id.Text = Convert.ToString(row["stf_id"]);
         tbox_pwd.Text = Convert.ToString(row["stf_pwd"]);
@@ -178,7 +183,7 @@ namespace BookPro.Windows.Pops
         {
           pbox_picture.Image = Bitmap.FromFile("./images/girl.jpg");
         }
-
+        workMode = WorkMode.read;
       }
     }
     private void grid_stafff_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -209,10 +214,31 @@ namespace BookPro.Windows.Pops
 
 		private void btn_save_Click(object sender, EventArgs e)
 		{
-
-
-
+      if (workMode == WorkMode.add) {
+        MessageBox.Show("추가저장합니다.");
+      } else if(workMode == WorkMode.edit)
+      {
+        MessageBox.Show("수정저장합니다.");
+      } else if (workMode == WorkMode.read)
+      {
+        MessageBox.Show("퇴사합니다.");
+        DoRetireStaff();
+      }
 		}
+
+    private void DoRetireStaff()
+    {
+      if (m_stf_ucode > 0 && workMode == WorkMode.read) { 
+        int _success = App.Instance().DBManager.RetireStaff(m_stf_ucode);
+        if (_success > 0) {
+          MessageBox.Show("말소성공");
+        } else
+        {
+          MessageBox.Show("말소실패");
+        }
+
+      }
+    }
 
 		private void btn_close_Click(object sender, EventArgs e)
 		{
@@ -245,5 +271,17 @@ namespace BookPro.Windows.Pops
 
 		}
 
+    private void tbox_TextChanged(object sender, EventArgs e)
+    {
+      SetEditMode();
+    }
+
+    private void SetEditMode()
+    {
+      if(this.workMode != WorkMode.add)
+      {
+        this.workMode = WorkMode.edit;
+      }
+    }
   }
 }
