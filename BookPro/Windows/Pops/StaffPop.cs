@@ -118,20 +118,23 @@ namespace BookPro.Windows.Pops
     private void grid_staff_CellClick(object sender, DataGridViewCellEventArgs e)
     {
       int _idx = e.RowIndex;
-      DataRow _row = DispalySet.Tables["staff"].Rows[_idx];
+      if (_idx > 0) { 
+        DataRow _row = DispalySet.Tables["staff"].Rows[_idx];
 
-      string _name = _row["stf_name"].ToString();
-      int _ucode = Convert.ToInt32(_row["stf_ucode"]);
-      //MessageBox.Show(_idx.ToString() +"=>" + _name + "," + _ucode.ToString());
-      DataTable _dt = App.Instance().DBManager.ReadStaff(_ucode);
-      if (_dt != null && _dt.Rows.Count == 1)
-      {
-        workMode = WorkMode.read;
-        ShowStaffDetail(_dt);
-      }
-      else { 
-        MessageBox.Show("자료 찾을 수 없습니다.");
-      }
+        string _name = _row["stf_name"].ToString();
+        int _ucode = Convert.ToInt32(_row["stf_ucode"]);
+        //MessageBox.Show(_idx.ToString() +"=>" + _name + "," + _ucode.ToString());
+        DataTable _dt = App.Instance().DBManager.ReadStaff(_ucode);
+        if (_dt != null && _dt.Rows.Count == 1)
+        {
+          workMode = WorkMode.read;
+          ShowStaffDetail(_dt);
+        }
+        else
+        {
+          MessageBox.Show("자료 찾을 수 없습니다.");
+        }
+    }
     }
     private void ShowStaffDetail(DataTable _dt)
     {
@@ -202,13 +205,22 @@ namespace BookPro.Windows.Pops
 
 		private void cbox_work_state_SelectedIndexChanged(object sender, EventArgs e)
 		{
-
-
+      SetEditMode();
 		}
 
 		private void btn_file_Click(object sender, EventArgs e)
 		{
+      string image_file = string.Empty;
+      OpenFileDialog ofDlg = new OpenFileDialog();
+      ofDlg.Filter = "PNG|*.png|JPG|*.jpg|BMP|*.bmp";
+      ofDlg.InitialDirectory = Application.StartupPath;
+      if(ofDlg.ShowDialog() == DialogResult.OK)
+      {
+        image_file = ofDlg.FileName;
+        pbox_picture.Image = Bitmap.FromFile(image_file);
 
+        SetEditMode();
+      }
 
 		}
 
@@ -219,12 +231,36 @@ namespace BookPro.Windows.Pops
       } else if(workMode == WorkMode.edit)
       {
         MessageBox.Show("수정저장합니다.");
+        DoModifyStaff();
       } else if (workMode == WorkMode.read)
       {
-        MessageBox.Show("퇴사합니다.");
+        //MessageBox.Show("퇴사합니다.");
         DoRetireStaff();
       }
 		}
+
+    private void DoModifyStaff()
+    {
+      string stf_id = tbox_id.Text;
+      string stf_name = tbox_name.Text;
+      string stf_pwd = tbox_pwd.Text;
+      DateTime stf_regdate = date_regdate.Value;
+      DateTime stf_retiredate = date_regdate.Value;
+      NameObject<string> _selectItem = (NameObject<string>)cbox_work_state.SelectedItem;
+
+      String stf_work_state = "w";
+      if(_selectItem != null)
+      {
+       stf_work_state = _selectItem.Object.ToString();
+      }
+
+      string stf_gender = (rbtn_man.Checked) ? "m" : "w";
+
+      string stf_picture = "";
+
+      int _success = App.Instance().DBManager.ModifyStaff(m_stf_ucode, stf_id, stf_name, stf_pwd, stf_regdate, stf_retiredate, stf_work_state, stf_gender, stf_picture);
+
+    }
 
     private void DoRetireStaff()
     {
@@ -253,12 +289,12 @@ namespace BookPro.Windows.Pops
 
 		private void rbtn_man_CheckedChanged(object sender, EventArgs e)
 		{
-
+      SetEditMode();
 		}
 
 		private void rbtn_woman_CheckedChanged(object sender, EventArgs e)
 		{
-
+      SetEditMode();
 		}
 
     private void setPicture(){

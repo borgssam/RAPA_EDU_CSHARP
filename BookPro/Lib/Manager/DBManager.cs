@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.Common;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
@@ -97,6 +98,42 @@ namespace BookPro.Lib.Manager
       }
       return _result;
     }
+
+
+    public int ModifyStaff(int stf_ucode,string stf_id, string stf_name, string stf_pwd, 
+      DateTime stf_regdate, DateTime stf_retiredate, 
+      string stf_work_state, string stf_gender, string stf_picture)
+    {
+
+      int _result = 0;
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+      if (_Connection == null)
+      {
+        _result = -999;
+      }
+      else
+      {
+        string _strQuery = "UPDATE staff ";
+        _strQuery += "SET ";
+        _strQuery += $"stf_name = '{stf_name}', ";
+        _strQuery += $"stf_pwd = '{stf_pwd}', ";
+        _strQuery += $"stf_id = '{stf_id}', ";
+        _strQuery += $"stf_work_state = '{stf_work_state}', ";
+        _strQuery += $"stf_gender = '{stf_gender}', ";        
+        _strQuery += $"stf_regdate = '{stf_regdate.ToString("yyyy-MM-dd")}', ";
+        _strQuery += $"stf_retiredate = '{stf_retiredate.ToString("yyyy-MM-dd")}', ";
+        _strQuery += $"stf_picture = '{stf_picture}' ";
+        _strQuery += $"WHERE stf_ucode = {stf_ucode} ";
+        _result = m_MySqlAssist.ExcuteQuery(_Connection, _strQuery);
+
+        if (_result > 0)
+        {
+          _result = stf_ucode;
+        }
+      }
+      return _result;
+    }
+
 
   }
 }
