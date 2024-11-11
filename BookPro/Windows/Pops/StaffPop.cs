@@ -292,7 +292,11 @@ namespace BookPro.Windows.Pops
         DataRow _dspRow = this.DisplaySet.Tables["staff"].NewRow();
         fetch(row, ref _dspRow);
         this.DisplaySet.Tables["staff"].Rows.Add(_dspRow);
+        int lastRowIndex = grid_staff.Rows.Count - 1;
+        grid_staff.Rows[lastRowIndex].Selected = true;
+        grid_staff.CurrentCell = grid_staff.Rows[lastRowIndex].Cells[0];
         workMode = WorkMode.read;
+        
         this.DisplaySet.Tables["staff"].AcceptChanges();
       }
 

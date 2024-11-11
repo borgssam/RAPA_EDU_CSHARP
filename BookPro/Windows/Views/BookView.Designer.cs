@@ -133,7 +133,7 @@
       this.pnl_keyword.Location = new System.Drawing.Point(300, 0);
       this.pnl_keyword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.pnl_keyword.Name = "pnl_keyword";
-      this.pnl_keyword.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.pnl_keyword.Padding = new System.Windows.Forms.Padding(5);
       this.pnl_keyword.Size = new System.Drawing.Size(150, 42);
       this.pnl_keyword.TabIndex = 3;
       // 
@@ -153,7 +153,7 @@
       this.pnl_category.Location = new System.Drawing.Point(150, 0);
       this.pnl_category.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.pnl_category.Name = "pnl_category";
-      this.pnl_category.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.pnl_category.Padding = new System.Windows.Forms.Padding(5);
       this.pnl_category.Size = new System.Drawing.Size(150, 42);
       this.pnl_category.TabIndex = 2;
       // 
@@ -209,7 +209,7 @@
       this.panel3.Location = new System.Drawing.Point(0, 0);
       this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel3.Name = "panel3";
-      this.panel3.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.panel3.Padding = new System.Windows.Forms.Padding(5);
       this.panel3.Size = new System.Drawing.Size(150, 42);
       this.panel3.TabIndex = 0;
       // 
@@ -237,7 +237,7 @@
       this.panel2.Location = new System.Drawing.Point(0, 42);
       this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel2.Name = "panel2";
-      this.panel2.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.panel2.Padding = new System.Windows.Forms.Padding(5);
       this.panel2.Size = new System.Drawing.Size(1198, 376);
       this.panel2.TabIndex = 1;
       // 
@@ -248,7 +248,7 @@
       this.groupBox1.Location = new System.Drawing.Point(5, 5);
       this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.groupBox1.Name = "groupBox1";
-      this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
       this.groupBox1.Size = new System.Drawing.Size(1188, 366);
       this.groupBox1.TabIndex = 0;
       this.groupBox1.TabStop = false;

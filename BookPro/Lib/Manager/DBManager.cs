@@ -139,7 +139,7 @@ namespace BookPro.Lib.Manager
         _strQuery += $"'{stf_gender}', ";
         _strQuery += $"{StaffInfo.ucode}, ";
         _strQuery += $"now(), ";
-        _strQuery += $"'' ";
+        _strQuery += $"'{stf_picture}' ";
         _strQuery += "); ";
 
         _result = m_MySqlAssist.ExcuteQuery(_Connection, _strQuery);
@@ -197,6 +197,45 @@ namespace BookPro.Lib.Manager
       if (_Connection != null)
       {
         String _strQuery = "SELECT ctg_ucode, ctg_name FROM category ORDER BY ctg_ucode ASC; ";
+        _dt = m_MySqlAssist.SelectQuery(_Connection, _strQuery, "staffs");
+      }
+      return _dt;
+
+    }
+
+    public DataTable ReadBook(int aSelectedIndex, String aKeyword,int aCategoryUcode)
+    {
+      DataTable _dt = null;
+
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+      if (_Connection != null)
+      {
+
+        //제목  0
+        //분류  1
+        //저자  2
+        //출판사 3
+
+        String _strQuery = "SELECT bk_ucode, bk_title, bk_writer, bk_pubs, bk_price, bk_pub_year, bk_regdate, ";
+              _strQuery += "bk_erasedate, bk_create_ucode, bk_create_date, bk_modify_ucode, bk_modify_date, bk.ctg_ucode, ctg.ctg_name ";
+        _strQuery += "FROM book as bk ";
+        _strQuery += "JOIN category as ctg on bk.ctg_ucode = ctg.ctg_ucode ";
+        if (aSelectedIndex == 0 && aKeyword.Length>0) {
+//제목  0
+              _strQuery += $"where bk_title like '%{aKeyword}%' ";
+        }        else if (aSelectedIndex == 1)        {
+  //분류  1
+              _strQuery += $"where ctg_ucode = {aCategoryUcode} ";
+        }        else if (aSelectedIndex == 2 && aKeyword.Length > 0)        {
+ //저자  2
+              _strQuery += $"WHERE bk_writer LIKE '%{aKeyword}% ";
+        }        else if (aSelectedIndex == 3 && aKeyword.Length > 0)        {
+//출판사 3
+              _strQuery += $"WHERE bk_pubs LIKE '%{aKeyword}%' ";
+        }
+              _strQuery += "ORDER BY bk_title ASC; ";      
+
+
         _dt = m_MySqlAssist.SelectQuery(_Connection, _strQuery, "staffs");
       }
       return _dt;
