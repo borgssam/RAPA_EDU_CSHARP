@@ -189,6 +189,20 @@ namespace BookPro.Lib.Manager
       return _result;
     }
 
+    public DataTable ReadCategory()
+    {
+      DataTable _dt = null;
+
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+      if (_Connection != null)
+      {
+        String _strQuery = "SELECT ctg_ucode, ctg_name FROM category ORDER BY ctg_ucode ASC; ";
+        _dt = m_MySqlAssist.SelectQuery(_Connection, _strQuery, "staffs");
+      }
+      return _dt;
+
+    }
+
 
   }
 }

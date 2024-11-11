@@ -102,25 +102,25 @@
       this.panel1.Location = new System.Drawing.Point(0, 0);
       this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(1048, 34);
+      this.panel1.Size = new System.Drawing.Size(1198, 42);
       this.panel1.TabIndex = 0;
       // 
       // panel7
       // 
       this.panel7.Controls.Add(this.btn_search);
       this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
-      this.panel7.Location = new System.Drawing.Point(393, 0);
+      this.panel7.Location = new System.Drawing.Point(450, 0);
       this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel7.Name = "panel7";
-      this.panel7.Size = new System.Drawing.Size(77, 34);
+      this.panel7.Size = new System.Drawing.Size(88, 42);
       this.panel7.TabIndex = 4;
       // 
       // btn_search
       // 
-      this.btn_search.Location = new System.Drawing.Point(6, 4);
+      this.btn_search.Location = new System.Drawing.Point(7, 5);
       this.btn_search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.btn_search.Name = "btn_search";
-      this.btn_search.Size = new System.Drawing.Size(66, 23);
+      this.btn_search.Size = new System.Drawing.Size(75, 29);
       this.btn_search.TabIndex = 0;
       this.btn_search.Text = "조회";
       this.btn_search.UseVisualStyleBackColor = true;
@@ -130,31 +130,31 @@
       // 
       this.pnl_keyword.Controls.Add(this.tbox_keyword);
       this.pnl_keyword.Dock = System.Windows.Forms.DockStyle.Left;
-      this.pnl_keyword.Location = new System.Drawing.Point(262, 0);
+      this.pnl_keyword.Location = new System.Drawing.Point(300, 0);
       this.pnl_keyword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.pnl_keyword.Name = "pnl_keyword";
-      this.pnl_keyword.Padding = new System.Windows.Forms.Padding(4);
-      this.pnl_keyword.Size = new System.Drawing.Size(131, 34);
+      this.pnl_keyword.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.pnl_keyword.Size = new System.Drawing.Size(150, 42);
       this.pnl_keyword.TabIndex = 3;
       // 
       // tbox_keyword
       // 
       this.tbox_keyword.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tbox_keyword.Location = new System.Drawing.Point(4, 4);
+      this.tbox_keyword.Location = new System.Drawing.Point(5, 5);
       this.tbox_keyword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.tbox_keyword.Name = "tbox_keyword";
-      this.tbox_keyword.Size = new System.Drawing.Size(123, 21);
+      this.tbox_keyword.Size = new System.Drawing.Size(140, 25);
       this.tbox_keyword.TabIndex = 0;
       // 
       // pnl_category
       // 
       this.pnl_category.Controls.Add(this.cbox_category);
       this.pnl_category.Dock = System.Windows.Forms.DockStyle.Left;
-      this.pnl_category.Location = new System.Drawing.Point(131, 0);
+      this.pnl_category.Location = new System.Drawing.Point(150, 0);
       this.pnl_category.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.pnl_category.Name = "pnl_category";
-      this.pnl_category.Padding = new System.Windows.Forms.Padding(4);
-      this.pnl_category.Size = new System.Drawing.Size(131, 34);
+      this.pnl_category.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.pnl_category.Size = new System.Drawing.Size(150, 42);
       this.pnl_category.TabIndex = 2;
       // 
       // cbox_category
@@ -162,10 +162,10 @@
       this.cbox_category.Dock = System.Windows.Forms.DockStyle.Fill;
       this.cbox_category.Font = new System.Drawing.Font("굴림", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
       this.cbox_category.FormattingEnabled = true;
-      this.cbox_category.Location = new System.Drawing.Point(4, 4);
+      this.cbox_category.Location = new System.Drawing.Point(5, 5);
       this.cbox_category.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.cbox_category.Name = "cbox_category";
-      this.cbox_category.Size = new System.Drawing.Size(123, 22);
+      this.cbox_category.Size = new System.Drawing.Size(140, 22);
       this.cbox_category.TabIndex = 1;
       this.cbox_category.SelectedIndexChanged += new System.EventHandler(this.cbox_category_SelectedIndexChanged);
       // 
@@ -174,18 +174,18 @@
       this.panel4.Controls.Add(this.btn_delete_book);
       this.panel4.Controls.Add(this.btn_add_book);
       this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-      this.panel4.Location = new System.Drawing.Point(899, 0);
+      this.panel4.Location = new System.Drawing.Point(1028, 0);
       this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel4.Name = "panel4";
-      this.panel4.Size = new System.Drawing.Size(149, 34);
+      this.panel4.Size = new System.Drawing.Size(170, 42);
       this.panel4.TabIndex = 1;
       // 
       // btn_delete_book
       // 
-      this.btn_delete_book.Location = new System.Drawing.Point(74, 4);
+      this.btn_delete_book.Location = new System.Drawing.Point(85, 5);
       this.btn_delete_book.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.btn_delete_book.Name = "btn_delete_book";
-      this.btn_delete_book.Size = new System.Drawing.Size(66, 23);
+      this.btn_delete_book.Size = new System.Drawing.Size(75, 29);
       this.btn_delete_book.TabIndex = 2;
       this.btn_delete_book.Text = "도서삭제";
       this.btn_delete_book.UseVisualStyleBackColor = true;
@@ -193,10 +193,10 @@
       // 
       // btn_add_book
       // 
-      this.btn_add_book.Location = new System.Drawing.Point(4, 4);
+      this.btn_add_book.Location = new System.Drawing.Point(5, 5);
       this.btn_add_book.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.btn_add_book.Name = "btn_add_book";
-      this.btn_add_book.Size = new System.Drawing.Size(66, 23);
+      this.btn_add_book.Size = new System.Drawing.Size(75, 29);
       this.btn_add_book.TabIndex = 1;
       this.btn_add_book.Text = "도서추가";
       this.btn_add_book.UseVisualStyleBackColor = true;
@@ -209,8 +209,8 @@
       this.panel3.Location = new System.Drawing.Point(0, 0);
       this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel3.Name = "panel3";
-      this.panel3.Padding = new System.Windows.Forms.Padding(4);
-      this.panel3.Size = new System.Drawing.Size(131, 34);
+      this.panel3.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.panel3.Size = new System.Drawing.Size(150, 42);
       this.panel3.TabIndex = 0;
       // 
       // cbox_searchkind
@@ -223,10 +223,10 @@
             "분류",
             "저자",
             "출판사"});
-      this.cbox_searchkind.Location = new System.Drawing.Point(4, 4);
+      this.cbox_searchkind.Location = new System.Drawing.Point(5, 5);
       this.cbox_searchkind.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.cbox_searchkind.Name = "cbox_searchkind";
-      this.cbox_searchkind.Size = new System.Drawing.Size(123, 22);
+      this.cbox_searchkind.Size = new System.Drawing.Size(140, 22);
       this.cbox_searchkind.TabIndex = 0;
       this.cbox_searchkind.SelectedIndexChanged += new System.EventHandler(this.cbox_searchkind_SelectedIndexChanged);
       // 
@@ -234,22 +234,22 @@
       // 
       this.panel2.Controls.Add(this.groupBox1);
       this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel2.Location = new System.Drawing.Point(0, 34);
+      this.panel2.Location = new System.Drawing.Point(0, 42);
       this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel2.Name = "panel2";
-      this.panel2.Padding = new System.Windows.Forms.Padding(4);
-      this.panel2.Size = new System.Drawing.Size(1048, 300);
+      this.panel2.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.panel2.Size = new System.Drawing.Size(1198, 376);
       this.panel2.TabIndex = 1;
       // 
       // groupBox1
       // 
       this.groupBox1.Controls.Add(this.grid_book);
       this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.groupBox1.Location = new System.Drawing.Point(4, 4);
+      this.groupBox1.Location = new System.Drawing.Point(5, 5);
       this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.groupBox1.Name = "groupBox1";
-      this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-      this.groupBox1.Size = new System.Drawing.Size(1040, 292);
+      this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.groupBox1.Size = new System.Drawing.Size(1188, 366);
       this.groupBox1.TabIndex = 0;
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "도서목록";
@@ -284,14 +284,14 @@
       dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
       this.grid_book.DefaultCellStyle = dataGridViewCellStyle3;
       this.grid_book.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.grid_book.Location = new System.Drawing.Point(4, 18);
+      this.grid_book.Location = new System.Drawing.Point(5, 23);
       this.grid_book.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.grid_book.Name = "grid_book";
       this.grid_book.ReadOnly = true;
       this.grid_book.RowHeadersWidth = 25;
       this.grid_book.RowTemplate.Height = 27;
       this.grid_book.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.grid_book.Size = new System.Drawing.Size(1032, 270);
+      this.grid_book.Size = new System.Drawing.Size(1178, 338);
       this.grid_book.TabIndex = 0;
       this.grid_book.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_book_CellContentClick);
       this.grid_book.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.grid_book_MouseDoubleClick);
@@ -483,11 +483,12 @@
       // 
       // BookView
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1048, 334);
+      this.ClientSize = new System.Drawing.Size(1198, 418);
       this.Controls.Add(this.panel2);
       this.Controls.Add(this.panel1);
+      this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
       this.Name = "BookView";
       this.Text = "BookView";
       this.Load += new System.EventHandler(this.BookView_Load);

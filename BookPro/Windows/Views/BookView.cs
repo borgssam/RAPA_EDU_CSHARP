@@ -22,8 +22,14 @@ namespace BookPro.Windows.Views
       InitializeObject();
     }
     private void InitializeObject(){
+      DataTable _dt = App.Instance().DBManager.ReadCategory();
+      this.cbox_category.Items.Clear();
+      foreach (DataRow dr in _dt.Rows) {
+        cbox_category.Items.Add(new NameObject<int>(dr["ctg_name"].ToString(), Convert.ToInt32(dr["ctg_ucode"])));
+      }
+      if(_dt.Rows.Count > 0) { cbox_category.SelectedIndex = 0; }
 
-
+      cbox_searchkind.SelectedIndex = 0;
     }
 
     private void BookView_Load(object sender, EventArgs e)
@@ -40,9 +46,17 @@ namespace BookPro.Windows.Views
 
 		private void cbox_searchkind_SelectedIndexChanged(object sender, EventArgs e)
 		{
-
-
-		}
+      //제목  0
+      //분류  1
+      //저자  2
+      //출판사 3
+      if (cbox_searchkind.SelectedIndex == 1) {
+        pnl_category.Visible = true; pnl_keyword.Visible = false;
+      } else
+      {
+        pnl_category.Visible = false; pnl_keyword.Visible = true;
+      }
+    }
 
 		private void btn_search_Click(object sender, EventArgs e)
 		{

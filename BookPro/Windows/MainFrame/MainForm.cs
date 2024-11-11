@@ -180,13 +180,11 @@ namespace BookPro
     private void mbtn_tool_Click(object sender, EventArgs e)
     {
 
-
     }
 
 		private void mbtn_staff_Click(object sender, EventArgs e)
 		{
       App.Instance().PopManager.ShowPop(typeof(StaffPop), WorkMode.none);
-
 		}
 
 		private void mbtn_login_Click(object sender, EventArgs e)

@@ -254,8 +254,6 @@ namespace BookPro.Lib.DB
         }
 
 
-
-
         public override DataSet SelectQueryDataSet(DbConnection _db_connection, ArrayList aQueryArray)
         {
             string _Querys = "";
@@ -462,8 +460,6 @@ namespace BookPro.Lib.DB
         }
 
 
-
-
         public virtual int ExcuteCommandArray(MySqlConnection _connection, ArrayList aCommandArray)
         {
             if (_connection == null)
@@ -564,8 +560,6 @@ namespace BookPro.Lib.DB
 
             return tableName;
         }
-
-
     }
 
 
