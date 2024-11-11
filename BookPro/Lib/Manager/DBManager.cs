@@ -242,6 +242,73 @@ namespace BookPro.Lib.Manager
 
     }
 
+    public DataRow ReadBook(int aUcode)
+    {
+      DataRow _row = null;
+      DataTable _dt = null;
+
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+      if (_Connection != null)
+      {
+
+        String _strQuery = "SELECT bk_ucode, bk_title, bk_writer, bk_pubs, bk_price, bk_pub_year, bk_regdate, ";
+        _strQuery += "bk_erasedate, bk_create_ucode, bk_create_date, bk_modify_ucode, bk_modify_date, bk.ctg_ucode, ctg.ctg_name ";
+        _strQuery += "FROM book as bk ";
+        _strQuery += "JOIN category as ctg on bk.ctg_ucode = ctg.ctg_ucode ";
+       _strQuery += $"WHERE bk_ucode = {aUcode} ";
+
+
+        _dt = m_MySqlAssist.SelectQuery(_Connection, _strQuery, "book");
+      }
+
+      if(_dt !=null && _dt.Rows.Count > 0)
+      {
+        _row = _dt.Rows[0];
+      }
+      return _row;
+
+    }
+
+
+
+    public int AddBook(string _title,string _writer,string _pubs,int _price,int _pub_year,int _category_ucode,string _picture)
+    {
+
+      int _result = 0;
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+      if (_Connection == null)
+      {
+        _result = -999;
+      }
+      else
+      {
+        int _ucode = this.GetSequence("seq_book");
+        string _strQuery = "INSERT INTO book(bk_ucode,bk_title,bk_writer,bk_pubs,bk_price,bk_pub_year,bk_regdate,bk_erasedate,bk_create_ucode,bk_create_date,ctg_ucode,bk_picture) ";
+        _strQuery += "VALUES( ";
+        _strQuery += $"{_ucode}, ";
+        _strQuery += $"'{_title}', ";
+        _strQuery += $"'{_writer}', ";
+        _strQuery += $"'{_pubs}', ";
+        _strQuery += $"{_price}, ";
+        _strQuery += $"{_pub_year}, ";
+        _strQuery += $"now(), ";
+        _strQuery += $"null, ";
+        _strQuery += $"{StaffInfo.ucode}, ";
+        _strQuery += $"now(), ";
+        _strQuery += $"{_category_ucode}, ";
+        _strQuery += $"'{_picture}' ";
+        _strQuery += "); ";
+
+        _result = m_MySqlAssist.ExcuteQuery(_Connection, _strQuery);
+
+        if (_result > 0)
+        {
+          _result = _ucode;
+        }
+      }
+      return _result;
+    }
+
 
   }
 }

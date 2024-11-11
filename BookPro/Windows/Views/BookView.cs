@@ -41,6 +41,24 @@ namespace BookPro.Windows.Views
 
     private void btn_add_book_Click(object sender, EventArgs e)
     {
+      Object _ucode = -1;
+      DialogResult _result = App.Instance().PopManager.ShowPop(typeof(BookPop),WorkMode.add,ref _ucode);
+      if(_result == DialogResult.OK)
+      {
+        DataRow dr = App.Instance().DBManager.ReadBook((int)_ucode);
+
+        DataTable dsp_dt = this.DisplaySet.Tables["Book"];
+        DataRow dspRow = dsp_dt.NewRow();
+        fetch(dr,ref dspRow);
+        dsp_dt.Rows.Add(dspRow);
+
+        int lastRowIndex = grid_book.Rows.Count - 1;
+        grid_book.Rows[lastRowIndex].Selected = true;
+        grid_book.CurrentCell = grid_book.Rows[lastRowIndex].Cells[0];
+
+
+
+      }
      
 
     }
@@ -112,7 +130,8 @@ namespace BookPro.Windows.Views
 
     private void grid_book_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
-
+      Object _ucode = null; 
+      DialogResult _result = App.Instance().PopManager.ShowPop(typeof(BookPop), WorkMode.edit, ref _ucode);
 
 		}
 
