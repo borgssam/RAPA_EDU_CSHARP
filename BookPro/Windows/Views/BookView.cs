@@ -126,24 +126,55 @@ namespace BookPro.Windows.Views
 
 
 
+		private void grid_book_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
 
 
     private void grid_book_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
-      Object _ucode = null; 
+      DataRow _row = GridAssist.SelectedRow(grid_book);
+      Object _ucode = _row["bk_ucode"]; 
       DialogResult _result = App.Instance().PopManager.ShowPop(typeof(BookPop), WorkMode.edit, ref _ucode);
+
+      if(_result == DialogResult.OK)
+      {
+        DataRow _new_row = App.Instance().DBManager.ReadBook((int)_ucode);
+        fetch(_new_row, ref _row);
+
+      }
 
 		}
 
     private void btn_delete_book_Click(object sender, EventArgs e)
     {
+      if(MessageBox.Show("정말삭제하시겠습니까?","",MessageBoxButtons.YesNo) == DialogResult.Yes) {
+      
+        DataRow _row = GridAssist.SelectedRow(grid_book);
+        int _ucode = Convert.ToInt32(_row["bk_ucode"]);
+
+        int result = App.Instance().DBManager.DeleteBook(_ucode);
+        if(result >0)
+        {
+          MessageBox.Show("삭제성공");
+          DataTable _dsp_dt = this.DisplaySet.Tables["Book"];
+          DataRow[] deleteRows = _dsp_dt.Select($"bk_ucode={_ucode}");
+          foreach(DataRow row in deleteRows)
+          {
+            row.Delete();
+          }
+          _dsp_dt.AcceptChanges();
+        }
+        else
+        {
+          MessageBox.Show("삭제실패");
+        }
+      }
+
 
     }
 
-		private void grid_book_CellContentClick(object sender, DataGridViewCellEventArgs e)
-		{
-
-		}
 
 		private void button1_Click(object sender, EventArgs e)
 		{

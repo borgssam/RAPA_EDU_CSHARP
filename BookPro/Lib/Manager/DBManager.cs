@@ -252,7 +252,7 @@ namespace BookPro.Lib.Manager
       {
 
         String _strQuery = "SELECT bk_ucode, bk_title, bk_writer, bk_pubs, bk_price, bk_pub_year, bk_regdate, ";
-        _strQuery += "bk_erasedate, bk_create_ucode, bk_create_date, bk_modify_ucode, bk_modify_date, bk.ctg_ucode, ctg.ctg_name ";
+        _strQuery += "bk_erasedate, bk_create_ucode, bk_create_date, bk_modify_ucode, bk_modify_date, bk.ctg_ucode, ctg.ctg_name,bk_picture ";
         _strQuery += "FROM book as bk ";
         _strQuery += "JOIN category as ctg on bk.ctg_ucode = ctg.ctg_ucode ";
        _strQuery += $"WHERE bk_ucode = {aUcode} ";
@@ -269,7 +269,62 @@ namespace BookPro.Lib.Manager
 
     }
 
+    public int DeleteBook(int _ucode)
+    {
 
+      int _result = 0;
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+      if (_Connection == null)
+      {
+        _result = -999;
+      }
+      else
+      {
+        string _strQuery = "DELETE FROM book ";
+        _strQuery += $"WHERE bk_ucode = {_ucode} ";
+
+        _result = m_MySqlAssist.ExcuteQuery(_Connection, _strQuery);
+
+        if (_result > 0)
+        {
+          _result = _ucode;
+        }
+      }
+      return _result;
+    }
+
+    public int ModifyBook(int _ucode, string _title, string _writer, string _pubs, int _price, int _pub_year, int _category_ucode, string _picture)
+    {
+
+      int _result = 0;
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+      if (_Connection == null)
+      {
+        _result = -999;
+      }
+      else
+      {
+        string _strQuery = "UPDATE book SET ";
+        _strQuery += $"bk_title = '{_title}', ";
+        _strQuery += $"bk_writer = '{_writer}', ";
+        _strQuery += $"bk_pubs = '{_pubs}', ";
+        _strQuery += $"bk_price = {_price}, ";
+        _strQuery += $"bk_pub_year = {_pub_year}, ";
+        _strQuery += $"bk_modify_ucode = {StaffInfo.ucode}, ";
+        _strQuery += $"bk_modify_date = now(), ";
+        _strQuery += $"ctg_ucode = {_category_ucode}, ";
+        _strQuery += $"bk_picture = '{_picture}' ";
+        _strQuery += $"WHERE bk_ucode = {_ucode} ";
+
+        _result = m_MySqlAssist.ExcuteQuery(_Connection, _strQuery);
+
+        if (_result > 0)
+        {
+          _result = _ucode;
+        }
+      }
+      return _result;
+    }
 
     public int AddBook(string _title,string _writer,string _pubs,int _price,int _pub_year,int _category_ucode,string _picture)
     {

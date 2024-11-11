@@ -53,6 +53,10 @@ namespace BookPro.Windows.Pops
       } else if(aWorkMode == WorkMode.edit)
       {
         this.Text = "도서관리 - 수정";
+        //MessageBox.Show(options.ToString());
+        m_ucode = Convert.ToInt32(options);
+        ReadBook();
+        DisplayBook();
       }
 
 
@@ -60,7 +64,7 @@ namespace BookPro.Windows.Pops
     }
 
     private void ReadBook(){
-
+      m_row = App.Instance().DBManager.ReadBook(m_ucode);
 
     }
 
@@ -80,8 +84,44 @@ namespace BookPro.Windows.Pops
 
     private void DisplayBook() {
 
+      tbox_title.Text =  m_row["bk_title"].ToString();
+      tbox_price.Text = m_row["bk_price"].ToString();
+      tbox_pubs.Text = m_row["bk_pubs"].ToString();
+      tbox_pub_year.Text = m_row["bk_pub_year"].ToString();
+      tbox_writer.Text = m_row["bk_writer"].ToString();
+      if (m_row["bk_regdate"] != DBNull.Value)
+      {
+        this.date_regdate.Value = Convert.ToDateTime(m_row["bk_regdate"]);
+      }
 
-      
+      int _ctg_ucode = Convert.ToInt32(m_row["ctg_ucode"]);
+      int idx = 0;
+      foreach(var item in cbox_category.Items)
+      {
+        NameObject<int> _item = (NameObject<int>)item;
+        if( _ctg_ucode == Convert.ToInt32(_item.Object))
+        {
+          cbox_category.SelectedIndex = idx;
+          break;
+        }
+        idx++;
+      }
+      //cbox_category.SelectedItem = cbox_category.Items.OfType<NameObject<int>>().FirstOrDefault(item => item.Object == _ctg_ucode);
+      string picture = "";
+      if (m_row["bk_picture"] != DBNull.Value)
+      {
+        picture = m_row["bk_picture"].ToString();
+      }
+      if (picture.Length > 0) {
+        pbox_picture.Image = BitAssist.HexStringToImage(picture);
+      } else
+      {
+        pbox_picture.Image = Bitmap.FromFile("./images/book.png");
+
+      }
+
+
+
     }
 
     private void BookPop_Load(object sender, EventArgs e)
@@ -92,17 +132,17 @@ namespace BookPro.Windows.Pops
     private void btn_save_Click(object sender, EventArgs e)
     {
       int _result = -1;
+      string _title = tbox_title.Text;
+      int _price = Convert.ToInt32(tbox_price.Text);
+      string _pubs = tbox_pubs.Text;
+      int _pub_year = Convert.ToInt32( tbox_pub_year.Text );
+      string _writer = tbox_writer.Text;
+      NameObject<int> _category = (NameObject<int>)cbox_category.SelectedItem;
+      int _category_ucode = Convert.ToInt32(_category.Object);
+      String _picture = BitAssist.ImageToHexString(pbox_picture.Image);
+      if(_picture == "") { _picture = null; }
       if (workMode == WorkMode.add) {
         MessageBox.Show("추가저장시작");
-        string _title = tbox_title.Text;
-        int _price = Convert.ToInt32(tbox_price.Text);
-        string _pubs = tbox_pubs.Text;
-        int _pub_year = Convert.ToInt32( tbox_pub_year.Text );
-        string _writer = tbox_writer.Text;
-        NameObject<int> _category = (NameObject<int>)cbox_category.SelectedItem;
-        int _category_ucode = Convert.ToInt32(_category.Object);
-        String _picture = BitAssist.ImageToHexString(pbox_picture.Image);
-        if(_picture == "") { _picture = null; }
         _result = App.Instance().DBManager.AddBook( _title,_writer, _pubs, _price,_pub_year, _category_ucode, _picture);
         if(_result > 0)
         {
@@ -113,6 +153,13 @@ namespace BookPro.Windows.Pops
       } else if(workMode == WorkMode.edit)
       {
         MessageBox.Show("수정저장시작");
+        _result = App.Instance().DBManager.ModifyBook(m_ucode, _title, _writer, _pubs, _price, _pub_year, _category_ucode, _picture);
+        if (_result > 0)
+        {
+          this.Options = _result;
+          MessageBox.Show("수정성공");
+          DialogResult = DialogResult.OK;
+        }
 
       }
 
