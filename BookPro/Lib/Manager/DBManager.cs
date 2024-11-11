@@ -268,7 +268,7 @@ namespace BookPro.Lib.Manager
       return _row;
 
     }
-
+    
     public int DeleteBook(int _ucode)
     {
 
@@ -363,6 +363,181 @@ namespace BookPro.Lib.Manager
       }
       return _result;
     }
+    public DataRow ReadMember(int ucode)
+    {
+      DataTable _dt = null;
+      DataRow _row = null;
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+
+      if (_Connection != null)
+      {
+        // 쿼리 작성: ucode에 해당하는 멤버 정보 가져오기
+        string _strQuery = "SELECT mbr_ucode, mbr_id, mbr_name, mbr_pwd, mbr_gender, mbr_phone, mbr_addr, mbr_picture ";
+        _strQuery += "FROM member ";
+        _strQuery += string.Format("WHERE mbr_ucode = {0} ", ucode);
+
+        // 쿼리 실행
+        _dt = m_MySqlAssist.SelectQuery(_Connection, _strQuery, "member");
+        if (_dt != null && _dt.Rows.Count == 1)
+        {
+          _row = _dt.Rows[0];
+        }
+      }
+
+      return _row;
+    }
+    public DataTable ReadMember(int searchIndex, string keyword, int rent_status_index)
+    {
+      DataTable _dt = null;  // DataTable 변수 선언
+      DbConnection _Connection = m_MySqlAssist.NewConnection();  // DB 연결 생성
+
+      if (_Connection != null)  // 연결이 성공한 경우
+      {
+        // SQL 쿼리 작성
+        string _strQuery = "SELECT mbr_ucode, mbr_name, mbr_id, mbr_pwd, mbr_gender, mbr_phone, mbr_addr, mbr_picture ";
+        _strQuery += "FROM member ";
+        if (searchIndex == 0)
+        {
+          if (keyword.Trim() == "")
+          {
+            _strQuery += string.Format("WHERE mbr_name  like '%{0}%'", keyword);  // 회원 ID 조건
+          }
+        }
+        else if (searchIndex == 1)
+        {
+          if (keyword.Trim() == "")
+          {
+            _strQuery += string.Format("WHERE mbr_phone like '%{0}%'", keyword);
+          }
+        }
+        else
+        {
+        }
+
+        // 회원 정보를 가져오는 쿼리 실행
+        _dt = m_MySqlAssist.SelectQuery(_Connection, _strQuery, "member");
+      }
+      return _dt;  // DataTable 반환
+    }
+
+
+    public int ModifyMember(int ucode, string mbr_id, string mbr_name, string mbr_pwd, string mbr_gender, string mbr_phone, string mbr_addr, string mbr_picture)
+    {
+      int _result = 0;
+      // 데이터베이스 연결 객체 생성
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+      if (_Connection == null)
+      {
+        // 연결 실패 시 에러 코드 반환
+        _result = -999;
+      }
+      else
+      {
+        string fieldsQuery = "mbr_id = '" + mbr_id + "', " +
+                             "mbr_name = '" + mbr_name + "', " +
+                             "mbr_pwd = '" + mbr_pwd + "', " +
+                             "mbr_gender = '" + mbr_gender + "', " +
+                             "mbr_phone = '" + mbr_phone + "', " +
+                             "mbr_addr = '" + mbr_addr + "', " +
+                             "mbr_picture = " + mbr_picture + "";
+
+        // 최종 UPDATE 쿼리 작성
+        string _strQuery = "UPDATE member SET " + fieldsQuery + " WHERE mbr_ucode = " + ucode;
+
+        // 쿼리 실행"
+        _result = m_MySqlAssist.ExcuteQuery(_Connection, _strQuery);
+
+        // 성공 시 고유 코드를 반환
+        if (_result > 0)
+        {
+          _result = ucode;
+        }
+      }
+      return _result;
+    }
+    public int AddMember(string mbr_id, string mbr_name, string mbr_pwd, string mbr_gender, string mbr_phone, string mbr_addr, string mbr_picture)
+    {
+      int _result = 0;
+      // 데이터베이스 연결 객체 생성
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+      if (_Connection == null)
+      {
+        // 연결 실패 시 에러 코드 반환
+        _result = -999;
+      }
+      else
+      {
+        // 시퀀스를 통해 유니크한 코드 생성
+        int _ucode = this.GetSequence("seq_member");
+
+        // 필드와 값을 추가할 쿼리 문자열 초기화
+        string _fieldsQuery = "";
+        string _valuesQuery = "";
+
+        // 필드와 값 추가
+        _fieldsQuery += "mbr_ucode,";
+        _valuesQuery += string.Format("{0}, ", _ucode);
+
+        _fieldsQuery += "mbr_id,";
+        _valuesQuery += string.Format("'{0}', ", mbr_id);
+
+        _fieldsQuery += "mbr_name,";
+        _valuesQuery += string.Format("'{0}', ", mbr_name);
+
+        _fieldsQuery += "mbr_pwd,";
+        _valuesQuery += string.Format("'{0}', ", mbr_pwd);
+
+        _fieldsQuery += "mbr_gender,";
+        _valuesQuery += string.Format("'{0}', ", mbr_gender);
+
+        _fieldsQuery += "mbr_phone,";
+        _valuesQuery += string.Format("'{0}', ", mbr_phone);
+
+        _fieldsQuery += "mbr_addr,";
+        _valuesQuery += string.Format("'{0}', ", mbr_addr);
+
+        _fieldsQuery += "mbr_picture";
+        _valuesQuery += string.Format("{0}", mbr_picture);
+
+        // 최종 INSERT 쿼리 작성
+        string _strQuery = "INSERT INTO member (" + _fieldsQuery + ") VALUES (" + _valuesQuery + ")";
+
+        // 쿼리 실행"
+        _result = m_MySqlAssist.ExcuteQuery(_Connection, _strQuery);
+
+        // 성공 시 고유 코드를 반환
+        if (_result > 0)
+        {
+          _result = _ucode;
+        }
+      }
+      return _result;
+    }
+
+    public int DeleteMember(int _ucode)
+    {
+
+      int _result = 0;
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+      if (_Connection == null)
+      {
+        _result = -999;
+      }
+      else
+      {
+        string _strQuery = "DELETE FROM member ";
+        _strQuery += $"WHERE mbr_ucode = {_ucode} ";
+
+        _result = m_MySqlAssist.ExcuteQuery(_Connection, _strQuery);
+
+        if (_result > 0)
+        {
+          _result = _ucode;
+        }
+      }
+      return _result;
+    }
+
 
 
   }

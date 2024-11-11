@@ -139,7 +139,7 @@
       this.panel2.Location = new System.Drawing.Point(0, 0);
       this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel2.Name = "panel2";
-      this.panel2.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.panel2.Padding = new System.Windows.Forms.Padding(5);
       this.panel2.Size = new System.Drawing.Size(431, 467);
       this.panel2.TabIndex = 2;
       // 
@@ -195,7 +195,7 @@
       this.panel21.Location = new System.Drawing.Point(0, 0);
       this.panel21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel21.Name = "panel21";
-      this.panel21.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+      this.panel21.Padding = new System.Windows.Forms.Padding(10);
       this.panel21.Size = new System.Drawing.Size(184, 273);
       this.panel21.TabIndex = 4;
       // 

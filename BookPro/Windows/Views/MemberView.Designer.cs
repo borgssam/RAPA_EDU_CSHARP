@@ -84,7 +84,7 @@
       this.panel1.Location = new System.Drawing.Point(0, 0);
       this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(977, 35);
+      this.panel1.Size = new System.Drawing.Size(1117, 44);
       this.panel1.TabIndex = 0;
       // 
       // panel7
@@ -92,28 +92,29 @@
       this.panel7.Controls.Add(this.btn_delete_member);
       this.panel7.Controls.Add(this.btn_add_member);
       this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
-      this.panel7.Location = new System.Drawing.Point(769, 0);
+      this.panel7.Location = new System.Drawing.Point(879, 0);
       this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel7.Name = "panel7";
-      this.panel7.Size = new System.Drawing.Size(208, 35);
+      this.panel7.Size = new System.Drawing.Size(238, 44);
       this.panel7.TabIndex = 4;
       // 
       // btn_delete_member
       // 
-      this.btn_delete_member.Location = new System.Drawing.Point(103, 5);
+      this.btn_delete_member.Location = new System.Drawing.Point(118, 6);
       this.btn_delete_member.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.btn_delete_member.Name = "btn_delete_member";
-      this.btn_delete_member.Size = new System.Drawing.Size(96, 25);
+      this.btn_delete_member.Size = new System.Drawing.Size(110, 31);
       this.btn_delete_member.TabIndex = 2;
       this.btn_delete_member.Text = "회원탈퇴";
       this.btn_delete_member.UseVisualStyleBackColor = true;
+      this.btn_delete_member.Click += new System.EventHandler(this.btn_delete_member_Click);
       // 
       // btn_add_member
       // 
-      this.btn_add_member.Location = new System.Drawing.Point(4, 5);
+      this.btn_add_member.Location = new System.Drawing.Point(5, 6);
       this.btn_add_member.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.btn_add_member.Name = "btn_add_member";
-      this.btn_add_member.Size = new System.Drawing.Size(96, 25);
+      this.btn_add_member.Size = new System.Drawing.Size(110, 31);
       this.btn_add_member.TabIndex = 1;
       this.btn_add_member.Text = "회원가입";
       this.btn_add_member.UseVisualStyleBackColor = true;
@@ -123,18 +124,18 @@
       // 
       this.panel6.Controls.Add(this.btn_search);
       this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
-      this.panel6.Location = new System.Drawing.Point(423, 0);
+      this.panel6.Location = new System.Drawing.Point(483, 0);
       this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel6.Name = "panel6";
-      this.panel6.Size = new System.Drawing.Size(112, 35);
+      this.panel6.Size = new System.Drawing.Size(128, 44);
       this.panel6.TabIndex = 3;
       // 
       // btn_search
       // 
-      this.btn_search.Location = new System.Drawing.Point(7, 5);
+      this.btn_search.Location = new System.Drawing.Point(8, 6);
       this.btn_search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.btn_search.Name = "btn_search";
-      this.btn_search.Size = new System.Drawing.Size(96, 25);
+      this.btn_search.Size = new System.Drawing.Size(110, 31);
       this.btn_search.TabIndex = 0;
       this.btn_search.Text = "조회";
       this.btn_search.UseVisualStyleBackColor = true;
@@ -144,31 +145,31 @@
       // 
       this.pnl_keyword.Controls.Add(this.tbox_keyword);
       this.pnl_keyword.Dock = System.Windows.Forms.DockStyle.Left;
-      this.pnl_keyword.Location = new System.Drawing.Point(282, 0);
+      this.pnl_keyword.Location = new System.Drawing.Point(322, 0);
       this.pnl_keyword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.pnl_keyword.Name = "pnl_keyword";
-      this.pnl_keyword.Padding = new System.Windows.Forms.Padding(4, 5, 4, 4);
-      this.pnl_keyword.Size = new System.Drawing.Size(141, 35);
+      this.pnl_keyword.Padding = new System.Windows.Forms.Padding(5, 6, 5, 5);
+      this.pnl_keyword.Size = new System.Drawing.Size(161, 44);
       this.pnl_keyword.TabIndex = 2;
       // 
       // tbox_keyword
       // 
       this.tbox_keyword.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tbox_keyword.Location = new System.Drawing.Point(4, 5);
+      this.tbox_keyword.Location = new System.Drawing.Point(5, 6);
       this.tbox_keyword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.tbox_keyword.Name = "tbox_keyword";
-      this.tbox_keyword.Size = new System.Drawing.Size(133, 21);
+      this.tbox_keyword.Size = new System.Drawing.Size(151, 25);
       this.tbox_keyword.TabIndex = 0;
       // 
       // pnl_rent_status
       // 
       this.pnl_rent_status.Controls.Add(this.cbox_rent_status);
       this.pnl_rent_status.Dock = System.Windows.Forms.DockStyle.Left;
-      this.pnl_rent_status.Location = new System.Drawing.Point(141, 0);
+      this.pnl_rent_status.Location = new System.Drawing.Point(161, 0);
       this.pnl_rent_status.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.pnl_rent_status.Name = "pnl_rent_status";
-      this.pnl_rent_status.Padding = new System.Windows.Forms.Padding(4, 5, 4, 4);
-      this.pnl_rent_status.Size = new System.Drawing.Size(141, 35);
+      this.pnl_rent_status.Padding = new System.Windows.Forms.Padding(5, 6, 5, 5);
+      this.pnl_rent_status.Size = new System.Drawing.Size(161, 44);
       this.pnl_rent_status.TabIndex = 1;
       // 
       // cbox_rent_status
@@ -180,10 +181,10 @@
             "대기중",
             "대여중",
             "연체중"});
-      this.cbox_rent_status.Location = new System.Drawing.Point(4, 5);
+      this.cbox_rent_status.Location = new System.Drawing.Point(5, 6);
       this.cbox_rent_status.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.cbox_rent_status.Name = "cbox_rent_status";
-      this.cbox_rent_status.Size = new System.Drawing.Size(133, 21);
+      this.cbox_rent_status.Size = new System.Drawing.Size(151, 21);
       this.cbox_rent_status.TabIndex = 0;
       // 
       // panel3
@@ -193,8 +194,8 @@
       this.panel3.Location = new System.Drawing.Point(0, 0);
       this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel3.Name = "panel3";
-      this.panel3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 4);
-      this.panel3.Size = new System.Drawing.Size(141, 35);
+      this.panel3.Padding = new System.Windows.Forms.Padding(5, 6, 5, 5);
+      this.panel3.Size = new System.Drawing.Size(161, 44);
       this.panel3.TabIndex = 0;
       // 
       // cbox_searchkind
@@ -206,10 +207,10 @@
             "이름",
             "연락처",
             "대출상태"});
-      this.cbox_searchkind.Location = new System.Drawing.Point(4, 5);
+      this.cbox_searchkind.Location = new System.Drawing.Point(5, 6);
       this.cbox_searchkind.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.cbox_searchkind.Name = "cbox_searchkind";
-      this.cbox_searchkind.Size = new System.Drawing.Size(133, 21);
+      this.cbox_searchkind.Size = new System.Drawing.Size(151, 21);
       this.cbox_searchkind.TabIndex = 0;
       this.cbox_searchkind.SelectedIndexChanged += new System.EventHandler(this.cbox_searchkind_SelectedIndexChanged);
       // 
@@ -217,22 +218,22 @@
       // 
       this.panel2.Controls.Add(this.groupBox1);
       this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel2.Location = new System.Drawing.Point(0, 35);
+      this.panel2.Location = new System.Drawing.Point(0, 44);
       this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel2.Name = "panel2";
-      this.panel2.Padding = new System.Windows.Forms.Padding(4);
-      this.panel2.Size = new System.Drawing.Size(977, 366);
+      this.panel2.Padding = new System.Windows.Forms.Padding(5);
+      this.panel2.Size = new System.Drawing.Size(1117, 457);
       this.panel2.TabIndex = 1;
       // 
       // groupBox1
       // 
       this.groupBox1.Controls.Add(this.grid_member);
       this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.groupBox1.Location = new System.Drawing.Point(4, 4);
+      this.groupBox1.Location = new System.Drawing.Point(5, 5);
       this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.groupBox1.Name = "groupBox1";
-      this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-      this.groupBox1.Size = new System.Drawing.Size(969, 358);
+      this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
+      this.groupBox1.Size = new System.Drawing.Size(1107, 447);
       this.groupBox1.TabIndex = 0;
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "회원목록";
@@ -257,14 +258,14 @@
       this.grid_member.DataMember = "Member";
       this.grid_member.DataSource = this.DisplaySet;
       this.grid_member.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.grid_member.Location = new System.Drawing.Point(4, 18);
+      this.grid_member.Location = new System.Drawing.Point(5, 23);
       this.grid_member.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.grid_member.Name = "grid_member";
       this.grid_member.ReadOnly = true;
       this.grid_member.RowHeadersWidth = 51;
       this.grid_member.RowTemplate.Height = 27;
       this.grid_member.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.grid_member.Size = new System.Drawing.Size(961, 336);
+      this.grid_member.Size = new System.Drawing.Size(1097, 419);
       this.grid_member.TabIndex = 0;
       this.grid_member.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.grid_member_MouseDoubleClick);
       // 
@@ -371,11 +372,12 @@
       // 
       // MemberView
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(977, 401);
+      this.ClientSize = new System.Drawing.Size(1117, 501);
       this.Controls.Add(this.panel2);
       this.Controls.Add(this.panel1);
+      this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
       this.Name = "MemberView";
       this.Text = "MemberView";
       this.Load += new System.EventHandler(this.MemberView_Load);
