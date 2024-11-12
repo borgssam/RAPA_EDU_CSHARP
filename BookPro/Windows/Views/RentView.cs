@@ -22,6 +22,8 @@ namespace BookPro.Windows.Views
     }
 
     private void InitializeObject(){
+      cbox_searchkind.SelectedIndex = 0;
+      cbox_rent_status.SelectedIndex = 0;
 
     }
 
@@ -32,17 +34,47 @@ namespace BookPro.Windows.Views
 
 		private void btn_rental_Click(object sender, EventArgs e)
 		{
-
+      App.Instance().PopManager.ShowPop(typeof(RentPop), WorkMode.none);
 		}
 
 		private void cbox_searchkind_SelectedIndexChanged(object sender, EventArgs e)
 		{
+      //대출일
+      //반납예정일
+      //반납일
+      //대여상태
+      //회원이름
+      //회원연락처
+      switch (cbox_searchkind.SelectedIndex)
+      {
+        case 0:
+        case 1:
+        case 2:
+          pnl_date.Visible = true;
+          pnl_rent_status.Visible = false;
+          pnl_keyword.Visible = false;
+          break;
+        case 3:
+          pnl_date.Visible = false;
+          pnl_rent_status.Visible = true;
+          pnl_keyword.Visible = false;
+          break;
+        case 4:
+        case 5:
+          pnl_date.Visible = false;
+          pnl_rent_status.Visible = false;
+          pnl_keyword.Visible = true;
+          break;
+        default:
+          break;
 
 
+      }
 
-		}
 
-		private void btn_search_Click(object sender, EventArgs e)
+    }
+
+    private void btn_search_Click(object sender, EventArgs e)
 		{
       
 

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection.Emit;
@@ -363,6 +364,7 @@ namespace BookPro.Lib.Manager
       }
       return _result;
     }
+
     public DataRow ReadMember(int ucode)
     {
       DataTable _dt = null;
@@ -385,6 +387,72 @@ namespace BookPro.Lib.Manager
       }
 
       return _row;
+    }
+
+
+/*
+SELECT mbr.mbr_ucode, 
+mbr_name, 
+mbr_phone, 
+rnt.limit_date,
+CASE
+WHEN rnt.limit_date IS NULL THEN '대기중'
+WHEN rnt.limit_date < NOW() THEN '연체중'
+ELSE '대출중'
+END AS rnt_state
+
+FROM MEMBER AS mbr
+JOIN 
+(
+SELECT mbr_ucode, MIN(rnt_limit_date) AS limit_date FROM rent
+WHERE rnt_return_date IS NULL
+GROUP BY mbr_ucode
+
+) AS rnt ON mbr.mbr_ucode = rnt.mbr_ucode     
+ */
+    public DataTable ReadMember(int searchIndex, string keyword)
+    {
+
+      DataTable _dt = null;  // DataTable 변수 선언
+      DbConnection _Connection = m_MySqlAssist.NewConnection();  // DB 연결 생성
+
+      if (_Connection != null)  // 연결이 성공한 경우
+      {
+        // SQL 쿼리 작성
+        string _strQuery = "SELECT mbr.mbr_ucode, mbr_name, mbr_phone, rnt.limit_date, ";
+        _strQuery += "CASE ";
+        _strQuery += "WHEN rnt.limit_date IS NULL THEN '대기중' ";
+        _strQuery += "WHEN rnt.limit_date < NOW() THEN '연체중' ";
+        _strQuery += "ELSE '대출중' ";
+        _strQuery += "END AS rnt_state ";
+        _strQuery += "FROM MEMBER AS mbr ";
+        _strQuery += "JOIN ( ";
+        _strQuery += "SELECT mbr_ucode, MIN(rnt_limit_date) AS limit_date FROM rent ";
+        _strQuery += "WHERE rnt_return_date IS NULL ";
+        _strQuery += "GROUP BY mbr_ucode ";
+        _strQuery += ") AS rnt ON mbr.mbr_ucode = rnt.mbr_ucode ";
+
+        if(keyword.Length > 0)
+        {
+          if (searchIndex == 0)
+          {
+        //0.회원 이름
+            _strQuery += $"WHERE mbr.mbr_name like '%{keyword}%' ";
+
+          } else if (searchIndex == 1)
+          {
+            //1.회원 연락처
+            _strQuery += $"WHERE mbr.mbr_phone like '%{keyword}%' ";
+          }
+        }
+
+        //회원번호 회원이름 연락처 대여상태
+
+        // 회원 정보를 가져오는 쿼리 실행
+        _dt = m_MySqlAssist.SelectQuery(_Connection, _strQuery, "member");
+      }
+      return _dt;  // DataTable 반환
+
     }
     public DataTable ReadMember(int searchIndex, string keyword, int rent_status_index)
     {

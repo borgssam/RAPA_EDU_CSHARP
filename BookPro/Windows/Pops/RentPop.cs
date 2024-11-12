@@ -22,6 +22,8 @@ namespace BookPro.Windows.Pops
     }
 
     private void InitializeObject(){
+			cbox_kind_book.SelectedIndex = 0;
+			cbox_kind_member.SelectedIndex = 0;
 
     }
 
@@ -47,12 +49,26 @@ namespace BookPro.Windows.Pops
 
 		private void btn_search_member_Click(object sender, EventArgs e)
 		{
+			//회원 이름
+			//회원 연락처
+			DataTable _dt = App.Instance().DBManager.ReadMember(cbox_kind_member.SelectedIndex, this.tbox_keyword_member.Text);
+			DisplayMember(_dt);
 
-
-		}
+    }
 
 
     private void DisplayMember(DataTable dt){
+			DataTable _dspDT = this.DisplaySet.Tables["Member"];
+      _dspDT.Rows.Clear();
+			foreach(DataRow _src in dt.Rows)
+			{
+				DataRow _dspRow = _dspDT.NewRow();
+        _dspRow["mbr_ucode"] = _src["mbr_ucode"];
+        _dspRow["mbr_name"] = _src["mbr_name"];
+        _dspRow["mbr_phone"] = _src["mbr_phone"];
+        _dspRow["rnt_state"] = _src["rnt_state"];
+        _dspDT.Rows.Add(_dspRow);			
+			}
 
 
     }

@@ -86,22 +86,22 @@
       // 
       this.panel2.Controls.Add(this.groupBox1);
       this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel2.Location = new System.Drawing.Point(0, 30);
+      this.panel2.Location = new System.Drawing.Point(0, 38);
       this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel2.Name = "panel2";
-      this.panel2.Padding = new System.Windows.Forms.Padding(4);
-      this.panel2.Size = new System.Drawing.Size(1013, 304);
+      this.panel2.Padding = new System.Windows.Forms.Padding(5);
+      this.panel2.Size = new System.Drawing.Size(1158, 380);
       this.panel2.TabIndex = 1;
       // 
       // groupBox1
       // 
       this.groupBox1.Controls.Add(this.grid_rent);
       this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.groupBox1.Location = new System.Drawing.Point(4, 4);
+      this.groupBox1.Location = new System.Drawing.Point(5, 5);
       this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.groupBox1.Name = "groupBox1";
-      this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-      this.groupBox1.Size = new System.Drawing.Size(1005, 296);
+      this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
+      this.groupBox1.Size = new System.Drawing.Size(1148, 370);
       this.groupBox1.TabIndex = 0;
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "대여목록";
@@ -123,13 +123,14 @@
       this.grid_rent.DataMember = "Rent";
       this.grid_rent.DataSource = this.DisplaySet;
       this.grid_rent.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.grid_rent.Location = new System.Drawing.Point(4, 18);
+      this.grid_rent.Location = new System.Drawing.Point(5, 23);
+      this.grid_rent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
       this.grid_rent.Name = "grid_rent";
       this.grid_rent.ReadOnly = true;
       this.grid_rent.RowHeadersWidth = 30;
       this.grid_rent.RowTemplate.Height = 23;
       this.grid_rent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.grid_rent.Size = new System.Drawing.Size(997, 274);
+      this.grid_rent.Size = new System.Drawing.Size(1138, 342);
       this.grid_rent.TabIndex = 1;
       // 
       // rntucodeDataGridViewTextBoxColumn
@@ -292,17 +293,17 @@
       this.panel1.Location = new System.Drawing.Point(0, 0);
       this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(1013, 30);
+      this.panel1.Size = new System.Drawing.Size(1158, 38);
       this.panel1.TabIndex = 0;
       // 
       // panel8
       // 
       this.panel8.Controls.Add(this.btn_rental);
       this.panel8.Dock = System.Windows.Forms.DockStyle.Right;
-      this.panel8.Location = new System.Drawing.Point(892, 0);
+      this.panel8.Location = new System.Drawing.Point(1020, 0);
       this.panel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel8.Name = "panel8";
-      this.panel8.Size = new System.Drawing.Size(121, 30);
+      this.panel8.Size = new System.Drawing.Size(138, 38);
       this.panel8.TabIndex = 5;
       // 
       // btn_rental
@@ -310,9 +311,9 @@
       this.btn_rental.Location = new System.Drawing.Point(3, 2);
       this.btn_rental.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.btn_rental.Name = "btn_rental";
-      this.btn_rental.Size = new System.Drawing.Size(110, 25);
+      this.btn_rental.Size = new System.Drawing.Size(126, 31);
       this.btn_rental.TabIndex = 0;
-      this.btn_rental.Text = "대여 & 반납";
+      this.btn_rental.Text = "대여 && 반납";
       this.btn_rental.UseVisualStyleBackColor = true;
       this.btn_rental.Click += new System.EventHandler(this.btn_rental_Click);
       // 
@@ -320,18 +321,18 @@
       // 
       this.panel7.Controls.Add(this.btn_search);
       this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
-      this.panel7.Location = new System.Drawing.Point(802, 0);
+      this.panel7.Location = new System.Drawing.Point(917, 0);
       this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel7.Name = "panel7";
-      this.panel7.Size = new System.Drawing.Size(72, 30);
+      this.panel7.Size = new System.Drawing.Size(82, 38);
       this.panel7.TabIndex = 4;
       // 
       // btn_search
       // 
-      this.btn_search.Location = new System.Drawing.Point(5, 2);
+      this.btn_search.Location = new System.Drawing.Point(6, 2);
       this.btn_search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.btn_search.Name = "btn_search";
-      this.btn_search.Size = new System.Drawing.Size(63, 25);
+      this.btn_search.Size = new System.Drawing.Size(72, 31);
       this.btn_search.TabIndex = 0;
       this.btn_search.Text = "조회";
       this.btn_search.UseVisualStyleBackColor = true;
@@ -341,31 +342,31 @@
       // 
       this.pnl_keyword.Controls.Add(this.tbox_keyword);
       this.pnl_keyword.Dock = System.Windows.Forms.DockStyle.Left;
-      this.pnl_keyword.Location = new System.Drawing.Point(651, 0);
+      this.pnl_keyword.Location = new System.Drawing.Point(744, 0);
       this.pnl_keyword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.pnl_keyword.Name = "pnl_keyword";
-      this.pnl_keyword.Padding = new System.Windows.Forms.Padding(4);
-      this.pnl_keyword.Size = new System.Drawing.Size(151, 30);
+      this.pnl_keyword.Padding = new System.Windows.Forms.Padding(5);
+      this.pnl_keyword.Size = new System.Drawing.Size(173, 38);
       this.pnl_keyword.TabIndex = 3;
       // 
       // tbox_keyword
       // 
       this.tbox_keyword.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tbox_keyword.Location = new System.Drawing.Point(4, 4);
+      this.tbox_keyword.Location = new System.Drawing.Point(5, 5);
       this.tbox_keyword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.tbox_keyword.Name = "tbox_keyword";
-      this.tbox_keyword.Size = new System.Drawing.Size(143, 21);
+      this.tbox_keyword.Size = new System.Drawing.Size(163, 25);
       this.tbox_keyword.TabIndex = 0;
       // 
       // pnl_rent_status
       // 
       this.pnl_rent_status.Controls.Add(this.cbox_rent_status);
       this.pnl_rent_status.Dock = System.Windows.Forms.DockStyle.Left;
-      this.pnl_rent_status.Location = new System.Drawing.Point(515, 0);
+      this.pnl_rent_status.Location = new System.Drawing.Point(589, 0);
       this.pnl_rent_status.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.pnl_rent_status.Name = "pnl_rent_status";
-      this.pnl_rent_status.Padding = new System.Windows.Forms.Padding(4);
-      this.pnl_rent_status.Size = new System.Drawing.Size(136, 30);
+      this.pnl_rent_status.Padding = new System.Windows.Forms.Padding(5);
+      this.pnl_rent_status.Size = new System.Drawing.Size(155, 38);
       this.pnl_rent_status.TabIndex = 2;
       // 
       // cbox_rent_status
@@ -376,10 +377,10 @@
       this.cbox_rent_status.Items.AddRange(new object[] {
             "대여중",
             "연체중"});
-      this.cbox_rent_status.Location = new System.Drawing.Point(4, 4);
+      this.cbox_rent_status.Location = new System.Drawing.Point(5, 5);
       this.cbox_rent_status.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.cbox_rent_status.Name = "cbox_rent_status";
-      this.cbox_rent_status.Size = new System.Drawing.Size(128, 21);
+      this.cbox_rent_status.Size = new System.Drawing.Size(145, 21);
       this.cbox_rent_status.TabIndex = 1;
       // 
       // pnl_date
@@ -388,35 +389,35 @@
       this.pnl_date.Controls.Add(this.date_end);
       this.pnl_date.Controls.Add(this.date_begin);
       this.pnl_date.Dock = System.Windows.Forms.DockStyle.Left;
-      this.pnl_date.Location = new System.Drawing.Point(140, 0);
+      this.pnl_date.Location = new System.Drawing.Point(160, 0);
       this.pnl_date.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.pnl_date.Name = "pnl_date";
-      this.pnl_date.Size = new System.Drawing.Size(375, 30);
+      this.pnl_date.Size = new System.Drawing.Size(429, 38);
       this.pnl_date.TabIndex = 1;
       // 
       // label1
       // 
-      this.label1.Location = new System.Drawing.Point(178, 8);
+      this.label1.Location = new System.Drawing.Point(203, 10);
       this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(9, 8);
+      this.label1.Size = new System.Drawing.Size(10, 10);
       this.label1.TabIndex = 2;
       this.label1.Text = "~";
       this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // date_end
       // 
-      this.date_end.Location = new System.Drawing.Point(192, 5);
+      this.date_end.Location = new System.Drawing.Point(219, 6);
       this.date_end.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.date_end.Name = "date_end";
-      this.date_end.Size = new System.Drawing.Size(173, 21);
+      this.date_end.Size = new System.Drawing.Size(197, 25);
       this.date_end.TabIndex = 1;
       // 
       // date_begin
       // 
-      this.date_begin.Location = new System.Drawing.Point(7, 5);
+      this.date_begin.Location = new System.Drawing.Point(8, 6);
       this.date_begin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.date_begin.Name = "date_begin";
-      this.date_begin.Size = new System.Drawing.Size(166, 21);
+      this.date_begin.Size = new System.Drawing.Size(189, 25);
       this.date_begin.TabIndex = 0;
       // 
       // panel3
@@ -426,8 +427,8 @@
       this.panel3.Location = new System.Drawing.Point(0, 0);
       this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel3.Name = "panel3";
-      this.panel3.Padding = new System.Windows.Forms.Padding(4);
-      this.panel3.Size = new System.Drawing.Size(140, 30);
+      this.panel3.Padding = new System.Windows.Forms.Padding(5);
+      this.panel3.Size = new System.Drawing.Size(160, 38);
       this.panel3.TabIndex = 0;
       // 
       // cbox_searchkind
@@ -442,20 +443,21 @@
             "대여상태",
             "회원이름",
             "회원연락처"});
-      this.cbox_searchkind.Location = new System.Drawing.Point(4, 4);
+      this.cbox_searchkind.Location = new System.Drawing.Point(5, 5);
       this.cbox_searchkind.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.cbox_searchkind.Name = "cbox_searchkind";
-      this.cbox_searchkind.Size = new System.Drawing.Size(132, 21);
+      this.cbox_searchkind.Size = new System.Drawing.Size(150, 21);
       this.cbox_searchkind.TabIndex = 0;
       this.cbox_searchkind.SelectedIndexChanged += new System.EventHandler(this.cbox_searchkind_SelectedIndexChanged);
       // 
       // RentView
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1013, 334);
+      this.ClientSize = new System.Drawing.Size(1158, 418);
       this.Controls.Add(this.panel2);
       this.Controls.Add(this.panel1);
+      this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
       this.Name = "RentView";
       this.Text = "RentView";
       this.Load += new System.EventHandler(this.RentView_Load);

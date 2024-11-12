@@ -293,7 +293,7 @@
       this.panel2.Location = new System.Drawing.Point(0, 0);
       this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel2.Name = "panel2";
-      this.panel2.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+      this.panel2.Padding = new System.Windows.Forms.Padding(10);
       this.panel2.Size = new System.Drawing.Size(408, 604);
       this.panel2.TabIndex = 3;
       // 
@@ -319,7 +319,7 @@
       this.panel27.Location = new System.Drawing.Point(3, 61);
       this.panel27.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel27.Name = "panel27";
-      this.panel27.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.panel27.Padding = new System.Windows.Forms.Padding(5);
       this.panel27.Size = new System.Drawing.Size(382, 316);
       this.panel27.TabIndex = 4;
       // 
@@ -596,7 +596,7 @@
       this.panel29.Location = new System.Drawing.Point(0, 0);
       this.panel29.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel29.Name = "panel29";
-      this.panel29.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.panel29.Padding = new System.Windows.Forms.Padding(5);
       this.panel29.Size = new System.Drawing.Size(259, 205);
       this.panel29.TabIndex = 2;
       // 
@@ -792,7 +792,7 @@
       this.panel38.Location = new System.Drawing.Point(259, 0);
       this.panel38.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel38.Name = "panel38";
-      this.panel38.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.panel38.Padding = new System.Windows.Forms.Padding(5);
       this.panel38.Size = new System.Drawing.Size(123, 205);
       this.panel38.TabIndex = 1;
       // 
@@ -930,7 +930,7 @@
       this.panel8.Location = new System.Drawing.Point(0, 0);
       this.panel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel8.Name = "panel8";
-      this.panel8.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+      this.panel8.Padding = new System.Windows.Forms.Padding(10);
       this.panel8.Size = new System.Drawing.Size(408, 552);
       this.panel8.TabIndex = 4;
       // 
@@ -957,7 +957,7 @@
       this.panel12.Location = new System.Drawing.Point(3, 98);
       this.panel12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel12.Name = "panel12";
-      this.panel12.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.panel12.Padding = new System.Windows.Forms.Padding(5);
       this.panel12.Size = new System.Drawing.Size(382, 227);
       this.panel12.TabIndex = 4;
       // 
@@ -1021,7 +1021,7 @@
       this.panel18.Location = new System.Drawing.Point(0, 0);
       this.panel18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel18.Name = "panel18";
-      this.panel18.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.panel18.Padding = new System.Windows.Forms.Padding(5);
       this.panel18.Size = new System.Drawing.Size(259, 205);
       this.panel18.TabIndex = 2;
       // 
@@ -1217,7 +1217,7 @@
       this.panel17.Location = new System.Drawing.Point(259, 0);
       this.panel17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel17.Name = "panel17";
-      this.panel17.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.panel17.Padding = new System.Windows.Forms.Padding(5);
       this.panel17.Size = new System.Drawing.Size(123, 205);
       this.panel17.TabIndex = 1;
       // 
@@ -1448,7 +1448,7 @@
       this.panel46.Location = new System.Drawing.Point(0, 256);
       this.panel46.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel46.Name = "panel46";
-      this.panel46.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+      this.panel46.Padding = new System.Windows.Forms.Padding(10);
       this.panel46.Size = new System.Drawing.Size(525, 348);
       this.panel46.TabIndex = 2;
       // 
@@ -1473,7 +1473,7 @@
       this.panel47.Location = new System.Drawing.Point(3, 20);
       this.panel47.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel47.Name = "panel47";
-      this.panel47.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.panel47.Padding = new System.Windows.Forms.Padding(5);
       this.panel47.Size = new System.Drawing.Size(381, 306);
       this.panel47.TabIndex = 5;
       // 
@@ -1551,7 +1551,7 @@
       this.panel53.Location = new System.Drawing.Point(3, 155);
       this.panel53.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel53.Name = "panel53";
-      this.panel53.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.panel53.Padding = new System.Windows.Forms.Padding(5);
       this.panel53.Size = new System.Drawing.Size(112, 149);
       this.panel53.TabIndex = 2;
       // 
@@ -1574,7 +1574,7 @@
       this.panel54.Location = new System.Drawing.Point(3, 2);
       this.panel54.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel54.Name = "panel54";
-      this.panel54.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.panel54.Padding = new System.Windows.Forms.Padding(5);
       this.panel54.Size = new System.Drawing.Size(112, 149);
       this.panel54.TabIndex = 1;
       // 
@@ -1608,7 +1608,7 @@
       this.panel45.Location = new System.Drawing.Point(0, 0);
       this.panel45.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel45.Name = "panel45";
-      this.panel45.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+      this.panel45.Padding = new System.Windows.Forms.Padding(10);
       this.panel45.Size = new System.Drawing.Size(525, 251);
       this.panel45.TabIndex = 0;
       // 
@@ -1633,7 +1633,7 @@
       this.panel49.Location = new System.Drawing.Point(3, 20);
       this.panel49.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel49.Name = "panel49";
-      this.panel49.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.panel49.Padding = new System.Windows.Forms.Padding(5);
       this.panel49.Size = new System.Drawing.Size(381, 209);
       this.panel49.TabIndex = 5;
       // 
@@ -1711,7 +1711,7 @@
       this.panel51.Location = new System.Drawing.Point(3, 106);
       this.panel51.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel51.Name = "panel51";
-      this.panel51.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.panel51.Padding = new System.Windows.Forms.Padding(5);
       this.panel51.Size = new System.Drawing.Size(112, 101);
       this.panel51.TabIndex = 2;
       // 
@@ -1734,7 +1734,7 @@
       this.panel50.Location = new System.Drawing.Point(3, 2);
       this.panel50.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.panel50.Name = "panel50";
-      this.panel50.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.panel50.Padding = new System.Windows.Forms.Padding(5);
       this.panel50.Size = new System.Drawing.Size(112, 100);
       this.panel50.TabIndex = 1;
       // 
