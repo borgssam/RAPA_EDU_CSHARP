@@ -23,7 +23,7 @@ namespace BookPro.Windows.Views
 
     private void InitializeObject(){
       cbox_searchkind.SelectedIndex = 0;
-      cbox_rent_status.SelectedIndex = 0;
+      cbox_rent_state.SelectedIndex = 0;
 
     }
 
@@ -76,11 +76,40 @@ namespace BookPro.Windows.Views
 
     private void btn_search_Click(object sender, EventArgs e)
 		{
-      
+      //0.대출일
+      //1.반납예정일
+      //2.반납일
+      //3.대여상태
+      //4.회원이름
+      //5.회원연락처
 
-		}
-    private void DisplayDataSet(DataTable dt) {       
+      DataTable _dt = App.Instance().DBManager.ReadRent(cbox_searchkind.SelectedIndex, tbox_keyword.Text, date_begin.Value, date_end.Value, cbox_rent_state.SelectedIndex);
+      if (_dt != null)
+      {
+        DisplayRent(_dt);
+      }
 
+
+    }
+    private void DisplayRent(DataTable dt) {
+      DataTable _dspDT = DisplaySet.Tables["Rent"];
+      _dspDT.Rows.Clear();
+      foreach (DataRow dr in dt.Rows)
+      {
+        DataRow _dspRow = _dspDT.NewRow();
+
+        //대여번호, 도서이름, 대여상태, 회원이름,회원연락처, 대여일, 반납예정일 반납일
+        _dspRow["rnt_ucode"] = dr["rnt_ucode"];
+        _dspRow["bk_title"] = dr["bk_title"];
+        _dspRow["rnt_state"] = dr["rnt_state"];
+        _dspRow["mbr_name"] = dr["mbr_name"];
+        _dspRow["mbr_phone"] = dr["mbr_phone"];
+        _dspRow["rnt_rent_date"] = dr["rnt_rent_date"];
+        _dspRow["rnt_limit_date"] = dr["rnt_limit_date"];
+        _dspRow["rnt_return_date"] = dr["rnt_return_date"];
+        _dspDT.Rows.Add(_dspRow);
+
+      }
 
     }
 

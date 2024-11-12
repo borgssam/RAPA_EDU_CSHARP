@@ -32,12 +32,13 @@
       this.groupBox1 = new System.Windows.Forms.GroupBox();
       this.grid_rent = new System.Windows.Forms.DataGridView();
       this.rntucodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.bk_title = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.rnt_rent_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.rnt_scheduled_return_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.rntreturndateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.rntstateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.mbrnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.mbr_phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.rnt_scheduled_return_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.rntreturndateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.DisplaySet = new System.Data.DataSet();
       this.dataTable1 = new System.Data.DataTable();
       this.dataColumn1 = new System.Data.DataColumn();
@@ -61,7 +62,7 @@
       this.pnl_keyword = new System.Windows.Forms.Panel();
       this.tbox_keyword = new System.Windows.Forms.TextBox();
       this.pnl_rent_status = new System.Windows.Forms.Panel();
-      this.cbox_rent_status = new System.Windows.Forms.ComboBox();
+      this.cbox_rent_state = new System.Windows.Forms.ComboBox();
       this.pnl_date = new System.Windows.Forms.Panel();
       this.label1 = new System.Windows.Forms.Label();
       this.date_end = new System.Windows.Forms.DateTimePicker();
@@ -114,12 +115,13 @@
       this.grid_rent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.grid_rent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rntucodeDataGridViewTextBoxColumn,
+            this.bk_title,
             this.rnt_rent_date,
-            this.rnt_scheduled_return_date,
-            this.rntreturndateDataGridViewTextBoxColumn,
             this.rntstateDataGridViewTextBoxColumn,
             this.mbrnameDataGridViewTextBoxColumn,
-            this.mbr_phone});
+            this.mbr_phone,
+            this.rnt_scheduled_return_date,
+            this.rntreturndateDataGridViewTextBoxColumn});
       this.grid_rent.DataMember = "Rent";
       this.grid_rent.DataSource = this.DisplaySet;
       this.grid_rent.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -142,6 +144,13 @@
       this.rntucodeDataGridViewTextBoxColumn.ReadOnly = true;
       this.rntucodeDataGridViewTextBoxColumn.Width = 150;
       // 
+      // bk_title
+      // 
+      this.bk_title.DataPropertyName = "bk_title";
+      this.bk_title.HeaderText = "제목";
+      this.bk_title.Name = "bk_title";
+      this.bk_title.ReadOnly = true;
+      // 
       // rnt_rent_date
       // 
       this.rnt_rent_date.DataPropertyName = "rnt_rent_date";
@@ -150,24 +159,6 @@
       this.rnt_rent_date.Name = "rnt_rent_date";
       this.rnt_rent_date.ReadOnly = true;
       this.rnt_rent_date.Width = 150;
-      // 
-      // rnt_scheduled_return_date
-      // 
-      this.rnt_scheduled_return_date.DataPropertyName = "rnt_limit_date";
-      this.rnt_scheduled_return_date.HeaderText = "반납예정일";
-      this.rnt_scheduled_return_date.MinimumWidth = 8;
-      this.rnt_scheduled_return_date.Name = "rnt_scheduled_return_date";
-      this.rnt_scheduled_return_date.ReadOnly = true;
-      this.rnt_scheduled_return_date.Width = 150;
-      // 
-      // rntreturndateDataGridViewTextBoxColumn
-      // 
-      this.rntreturndateDataGridViewTextBoxColumn.DataPropertyName = "rnt_return_date";
-      this.rntreturndateDataGridViewTextBoxColumn.HeaderText = "반납일";
-      this.rntreturndateDataGridViewTextBoxColumn.MinimumWidth = 8;
-      this.rntreturndateDataGridViewTextBoxColumn.Name = "rntreturndateDataGridViewTextBoxColumn";
-      this.rntreturndateDataGridViewTextBoxColumn.ReadOnly = true;
-      this.rntreturndateDataGridViewTextBoxColumn.Width = 150;
       // 
       // rntstateDataGridViewTextBoxColumn
       // 
@@ -195,6 +186,24 @@
       this.mbr_phone.Name = "mbr_phone";
       this.mbr_phone.ReadOnly = true;
       this.mbr_phone.Width = 150;
+      // 
+      // rnt_scheduled_return_date
+      // 
+      this.rnt_scheduled_return_date.DataPropertyName = "rnt_limit_date";
+      this.rnt_scheduled_return_date.HeaderText = "반납예정일";
+      this.rnt_scheduled_return_date.MinimumWidth = 8;
+      this.rnt_scheduled_return_date.Name = "rnt_scheduled_return_date";
+      this.rnt_scheduled_return_date.ReadOnly = true;
+      this.rnt_scheduled_return_date.Width = 150;
+      // 
+      // rntreturndateDataGridViewTextBoxColumn
+      // 
+      this.rntreturndateDataGridViewTextBoxColumn.DataPropertyName = "rnt_return_date";
+      this.rntreturndateDataGridViewTextBoxColumn.HeaderText = "반납일";
+      this.rntreturndateDataGridViewTextBoxColumn.MinimumWidth = 8;
+      this.rntreturndateDataGridViewTextBoxColumn.Name = "rntreturndateDataGridViewTextBoxColumn";
+      this.rntreturndateDataGridViewTextBoxColumn.ReadOnly = true;
+      this.rntreturndateDataGridViewTextBoxColumn.Width = 150;
       // 
       // DisplaySet
       // 
@@ -360,7 +369,7 @@
       // 
       // pnl_rent_status
       // 
-      this.pnl_rent_status.Controls.Add(this.cbox_rent_status);
+      this.pnl_rent_status.Controls.Add(this.cbox_rent_state);
       this.pnl_rent_status.Dock = System.Windows.Forms.DockStyle.Left;
       this.pnl_rent_status.Location = new System.Drawing.Point(589, 0);
       this.pnl_rent_status.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -369,19 +378,19 @@
       this.pnl_rent_status.Size = new System.Drawing.Size(155, 38);
       this.pnl_rent_status.TabIndex = 2;
       // 
-      // cbox_rent_status
+      // cbox_rent_state
       // 
-      this.cbox_rent_status.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.cbox_rent_status.Font = new System.Drawing.Font("굴림", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-      this.cbox_rent_status.FormattingEnabled = true;
-      this.cbox_rent_status.Items.AddRange(new object[] {
+      this.cbox_rent_state.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.cbox_rent_state.Font = new System.Drawing.Font("굴림", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+      this.cbox_rent_state.FormattingEnabled = true;
+      this.cbox_rent_state.Items.AddRange(new object[] {
             "대여중",
             "연체중"});
-      this.cbox_rent_status.Location = new System.Drawing.Point(5, 5);
-      this.cbox_rent_status.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-      this.cbox_rent_status.Name = "cbox_rent_status";
-      this.cbox_rent_status.Size = new System.Drawing.Size(145, 21);
-      this.cbox_rent_status.TabIndex = 1;
+      this.cbox_rent_state.Location = new System.Drawing.Point(5, 5);
+      this.cbox_rent_state.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.cbox_rent_state.Name = "cbox_rent_state";
+      this.cbox_rent_state.Size = new System.Drawing.Size(145, 21);
+      this.cbox_rent_state.TabIndex = 1;
       // 
       // pnl_date
       // 
@@ -495,7 +504,7 @@
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.DateTimePicker date_end;
     private System.Windows.Forms.DateTimePicker date_begin;
-    private System.Windows.Forms.ComboBox cbox_rent_status;
+    private System.Windows.Forms.ComboBox cbox_rent_state;
     private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.DataGridView grid_rent;
 		private System.Data.DataSet DisplaySet;
@@ -513,12 +522,13 @@
 		private System.Data.DataColumn dataColumn11;
 		private System.Data.DataColumn dataColumn12;
 		private System.Data.DataColumn dataColumn13;
-		private System.Windows.Forms.DataGridViewTextBoxColumn rntucodeDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn rnt_rent_date;
-		private System.Windows.Forms.DataGridViewTextBoxColumn rnt_scheduled_return_date;
-		private System.Windows.Forms.DataGridViewTextBoxColumn rntreturndateDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn rntstateDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn mbrnameDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn mbr_phone;
-	}
+    private System.Windows.Forms.DataGridViewTextBoxColumn rntucodeDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn bk_title;
+    private System.Windows.Forms.DataGridViewTextBoxColumn rnt_rent_date;
+    private System.Windows.Forms.DataGridViewTextBoxColumn rntstateDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn mbrnameDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn mbr_phone;
+    private System.Windows.Forms.DataGridViewTextBoxColumn rnt_scheduled_return_date;
+    private System.Windows.Forms.DataGridViewTextBoxColumn rntreturndateDataGridViewTextBoxColumn;
+  }
 }

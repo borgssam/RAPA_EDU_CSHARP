@@ -285,6 +285,7 @@
       this.btn_close.TabIndex = 1;
       this.btn_close.Text = "닫기";
       this.btn_close.UseVisualStyleBackColor = true;
+      this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
       // 
       // panel2
       // 

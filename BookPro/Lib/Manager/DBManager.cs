@@ -2,6 +2,7 @@
 using BookPro.Lib.Utils;
 using MySql.Data.MySqlClient;
 using Mysqlx.Crud;
+using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -221,18 +222,20 @@ namespace BookPro.Lib.Manager
               _strQuery += "bk_erasedate, bk_create_ucode, bk_create_date, bk_modify_ucode, bk_modify_date, bk.ctg_ucode, ctg.ctg_name ";
         _strQuery += "FROM book as bk ";
         _strQuery += "JOIN category as ctg on bk.ctg_ucode = ctg.ctg_ucode ";
+        _strQuery += "WHERE bk_erasedate IS NULL ";
+
         if (aSelectedIndex == 0 && aKeyword.Length>0) {
-//제목  0
-              _strQuery += $"where bk_title like '%{aKeyword}%' ";
+              //제목  0
+              _strQuery += $"AND bk_title like '%{aKeyword}%' ";
         }        else if (aSelectedIndex == 1)        {
-  //분류  1
-              _strQuery += $"where ctg_ucode = {aCategoryUcode} ";
+              //분류  1
+              _strQuery += $"AND ctg_ucode = {aCategoryUcode} ";
         }        else if (aSelectedIndex == 2 && aKeyword.Length > 0)        {
- //저자  2
-              _strQuery += $"WHERE bk_writer LIKE '%{aKeyword}% ";
+              //저자  2
+              _strQuery += $"AND bk_writer LIKE '%{aKeyword}% ";
         }        else if (aSelectedIndex == 3 && aKeyword.Length > 0)        {
-//출판사 3
-              _strQuery += $"WHERE bk_pubs LIKE '%{aKeyword}%' ";
+              //출판사 3
+              _strQuery += $"AND bk_pubs LIKE '%{aKeyword}%' ";
         }
               _strQuery += "ORDER BY bk_title ASC; ";      
 
@@ -348,17 +351,19 @@ GROUP BY bk_ucode
         _strQuery += ") AS rnt ON bk.bk_ucode = rnt.bk_ucode  ";
 
 
-        if(_keyword.Length > 0)
+        _strQuery += "WHERE bk_erasedate IS NULL ";
+
+        if (_keyword.Length > 0)
         {
           if (_searchIndex == 0) {
             //0제목
-            _strQuery += $" WHERE bk.bk_title LIKE '%{_keyword}%' ";
+            _strQuery += $" AND bk.bk_title LIKE '%{_keyword}%' ";
           } else if (_searchIndex == 1) {
             //1저자
-            _strQuery += $" WHERE bk.bk_write LIKE '%{_keyword }%' ";
+            _strQuery += $" AND bk.bk_write LIKE '%{_keyword }%' ";
           } else if (_searchIndex == 2) {
             //2출판사
-            _strQuery += $" WHERE bk.bk_pubs LIKE '%{_keyword }%' ";
+            _strQuery += $" AND bk.bk_pubs LIKE '%{_keyword }%' ";
           }
         }
 
@@ -750,7 +755,7 @@ AND mbr_ucode = 1
       if (_Connection != null)  // 연결이 성공한 경우
       {
         // SQL 쿼리 작성
-        string _strQuery = "SELECT rnt_ucode, rnt_limit_date, bk.bk_title, ";
+        string _strQuery = "SELECT rnt_ucode, rnt_limit_date, bk.bk_title, bk.bk_ucode, ";
         _strQuery += "CASE ";
         _strQuery += "WHEN rnt_limit_date < NOW() THEN '연체중' ";
         _strQuery += "ELSE '대출중' ";
@@ -758,6 +763,97 @@ AND mbr_ucode = 1
         _strQuery += "FROM rent AS rnt ";
         _strQuery += "JOIN book AS bk ON rnt.bk_ucode = bk.bk_ucode ";
         _strQuery += $"WHERE rnt_return_date IS NULL AND mbr_ucode = {_mbr_ucode} ";
+
+        // 회원 정보를 가져오는 쿼리 실행
+        _dt = m_MySqlAssist.SelectQuery(_Connection, _strQuery, "rentaling");
+      }
+      return _dt;  // DataTable 반환
+
+    }
+
+    /*
+SELECT 	rnt_ucode, 
+bk.bk_title,
+mbr.mbr_name,mbr.mbr_phone,
+rnt_rent_date, 
+rnt_return_date, 
+rnt_limit_date,
+
+CASE 
+WHEN rnt_return_date IS NOT NULL THEN '반납완료'
+WHEN rnt_limit_date < NOW() THEN '연체중'
+ELSE '대출중'
+END AS rnt_state
+
+FROM rent AS rnt
+
+JOIN book AS bk ON rnt.bk_ucode = bk.bk_ucode
+JOIN MEMBER AS mbr ON rnt.mbr_ucode = mbr.mbr_ucode     
+     
+     */
+
+    public DataTable ReadRent(int _searchkind, string _keyword, DateTime _date_begin,DateTime _date_end, int _stateIndex)
+    {
+
+      DataTable _dt = null;  // DataTable 변수 선언
+      DbConnection _Connection = m_MySqlAssist.NewConnection();  // DB 연결 생성
+
+      if (_Connection != null)  // 연결이 성공한 경우
+      {
+        // SQL 쿼리 작성
+        string _strQuery = "SELECT rnt_ucode, bk.bk_title,mbr.mbr_name,mbr.mbr_phone,rnt_rent_date, rnt_return_date, rnt_limit_date, ";
+        _strQuery += "CASE  ";
+        _strQuery += "WHEN rnt_return_date IS NOT NULL THEN '반납완료' ";
+        _strQuery += "WHEN rnt_limit_date < NOW() THEN '연체중' ";
+        _strQuery += "ELSE '대출중' ";
+        _strQuery += "END AS rnt_state ";
+        _strQuery += "FROM rent AS rnt ";
+        _strQuery += "JOIN book AS bk ON rnt.bk_ucode = bk.bk_ucode ";
+        _strQuery += "JOIN MEMBER AS mbr ON rnt.mbr_ucode = mbr.mbr_ucode  ";
+        String _begin = _date_begin.ToString("yyyy-MM-dd");
+        String _end = _date_begin.ToString("yyyy-MM-dd");
+        if (_searchkind == 0)
+        {
+          //0.대출일
+          _strQuery += $"WHERE  rnt_rent_date BETWEEN '{_begin}' AND '{_end}' ";
+
+        }
+        else if (_searchkind == 1)
+        {
+          //1.반납예정일
+          _strQuery += $"WHERE  rnt_limit_date BETWEEN '{_begin}' AND '{_end}' ";
+        }
+        else if (_searchkind == 2)
+        {
+          //2.반납일
+          _strQuery += $"WHERE  rnt_return_date BETWEEN '{_begin}' AND '{_end}' ";
+        }
+        else if (_searchkind == 3)
+        {
+          //3.대여상태
+          if (_stateIndex == 0) {
+            //0대여중
+            _strQuery += $"WHERE rnt_return_date IS NULL and rnt_limit_date >= now() ";
+          } else if(_stateIndex == 1)
+          {
+            //1연체중
+            _strQuery += $"WHERE rnt_return_date IS NULL and rnt_limit_date < now() ";
+          }
+
+        }
+        else if (_searchkind == 4)
+        {
+          //4.회원이름
+          _strQuery += $"WHERE  mbr_name LIKE '%{_keyword}%' ";
+
+        }
+        else if (_searchkind == 5)
+        {
+          //5.회원연락처
+          _strQuery += $"WHERE  mbr_phone LIKE '%{_keyword}%' ";
+        }
+
+
 
         // 회원 정보를 가져오는 쿼리 실행
         _dt = m_MySqlAssist.SelectQuery(_Connection, _strQuery, "rentaling");
@@ -788,6 +884,47 @@ AND mbr_ucode = 1
       }
       return _result;
     }
+
+    public int ReturnBook(int _rnt_ucode)
+    {
+
+      int _result = 0;
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+      if (_Connection == null)
+      {
+        _result = -999;
+      }
+      else
+      {
+        string _strQuery = "";
+
+          _strQuery += $"UPDATE rent SET rnt_return_date = now() WHERE rnt_ucode={_rnt_ucode}; ";
+ 
+        _result = m_MySqlAssist.ExcuteQuery(_Connection, _strQuery);
+      }
+      return _result;
+    }
+
+
+    public int LostBook(int _rnt_ucode, int _bk_ucode)
+    {
+      int _result = 0;
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+      if (_Connection == null)
+      {
+        _result = -999;
+      }
+      else
+      {
+        string _strQuery = "";
+        _strQuery += $"UPDATE rent SET rnt_return_date = now() WHERE rnt_ucode={_rnt_ucode}; ";
+        _strQuery += $"UPDATE book SET bk_erasedate = now() WHERE bk_ucode={_bk_ucode}; ";        
+
+        _result = m_MySqlAssist.ExcuteQuery(_Connection, _strQuery);
+      }
+      return _result;
+    }
+
 
 
   }

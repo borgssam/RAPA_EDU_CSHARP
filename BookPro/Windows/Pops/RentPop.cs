@@ -155,7 +155,9 @@ namespace BookPro.Windows.Pops
           _dspRow["rnt_ucode"] = dr["rnt_ucode"];
           _dspRow["rnt_limit_date"] = dr["rnt_limit_date"];
           _dspRow["bk_title"] = dr["bk_title"];
+          _dspRow["bk_ucode"] = dr["bk_ucode"];
           _dspRow["rnt_state"] = dr["rnt_state"];
+          _dspRow["mbr_ucode"] = _mbr_ucode;
           _dspDT.Rows.Add(_dspRow);
 				}      
       }
@@ -256,14 +258,44 @@ namespace BookPro.Windows.Pops
     }
 
 		private void btn_return_book_Click(object sender, EventArgs e)
-		{      
+		{
+			DataRow _rentRow = GridAssist.SelectedRow(grid_rent);
+			if (_rentRow != null) {
+				int _rnt_ucode = Convert.ToInt32(_rentRow["rnt_ucode"]);
+				int _mbr_ucode = Convert.ToInt32(_rentRow["mbr_ucode"]);
 
+				int result = App.Instance().DBManager.ReturnBook(_rnt_ucode);
+				if(result > 0)
+        {
+          MessageBox.Show("반납성공");
+          ResetMemberInfo();
+
+        } else
+				{
+					MessageBox.Show("반납실패");
+
+				}
+			
+			} else		{
+				MessageBox.Show("반납할 도서를 선택하세요");
+			}
 
 		}
 
 		private void btn_lost_book_Click(object sender, EventArgs e)
-		{      
-
+		{
+			DataRow _rentRow = GridAssist.SelectedRow(grid_rent);
+			if(_rentRow != null)
+      {
+        int _rnt_ucode = Convert.ToInt32(_rentRow["rnt_ucode"]);
+        int _mbr_ucode = Convert.ToInt32(_rentRow["mbr_ucode"]);
+				int _bk_ucode = Convert.ToInt32(_rentRow["bk_ucode"]);
+				int result = App.Instance().DBManager.LostBook(_rnt_ucode, _bk_ucode);
+				if(result>0)
+				{
+					ResetMemberInfo();
+				}
+      }
 
 		}
 
@@ -289,7 +321,15 @@ namespace BookPro.Windows.Pops
 
 				int result = App.Instance().DBManager.AddRent(m_mbr_ucode, bookUcodes);
 				if (result > 0) {
-					MessageBox.Show("대여성공");
+					MessageBox.Show("대여성공"); ResetMemberInfo();
+
+
+        }
+			}
+		}
+
+		private void ResetMemberInfo()
+		{
 					DataRow _mbr_dr = App.Instance().DBManager.ReadMember(m_mbr_ucode);
 					if (_mbr_dr != null)
 					{
@@ -301,11 +341,11 @@ namespace BookPro.Windows.Pops
 
           }
 
-				}
-			}
-
-
-
 		}
-	}
+
+    private void btn_close_Click(object sender, EventArgs e)
+    {
+			DialogResult = DialogResult.Cancel;
+    }
+  }
 }
