@@ -36,13 +36,43 @@ namespace BookPro.Windows.Pops
 
 		private void btn_search_book_Click(object sender, EventArgs e)
 		{
+			//제목
+			//저자
+			//출판사
+			int _searchIndex = cbox_kind_book.SelectedIndex;
+			string _keyword = tbox_keyword_book.Text;
+      m_book_table = App.Instance().DBManager.ReadBook(_searchIndex, _keyword);
+
+			DisplayBook();
 
 
 
-		}
+
+
+    }
     
     private void DisplayBook(){
+			if(m_book_table == null) { return; }
+			//List <int> stat
+			string _filter = "";
+			if(cbtn_stay.Checked && !cbtn_rent.Checked) { _filter = "rnt_state IN ('대기중') "; }
+			else if(!cbtn_stay.Checked && cbtn_rent.Checked) { _filter = "rnt_state IN ('연체중','대출중') "; }
+	
+			DataRow[] rows = m_book_table.Select(_filter);
 
+			DataTable _dspDT = DisplaySet.Tables["Book"];
+			_dspDT.Rows.Clear();
+			foreach(DataRow row in rows)
+			{
+				DataRow _dspRow = _dspDT.NewRow();
+        _dspRow["bk_ucode"] = row["bk_ucode"];
+        _dspRow["bk_title"] = row["bk_title"];
+        _dspRow["bk_writer"] = row["bk_writer"];
+        _dspRow["rnt_state"] = row["rnt_state"];
+
+        _dspDT.Rows.Add(_dspRow);
+
+			}
 
     }
 
@@ -126,12 +156,10 @@ namespace BookPro.Windows.Pops
           _dspRow["bk_title"] = dr["bk_title"];
           _dspRow["rnt_state"] = dr["rnt_state"];
           _dspDT.Rows.Add(_dspRow);
-				}
-        
-
+				}      
       }
-
     }
+
     private void fetch_member(DataRow dr){
       
  
@@ -143,15 +171,17 @@ namespace BookPro.Windows.Pops
     }
 		private void cbtn_stay_CheckedChanged(object sender, EventArgs e)
 		{
-      
+			DisplayBook();
 
-		}
+
+    }
 
 		private void cbtn_rent_CheckedChanged(object sender, EventArgs e)
 		{
-      
+			DisplayBook();
 
-		}
+
+    }
 
 		private void grid_book_SelectionChanged(object sender, EventArgs e)
 		{

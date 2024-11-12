@@ -269,7 +269,68 @@ namespace BookPro.Lib.Manager
       return _row;
 
     }
-    
+    /*
+-- 제목, 저자, 대여상태
+SELECT bk.bk_ucode, bk_title, bk_writer, rnt.limit_date,
+CASE 
+WHEN rnt.limit_date IS NULL THEN '대기중'
+WHEN rnt.limit_date < NOW() THEN '연체중'
+ELSE '대출중'
+END AS rnt_state
+FROM book AS bk
+LEFT JOIN
+(
+SELECT bk_ucode, MIN(rnt_limit_date) AS limit_date
+FROM rent
+WHERE rnt_return_date IS NULL
+GROUP BY bk_ucode
+) AS rnt ON bk.bk_ucode = rnt.bk_ucode     
+     */
+    public DataTable ReadBook(int _searchIndex, string _keyword)
+    {
+      DataTable _dt = null;
+
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+      if (_Connection != null)
+      {
+
+
+        String _strQuery = "SELECT bk.bk_ucode, bk_title, bk_writer, rnt.limit_date, ";
+        _strQuery += "CASE  ";
+        _strQuery += "WHEN rnt.limit_date IS NULL THEN '대기중'  ";
+        _strQuery += "WHEN rnt.limit_date < NOW() THEN '연체중'  ";
+        _strQuery += "ELSE '대출중'  ";
+        _strQuery += "END AS rnt_state  ";
+        _strQuery += "FROM book AS bk  ";
+        _strQuery += "LEFT JOIN (  ";
+        _strQuery += "SELECT bk_ucode, MIN(rnt_limit_date) AS limit_date  ";
+        _strQuery += "FROM rent WHERE rnt_return_date IS NULL GROUP BY bk_ucode  ";
+        _strQuery += ") AS rnt ON bk.bk_ucode = rnt.bk_ucode  ";
+
+
+        if(_keyword.Length > 0)
+        {
+          if (_searchIndex == 0) {
+            //0제목
+            _strQuery += $" WHERE bk.bk_title LIKE '%{_keyword}%' ";
+          } else if (_searchIndex == 1) {
+            //1저자
+            _strQuery += $" WHERE bk.bk_write LIKE '%{_keyword }%' ";
+          } else if (_searchIndex == 2) {
+            //2출판사
+            _strQuery += $" WHERE bk.bk_pubs LIKE '%{_keyword }%' ";
+          }
+        }
+
+        _strQuery += "ORDER BY bk_title ASC; ";
+
+
+        _dt = m_MySqlAssist.SelectQuery(_Connection, _strQuery, "books");
+      }
+      return _dt;
+
+
+    }
     public int DeleteBook(int _ucode)
     {
 
