@@ -84,18 +84,52 @@ namespace BookPro.Windows.Pops
 		}
     private int m_mbr_ucode = -1;
 		private void grid_member_SelectionChanged(object sender, EventArgs e)
-		{ 
+		{
+			DataRow _selectedRow = GridAssist.SelectedRow(grid_member);
+			if(_selectedRow != null)
+			{
+				m_mbr_ucode = Convert.ToInt32(_selectedRow["mbr_ucode"]);
+				DisplayMemberInfo();
+				DisplayRenting(m_mbr_ucode);
 
+      }
 		}
 
-    private void DisplayMemberInfo(){ 
-
-
-      
-    }
+    private void DisplayMemberInfo(){
+			DataRow row = App.Instance().DBManager.ReadMember(m_mbr_ucode);
+			label_mbr_name.Text = row["mbr_name"].ToString();
+			label_mbr_phone.Text = row["mbr_phone"].ToString();
+			string gender = row["mbr_gender"].ToString();
+			if (gender == "m") { label_mbr_gender.Text = "남성"; } else { label_mbr_gender.Text = "여성"; }
+			string picture = row["mbr_picture"].ToString();
+			if (picture != null && picture.Length > 0) {
+				pbox_picture_member.Image = BitAssist.HexStringToImage(picture);
+			} else if (gender == "m") {
+				pbox_picture_member.Image = Bitmap.FromFile("./images/boy.pny");
+			} else
+      {
+        pbox_picture_member.Image = Bitmap.FromFile("./images/girl.jpg");
+      }
+		}
 
     private void DisplayRenting(int _mbr_ucode){
+			DataTable dt = App.Instance().DBManager.ReadRent(_mbr_ucode);
+			if (dt != null)
+			{
+				DataTable _dspDT = this.DisplaySet.Tables["RentaledBook"];
+				_dspDT.Rows.Clear();
+				foreach (DataRow dr in dt.Rows)
+				{
+					DataRow _dspRow = _dspDT.NewRow();
+          _dspRow["rnt_ucode"] = dr["rnt_ucode"];
+          _dspRow["rnt_limit_date"] = dr["rnt_limit_date"];
+          _dspRow["bk_title"] = dr["bk_title"];
+          _dspRow["rnt_state"] = dr["rnt_state"];
+          _dspDT.Rows.Add(_dspRow);
+				}
+        
 
+      }
 
     }
     private void fetch_member(DataRow dr){

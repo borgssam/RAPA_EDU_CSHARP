@@ -605,6 +605,46 @@ GROUP BY mbr_ucode
       }
       return _result;
     }
+    /*
+SELECT rnt_ucode, 
+	rnt_rent_date,  
+	rnt_limit_date, 
+	bk.bk_ucode, bk.bk_title,
+	mbr_ucode,
+	CASE 
+	WHEN rnt_limit_date < NOW() THEN '연체중'
+	ELSE '대출중'
+	END AS rnt_state
+	
+	
+	FROM rent AS rnt
+	JOIN book AS bk ON rnt.bk_ucode = bk.bk_ucode
+WHERE rnt_return_date IS NULL
+AND mbr_ucode = 1     
+     */
+    public DataTable ReadRent(int _mbr_ucode)
+    {
+      DataTable _dt = null;  // DataTable 변수 선언
+      DbConnection _Connection = m_MySqlAssist.NewConnection();  // DB 연결 생성
+
+      if (_Connection != null)  // 연결이 성공한 경우
+      {
+        // SQL 쿼리 작성
+        string _strQuery = "SELECT rnt_ucode, rnt_limit_date, bk.bk_title, ";
+        _strQuery += "CASE ";
+        _strQuery += "WHEN rnt_limit_date < NOW() THEN '연체중' ";
+        _strQuery += "ELSE '대출중' ";
+        _strQuery += "END AS rnt_state ";
+        _strQuery += "FROM rent AS rnt ";
+        _strQuery += "JOIN book AS bk ON rnt.bk_ucode = bk.bk_ucode ";
+        _strQuery += $"WHERE rnt_return_date IS NULL AND mbr_ucode = {_mbr_ucode} ";
+
+        // 회원 정보를 가져오는 쿼리 실행
+        _dt = m_MySqlAssist.SelectQuery(_Connection, _strQuery, "rentaling");
+      }
+      return _dt;  // DataTable 반환
+
+    }
 
 
 
