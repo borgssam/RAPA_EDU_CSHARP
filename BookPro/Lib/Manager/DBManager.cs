@@ -475,9 +475,28 @@ GROUP BY bk_ucode
       if (_Connection != null)
       {
         // 쿼리 작성: ucode에 해당하는 멤버 정보 가져오기
-        string _strQuery = "SELECT mbr_ucode, mbr_id, mbr_name, mbr_pwd, mbr_gender, mbr_phone, mbr_addr, mbr_picture ";
-        _strQuery += "FROM member ";
-        _strQuery += string.Format("WHERE mbr_ucode = {0} ", ucode);
+        //string _strQuery = "SELECT mbr_ucode, mbr_id, mbr_name, mbr_pwd, mbr_gender, mbr_phone, mbr_addr, mbr_picture ";
+        //_strQuery += "FROM member ";
+        //_strQuery += string.Format("WHERE mbr_ucode = {0} ", ucode);
+        string _strQuery = "SELECT ";
+        _strQuery += "    mbr.mbr_ucode, mbr.mbr_name, mbr.mbr_id, mbr.mbr_pwd,mbr.mbr_gender,mbr.mbr_phone, mbr.mbr_break_date, mbr.mbr_addr, rnt.limit_date as rnt_limit_date, ";
+        _strQuery += "    CASE  ";
+        _strQuery += "        WHEN rnt.limit_date IS NULL THEN '대기중' ";
+        _strQuery += "        WHEN rnt.limit_date < NOW() THEN '연체중' ";
+        _strQuery += "        ELSE '대출중'  ";
+        _strQuery += "    END AS rnt_state ";
+        _strQuery += ", mbr.mbr_picture "; 
+        _strQuery += "FROM member AS mbr ";
+        _strQuery += "LEFT JOIN  ";
+        _strQuery += "    (SELECT mbr_ucode, MIN(rnt_limit_date) AS limit_date ";
+        _strQuery += "     FROM  rent ";
+        _strQuery += "     WHERE  rnt_return_date IS NULL ";
+        _strQuery += "     GROUP BY mbr_ucode ";
+        _strQuery += "    ) AS rnt ON mbr.mbr_ucode = rnt.mbr_ucode ";
+        _strQuery += $"WHERE mbr.mbr_ucode = {ucode}; ";
+
+
+
 
         // 쿼리 실행
         _dt = m_MySqlAssist.SelectQuery(_Connection, _strQuery, "member");
@@ -527,7 +546,7 @@ GROUP BY mbr_ucode
         _strQuery += "ELSE '대출중' ";
         _strQuery += "END AS rnt_state ";
         _strQuery += "FROM MEMBER AS mbr ";
-        _strQuery += "JOIN ( ";
+        _strQuery += "LEFT JOIN ( ";
         _strQuery += "SELECT mbr_ucode, MIN(rnt_limit_date) AS limit_date FROM rent ";
         _strQuery += "WHERE rnt_return_date IS NULL ";
         _strQuery += "GROUP BY mbr_ucode ";
@@ -747,6 +766,28 @@ AND mbr_ucode = 1
 
     }
 
+
+    public int AddRent(int _mbr_ucode, List<int> books)
+    {
+
+      int _result = 0;
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+      if (_Connection == null)
+      {
+        _result = -999;
+      }
+      else
+      {
+        string _strQuery = "";
+        foreach (int _bk_ucode in books)
+        {
+          _strQuery += "INSERT INTO rent( rnt_rent_date, rnt_limit_date, mbr_ucode, bk_ucode, stf_reg_ucode )  ";
+          _strQuery += $"VALUES(NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY), {_mbr_ucode}, {_bk_ucode}, {StaffInfo.ucode} ); ";
+        }
+        _result = m_MySqlAssist.ExcuteQuery(_Connection, _strQuery);
+      }
+      return _result;
+    }
 
 
   }

@@ -129,6 +129,7 @@ namespace BookPro.Windows.Pops
 			DataRow row = App.Instance().DBManager.ReadMember(m_mbr_ucode);
 			label_mbr_name.Text = row["mbr_name"].ToString();
 			label_mbr_phone.Text = row["mbr_phone"].ToString();
+			label_rnt_state.Text = row["rnt_state"].ToString();
 			string gender = row["mbr_gender"].ToString();
 			if (gender == "m") { label_mbr_gender.Text = "남성"; } else { label_mbr_gender.Text = "여성"; }
 			string picture = row["mbr_picture"].ToString();
@@ -236,13 +237,8 @@ namespace BookPro.Windows.Pops
           _cartRow["rnt_state"] = _selectedRow["rnt_state"];
 
           _cartDT.Rows.Add(_cartRow);
-
-				}
-				
-
+				}			
 			}
-
-
 		}
 
 		private void btn_sub_cart_Click(object sender, EventArgs e)
@@ -274,6 +270,40 @@ namespace BookPro.Windows.Pops
 
 		private void btn_add_rent_Click(object sender, EventArgs e)
 		{
+			DataTable _dt = DisplaySet.Tables["Cart"];
+			if (_dt.Rows.Count == 0)
+			{
+				MessageBox.Show("카트에 담긴 도서가 없습니다.");
+			}
+			else if (m_mbr_ucode <= 0)
+			{
+				MessageBox.Show("대여할 회원을 선택하세요");
+			}
+			else
+			{
+				List<int> bookUcodes = new List<int>();
+				foreach (DataRow row in _dt.Rows)
+				{
+					bookUcodes.Add(Convert.ToInt32(row["bk_ucode"]));
+				}
+
+				int result = App.Instance().DBManager.AddRent(m_mbr_ucode, bookUcodes);
+				if (result > 0) {
+					MessageBox.Show("대여성공");
+					DataRow _mbr_dr = App.Instance().DBManager.ReadMember(m_mbr_ucode);
+					if (_mbr_dr != null)
+					{
+						DataRow _mbrRow = GridAssist.SelectedRow(grid_member);
+						_mbrRow["rnt_state"] = _mbr_dr["rnt_state"];
+            label_rnt_state.Text = _mbr_dr["rnt_state"].ToString();
+
+            DisplayRenting(m_mbr_ucode);
+
+          }
+
+				}
+			}
+
 
 
 		}
