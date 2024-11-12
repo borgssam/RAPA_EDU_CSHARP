@@ -172,37 +172,90 @@ namespace BookPro.Windows.Pops
 		private void cbtn_stay_CheckedChanged(object sender, EventArgs e)
 		{
 			DisplayBook();
-
-
     }
 
 		private void cbtn_rent_CheckedChanged(object sender, EventArgs e)
 		{
 			DisplayBook();
-
-
     }
-
-		private void grid_book_SelectionChanged(object sender, EventArgs e)
-		{
-
-
-		}
-
-		private void btn_add_cart_Click(object sender, EventArgs e)
-		{
-
-
-		}
 
 		private void grid_book_CellContentClick(object sender, DataGridViewCellEventArgs e)
 		{
 
 		}
 
-		private void btn_sub_cart_Click(object sender, EventArgs e)
+		private void grid_book_SelectionChanged(object sender, EventArgs e)
 		{
 
+			DataRow _row = GridAssist.SelectedRow(grid_book);
+			if (_row != null)
+			{
+				int _bk_ucode = Convert.ToInt32(_row["bk_ucode"]);
+				DataRow _src_row = App.Instance().DBManager.ReadBookInfo(_bk_ucode);
+				this.label_bk_title.Text = _src_row["bk_title"].ToString();
+				this.label_bk_writer.Text = _src_row["bk_writer"].ToString();
+				this.label_bk_state.Text = _src_row["rnt_state"].ToString();
+				this.label_ctg_name.Text = _src_row["ctg_name"].ToString();
+
+				string picture = _src_row["bk_picture"].ToString();
+				if (picture.Length > 0)
+				{
+					pbox_picture_book.Image = BitAssist.HexStringToImage(picture);
+				}
+				else
+				{
+					pbox_picture_book.Image = Bitmap.FromFile("./images/book.png");
+
+				}
+			}
+
+
+    }
+
+		private void btn_add_cart_Click(object sender, EventArgs e)
+		{
+			DataRow _selectedRow = GridAssist.SelectedRow(grid_book);
+			if(_selectedRow != null)
+      {
+        int _ucode = Convert.ToInt32(_selectedRow["bk_ucode"]);
+        string _rnt_state = Convert.ToString(_selectedRow["rnt_state"]);
+        DataTable _cartDT = DisplaySet.Tables["Cart"];
+				DataRow[] _carts = _cartDT.Select("bk_ucode=" + _ucode);
+				if (_carts.Length > 0)
+				{
+					MessageBox.Show("이미 카드에 담겨있습니다.");
+				} else if (_rnt_state != "대기중") {
+
+          MessageBox.Show("이미 대여(연체)중인 도서는 카드에 담을 수가 없습니다.");
+        } else
+				{
+					DataRow _cartRow = _cartDT.NewRow();
+          _cartRow["bk_ucode"] = _selectedRow["bk_ucode"];
+          _cartRow["bk_title"] = _selectedRow["bk_title"];
+          _cartRow["bk_writer"] = _selectedRow["bk_writer"];
+          _cartRow["rnt_state"] = _selectedRow["rnt_state"];
+
+          _cartDT.Rows.Add(_cartRow);
+
+				}
+				
+
+			}
+
+
+		}
+
+		private void btn_sub_cart_Click(object sender, EventArgs e)
+		{
+			DataRow _selectedRow = GridAssist.SelectedRow(grid_cart);
+			if(_selectedRow != null)
+			{
+				DataTable _cartDT = DisplaySet.Tables["Cart"];
+				_cartDT.Rows.Remove(_selectedRow);
+			} else
+			{
+				MessageBox.Show("카트에서 삭제하실 도서를 선택하세요");
+			}
 
     }
 

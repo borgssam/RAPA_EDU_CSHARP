@@ -243,6 +243,46 @@ namespace BookPro.Lib.Manager
 
     }
 
+    public DataRow ReadBookInfo(int _ucode)
+    {
+      DataRow _dr = null;
+      DataTable _dt = null;
+
+      DbConnection _Connection = m_MySqlAssist.NewConnection();
+      if (_Connection != null)
+      {
+
+        String _strQuery = "SELECT bk.bk_ucode, bk_title, bk_writer, rnt.limit_date, ctg_name, ";
+        _strQuery += "CASE  ";
+        _strQuery += "WHEN rnt.limit_date IS NULL THEN '대기중'  ";
+        _strQuery += "WHEN rnt.limit_date < NOW() THEN '연체중'  ";
+        _strQuery += "ELSE '대출중'  ";
+        _strQuery += "END AS rnt_state,bk_picture   ";
+        _strQuery += "FROM book AS bk  ";
+        _strQuery += "join category AS ctg on bk.ctg_ucode = ctg.ctg_ucode  ";
+        _strQuery += "LEFT JOIN (  ";
+        _strQuery += "SELECT bk_ucode, MIN(rnt_limit_date) AS limit_date  ";
+        _strQuery += "FROM rent WHERE rnt_return_date IS NULL GROUP BY bk_ucode  ";
+        _strQuery += ") AS rnt ON bk.bk_ucode = rnt.bk_ucode  ";
+       
+       _strQuery += $" WHERE bk.bk_ucode  = {_ucode} ";
+        
+        _strQuery += "ORDER BY bk_title ASC; ";
+
+
+        _dt = m_MySqlAssist.SelectQuery(_Connection, _strQuery, "books");
+        if(_dt != null &&  _dt.Rows.Count > 0)
+        {
+          _dr = _dt.Rows[0];
+        }
+      }
+
+
+      return _dr;
+
+
+    }
+
     public DataRow ReadBook(int aUcode)
     {
       DataRow _row = null;
